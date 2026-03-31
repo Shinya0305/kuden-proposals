@@ -1149,12 +1149,14 @@
     .concept-box { padding: 18px 16px; }
     .concept-box p { font-size: 14px; }
 
-    /* Tables */
+    /* Tables: horizontal scroll wrapper */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0 24px; }
+    .table-scroll table { min-width: 480px; margin: 0; }
     table { font-size: 13px; }
     th { padding: 10px 10px; font-size: 12px; }
     td { padding: 10px 10px; }
 
-    /* Coverage table - stack on mobile */
+    /* Coverage table */
     .coverage-table td:first-child { font-size: 13px; }
     .coverage-table td:nth-child(2) { font-size: 12px; }
 
@@ -1191,15 +1193,12 @@
     .recommend-flow .rf-steps { flex-wrap: wrap; justify-content: center; }
     .recommend-flow .rf-step-box { font-size: 11px; padding: 5px 10px; }
 
-    /* Estimate table - hide No. & 数量 columns on mobile */
-    .estimate-table table th:first-child,
-    .estimate-table table td:first-child,
-    .estimate-table table th:nth-child(3),
-    .estimate-table table td:nth-child(3) { display: none; }
+    /* Estimate table - horizontal scroll */
+    .estimate-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .estimate-table table { min-width: 500px; }
     .estimate-table table th { font-size: 11px; padding: 10px 10px; }
     .estimate-table table td { font-size: 12px; padding: 10px 10px; }
     .estimate-table table td:last-child { white-space: nowrap; text-align: right; font-weight: 600; }
-    .estimate-table table td:nth-child(2) span { font-size: 10px; }
     .estimate-table .estimate-total td { font-size: 13px; }
     .estimate-note { font-size: 10px; padding: 8px 10px; }
 
@@ -1226,26 +1225,10 @@
     .closing p { font-size: 15px; }
     .closing .closing-bold { font-size: 19px; }
 
-    /* Coverage table: hide detail column on mobile */
-    .coverage-table th:nth-child(2),
-    .coverage-table td:nth-child(2) { display: none; }
-    .coverage-table th:first-child { width: auto; }
+    /* Coverage table: horizontal scroll */
     .coverage-table td:first-child { font-size: 12px; }
-    .coverage-table td:nth-child(3) { font-size: 14px; }
 
-    /* Goal setting table: hide 例 column, compact type column */
-    .goal-table th:first-child,
-    .goal-table td:first-child { width: 90px; font-size: 12px; }
-    .goal-table th:nth-child(3),
-    .goal-table td:nth-child(3) { display: none; }
-    .goal-table td:nth-child(2) { font-size: 12px; }
-
-    /* Evaluation metrics table: hide 測定方法, compact layout */
-    .eval-table th:first-child,
-    .eval-table td:first-child { width: auto; font-size: 12px; }
-    .eval-table th:nth-child(3),
-    .eval-table td:nth-child(3) { display: none; }
-    .eval-table td:nth-child(2) { font-size: 12px; }
+    /* Goal / Eval / Coverage tables use .table-scroll wrapper for horizontal scroll */
 
     /* Monthly fee box */
     .monthly-fee { padding: 20px 16px !important; }
@@ -1264,15 +1247,8 @@
     .process-step .step-desc { font-size: 11px; }
     .member-stats { grid-template-columns: 1fr; }
 
-    /* Goal table: single visible column */
-    .goal-table th:nth-child(2),
-    .goal-table td:nth-child(2) { font-size: 11px; }
-    .goal-table th:first-child,
-    .goal-table td:first-child { width: 72px; font-size: 11px; }
-
-    /* Eval table: compact */
-    .eval-table td:first-child { font-size: 11px; }
-    .eval-table td:nth-child(2) { font-size: 11px; }
+    /* Tables: narrower min-width on extra small */
+    .table-scroll table { min-width: 420px; }
 
     /* Monthly fee: smaller price */
     .monthly-fee .price-main { font-size: 28px !important; }
@@ -1552,6 +1528,7 @@
 
   <p>KUDEN OS では、メンバー一人ひとりが<strong>3種類の目標</strong>を、予詩の哲学を学んだAIコーチと一緒に設定します。</p>
 
+  <div class="table-scroll">
   <table class="goal-table">
     <tr><th>目標の種類</th><th>内容</th><th>例</th></tr>
     <tr>
@@ -1570,6 +1547,7 @@
       <td style="font-size:13px; color:var(--charcoal);">傾聴力・気配り・自信</td>
     </tr>
   </table>
+  </div>
 
   <p style="margin-top: 20px;">各人の目標を理解したAIが、<strong>毎日の振り返り</strong>でコーチングを行います。</p>
 
@@ -1660,6 +1638,7 @@
   </div>
 
   <h3>トライアル期間の評価指標</h3>
+  <div class="table-scroll">
   <table class="eval-table">
     <tr><th>評価指標</th><th>目標値</th><th>測定方法</th></tr>
     <tr><td><strong>振り返り継続率</strong></td><td>週4回以上のメンバーが70%</td><td>システムログ</td></tr>
@@ -1668,6 +1647,7 @@
     <tr><td><strong>目標達成率</strong></td><td>70%以上</td><td>システム集計</td></tr>
     <tr><td><strong>メンバーの状況把握</strong></td><td>月次で80%以上把握</td><td>ヒアリング</td></tr>
   </table>
+  </div>
 </div>
 
 <!-- ===== 4. Phase 3 本格導入 ===== -->
@@ -1776,6 +1756,7 @@
   </div>
 
   <!-- 充当テーブル -->
+  <div class="table-scroll">
   <table class="coverage-table">
     <tr><th style="width:200px;">要素</th><th>内容</th><th style="width:80px;">状況</th></tr>
     <tr>
@@ -1829,6 +1810,7 @@
       <td class="status-ng">未取得</td>
     </tr>
   </table>
+  </div>
 
   <div class="concept-box">
     <p><strong>充当済みの70%</strong> = 「組織としてどうあるべきか」（経営理念・価値観・黒服の基準）<br>

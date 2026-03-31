@@ -264,7 +264,7 @@
   }
   .schedule-header {
     display: grid;
-    grid-template-columns: 180px repeat(5, 1fr);
+    grid-template-columns: 180px repeat(6, 1fr);
     background: var(--navy);
     color: var(--white);
     font-size: 13px;
@@ -289,7 +289,7 @@
   }
   .schedule-row {
     display: grid;
-    grid-template-columns: 180px repeat(5, 1fr);
+    grid-template-columns: 180px repeat(6, 1fr);
     border-bottom: 1px solid var(--border);
     align-items: center;
     min-height: 56px;
@@ -1272,7 +1272,7 @@
       <div class="meta-label">トライアル開始</div>
     </div>
     <div class="cover-meta-item">
-      <div class="meta-value">7月〜</div>
+      <div class="meta-value">8月〜</div>
       <div class="meta-label">本格導入</div>
     </div>
   </div>
@@ -1295,12 +1295,12 @@
     <div class="overview-card highlight">
       <div class="ov-label">Phase 2</div>
       <div class="ov-value">トライアル</div>
-      <div class="ov-sub">5月〜6月（2ヶ月）</div>
+      <div class="ov-sub">5月〜7月（3ヶ月）</div>
     </div>
     <div class="overview-card">
       <div class="ov-label">Phase 3</div>
       <div class="ov-value">本格導入</div>
-      <div class="ov-sub">7月〜</div>
+      <div class="ov-sub">8月〜</div>
     </div>
   </div>
 
@@ -1312,13 +1312,15 @@
       <div>5月</div>
       <div>6月</div>
       <div>7月</div>
-      <div>8月〜</div>
+      <div>8月</div>
+      <div>9月〜</div>
     </div>
 
     <!-- Row: メンバー選定 -->
     <div class="schedule-row">
       <div class="row-label">メンバー選定<small>確定</small></div>
       <div class="schedule-cell"><span class="milestone navy">4/3</span></div>
+      <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
@@ -1333,12 +1335,14 @@
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
     </div>
 
     <!-- Row: リーダー打合せ -->
     <div class="schedule-row">
       <div class="row-label">リーダー陣(P)打合せ<small>方針すり合わせ</small></div>
       <div class="schedule-cell"><span class="bar prep">4月中旬</span></div>
+      <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
@@ -1353,6 +1357,7 @@
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
     </div>
 
     <!-- Row: トライアル -->
@@ -1361,15 +1366,17 @@
       <div class="schedule-cell"></div>
       <div class="schedule-cell"><span class="bar active-run" style="width:95%;">運用</span></div>
       <div class="schedule-cell"><span class="bar active-run" style="width:95%;">運用</span></div>
+      <div class="schedule-cell"><span class="bar active-run" style="width:95%;">運用</span></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
     </div>
 
     <!-- Row: 進捗会議 -->
     <div class="schedule-row">
-      <div class="row-label">進捗会議<small>中間振り返り</small></div>
+      <div class="row-label">進捗会議<small>振り返り</small></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"><span class="milestone blue">5月末</span></div>
+      <div class="schedule-cell"><span class="milestone blue">6月末</span></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
@@ -1380,7 +1387,8 @@
       <div class="row-label">本格導入判断会議<small>全社展開Go/NoGo</small></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
-      <div class="schedule-cell"><span class="milestone green">6月末</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"><span class="milestone green">7月末</span></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
     </div>
@@ -1388,6 +1396,7 @@
     <!-- Row: 本格導入 -->
     <div class="schedule-row">
       <div class="row-label">本格導入<small>全社展開</small></div>
+      <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
       <div class="schedule-cell"></div>
@@ -1467,7 +1476,7 @@
         <div class="ms-label">対象店舗数</div>
       </div>
       <div class="member-stat">
-        <div class="ms-value">2ヶ月</div>
+        <div class="ms-value">3ヶ月</div>
         <div class="ms-label">トライアル期間</div>
       </div>
     </div>
@@ -1482,20 +1491,71 @@
 <!-- ===== 3. Phase 2 トライアル ===== -->
 <div class="section-divider">
   <div class="section-num">PHASE 2</div>
-  <h2>トライアル運用 — 5月〜6月</h2>
+  <h2>トライアル運用 — 5月〜7月</h2>
 </div>
 <div class="section">
 
   <div class="concept-box">
-    <p><strong>2ヶ月間で「効果の実感」を創る。</strong><br>
+    <p><strong>3ヶ月間で「効果の実感」を創る。</strong><br>
     振り返り習慣の定着、AIコーチの有用性、メンバーの成長実感を測定します。</p>
+  </div>
+
+  <!-- 目標設定とコーチングサイクル -->
+  <h3>KUDEN OS の目標設定とコーチングサイクル</h3>
+
+  <p>KUDEN OS では、メンバー一人ひとりが<strong>3種類の目標</strong>を、予詩の哲学を学んだAIコーチと一緒に設定します。</p>
+
+  <table>
+    <tr><th style="width:140px;">目標の種類</th><th>内容</th><th style="width:180px;">例</th></tr>
+    <tr>
+      <td><strong>成果目標</strong><br><span style="font-size:12px; color:var(--gray);">定量</span></td>
+      <td>数字で測れる具体的な成果</td>
+      <td style="font-size:13px; color:var(--charcoal);">売上・同伴数・リピート率</td>
+    </tr>
+    <tr>
+      <td><strong>行動目標</strong><br><span style="font-size:12px; color:var(--gray);">定性・プロセス</span></td>
+      <td>成果につながる日々の行動・プロセス</td>
+      <td style="font-size:13px; color:var(--charcoal);">お礼連絡・接客の振り返り</td>
+    </tr>
+    <tr>
+      <td><strong>成長目標</strong><br><span style="font-size:12px; color:var(--gray);">各人が磨くもの</span></td>
+      <td>自分自身が伸ばしたいスキル・姿勢</td>
+      <td style="font-size:13px; color:var(--charcoal);">傾聴力・気配り・自信</td>
+    </tr>
+  </table>
+
+  <p style="margin-top: 20px;">各人の目標を理解したAIが、<strong>毎日の振り返り</strong>でコーチングを行います。</p>
+
+  <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin: 24px 0; flex-wrap: wrap;">
+    <div style="background: var(--gold-pale); border: 2px solid var(--gold); color: var(--navy); padding: 16px 20px; border-radius: 10px; text-align: center; flex: 1; min-width: 120px;">
+      <div style="font-size: 22px; margin-bottom: 4px;">&#x1F4AC;</div>
+      <div style="font-size: 14px; font-weight: 700;">体験</div>
+      <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">日々の営業・接客</div>
+    </div>
+    <div style="font-size: 22px; color: var(--gold); flex-shrink: 0;">&rarr;</div>
+    <div style="background: var(--gold-pale); border: 2px solid var(--gold); color: var(--navy); padding: 16px 20px; border-radius: 10px; text-align: center; flex: 1; min-width: 120px;">
+      <div style="font-size: 22px; margin-bottom: 4px;">&#x1F4A1;</div>
+      <div style="font-size: 14px; font-weight: 700;">気づき</div>
+      <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">AIコーチとの振り返り</div>
+    </div>
+    <div style="font-size: 22px; color: var(--gold); flex-shrink: 0;">&rarr;</div>
+    <div style="background: var(--gold-pale); border: 2px solid var(--gold); color: var(--navy); padding: 16px 20px; border-radius: 10px; text-align: center; flex: 1; min-width: 120px;">
+      <div style="font-size: 22px; margin-bottom: 4px;">&#x1F680;</div>
+      <div style="font-size: 14px; font-weight: 700;">行動変容</div>
+      <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">翌日のアクション改善</div>
+    </div>
+  </div>
+
+  <div class="concept-box">
+    <p>このサイクルの内容をAIが自動で<strong>レポート化</strong>。<br>
+    リーダー陣・ママは、メンバー一人ひとりの成長プロセスを数字とストーリーの両面で把握できます。</p>
   </div>
 
   <div class="phase-box">
     <div class="phase-header">
       <div class="phase-badge trial-badge">P2</div>
       <div class="phase-header-text">
-        <div class="phase-period">2026年5月7日 〜 6月末</div>
+        <div class="phase-period">2026年5月7日 〜 7月末</div>
         <div class="phase-name">トライアル運用フェーズ</div>
       </div>
     </div>
@@ -1524,12 +1584,26 @@
       <li>
         <div class="task-date">6月中</div>
         <div class="task-content">
-          <strong>トライアル後半・効果測定</strong>
-          <div class="task-detail">振り返り継続率、目標達成率、ユーザー満足度のデータ収集・分析</div>
+          <strong>中盤フォロー・運用改善</strong>
+          <div class="task-detail">改善施策の反映、利用率が低いメンバーへの個別フォロー</div>
         </div>
       </li>
       <li>
         <div class="task-date">6月末</div>
+        <div class="task-content">
+          <strong>進捗会議（2回目）</strong>
+          <div class="task-detail">2ヶ月目の利用データ共有、改善施策の効果検証、後半に向けた方針確認</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">7月中</div>
+        <div class="task-content">
+          <strong>効果測定・総括分析</strong>
+          <div class="task-detail">振り返り継続率、目標達成率、ユーザー満足度のデータ収集・分析</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">7月末</div>
         <div class="task-content">
           <strong>本格導入に向けた判断会議</strong>
           <div class="task-detail">トライアル結果の総括報告、全社導入の Go/NoGo 判断、導入範囲・スケジュールの決定</div>
@@ -1544,7 +1618,7 @@
     <tr><td><strong>振り返り継続率</strong></td><td>週4回以上のメンバーが70%</td><td>システムログ</td></tr>
     <tr><td><strong>AIコーチ満足度</strong></td><td>4.0 以上/ 5.0 満点中 </td><td>ヒアリング</td></tr>
     <tr><td><strong>目標設定完了率</strong></td><td>100%</td><td>システム集計</td></tr>
-    <tr><td><strong>目標達成率</strong></td><td>75%以上</td><td>システム集計</td></tr>
+    <tr><td><strong>目標達成率</strong></td><td>70%以上</td><td>システム集計</td></tr>
     <tr><td><strong>メンバーの状況把握</strong></td><td>月次で80%以上把握</td><td>ヒアリング</td></tr>
   </table>
 </div>
@@ -1552,7 +1626,7 @@
 <!-- ===== 4. Phase 3 本格導入 ===== -->
 <div class="section-divider">
   <div class="section-num">PHASE 3</div>
-  <h2>本格導入 — 7月〜</h2>
+  <h2>本格導入 — 8月〜</h2>
 </div>
 <div class="section">
 
@@ -1560,27 +1634,27 @@
     <div class="phase-header">
       <div class="phase-badge launch-badge">P3</div>
       <div class="phase-header-text">
-        <div class="phase-period">2026年7月〜</div>
+        <div class="phase-period">2026年8月〜</div>
         <div class="phase-name">全社本格導入フェーズ</div>
       </div>
     </div>
     <ul class="task-list">
       <li>
-        <div class="task-date">7月上旬</div>
+        <div class="task-date">8月上旬</div>
         <div class="task-content">
           <strong>全社導入開始</strong>
           <div class="task-detail">トライアル対象外メンバーへの展開、全店舗でのKUDEN OS稼働</div>
         </div>
       </li>
       <li>
-        <div class="task-date">7月〜</div>
+        <div class="task-date">8月〜</div>
         <div class="task-content">
           <strong>成功パターンの自動抽出・共有</strong>
           <div class="task-detail">トップホステスの暗黙知を組織ナレッジとして蓄積、新人育成に活用</div>
         </div>
       </li>
       <li>
-        <div class="task-date">8月〜</div>
+        <div class="task-date">9月〜</div>
         <div class="task-content">
           <strong>定着化・継続改善</strong>
           <div class="task-detail">月次での効果測定レポート、機能改善フィードバック反映、運用最適化</div>
@@ -1893,8 +1967,8 @@
       <div class="rf-title">おすすめ</div>
       <p class="rf-desc">
         トライアルは<strong>Plan B（黒服用DNA注入）</strong>で走り始め、<br>
-        本格導入時（7月〜）にママへのヒアリングを実施してフルDNA版にアップグレード。<br>
-        トライアル期間の2ヶ月で「AIの効果」を実感した上で、ホステス向けの哲学注入に投資する流れが最も合理的です。
+        本格導入時（8月〜）にママへのヒアリングを実施してフルDNA版にアップグレード。<br>
+        トライアル期間の3ヶ月で「AIの効果」を実感した上で、ホステス向けの哲学注入に投資する流れが最も合理的です。
       </p>
       <div class="rf-steps">
         <div class="rf-step-box active-rf">トライアル（5月〜）</div>
@@ -1988,20 +2062,27 @@
 
     <div class="v-timeline-item future">
       <div class="v-timeline-date">2026年5月末</div>
-      <div class="v-timeline-title">進捗会議</div>
+      <div class="v-timeline-title">進捗会議（1回目）</div>
       <div class="v-timeline-desc">1ヶ月目の利用データ共有、課題の洗い出し、運用改善</div>
       <span class="v-timeline-tag trial">トライアル</span>
     </div>
 
     <div class="v-timeline-item future">
       <div class="v-timeline-date">2026年6月末</div>
+      <div class="v-timeline-title">進捗会議（2回目）</div>
+      <div class="v-timeline-desc">2ヶ月目の利用データ共有、改善施策の効果検証、後半方針確認</div>
+      <span class="v-timeline-tag trial">トライアル</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年7月末</div>
       <div class="v-timeline-title">本格導入 判断会議</div>
       <div class="v-timeline-desc">トライアル総括報告、全社導入の Go/NoGo 判断</div>
       <span class="v-timeline-tag trial">トライアル</span>
     </div>
 
     <div class="v-timeline-item future">
-      <div class="v-timeline-date">2026年7月〜</div>
+      <div class="v-timeline-date">2026年8月〜</div>
       <div class="v-timeline-title">全社本格導入</div>
       <div class="v-timeline-desc">全店舗・全メンバーへの展開</div>
       <span class="v-timeline-tag launch">本格導入</span>
@@ -2012,7 +2093,7 @@
 
 <!-- ===== CLOSING ===== -->
 <div class="closing">
-  <p>トライアルの2ヶ月で、<br>
+  <p>トライアルの3ヶ月で、<br>
   「ママの分身」がYOSHI GROUPに<br>
   根づく土壌を築きます。</p>
   <p>約50名の成功体験が、<br>

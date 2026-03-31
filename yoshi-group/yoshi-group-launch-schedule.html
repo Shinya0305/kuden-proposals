@@ -875,6 +875,16 @@
     margin-right: 6px;
   }
 
+  /* === GOAL TABLE (PC) === */
+  .goal-table th:first-child,
+  .goal-table td:first-child { width: 130px; }
+  .goal-table th:nth-child(3),
+  .goal-table td:nth-child(3) { width: 180px; }
+
+  /* === EVAL TABLE (PC) === */
+  .eval-table th:first-child,
+  .eval-table td:first-child { width: 180px; }
+
   /* === ESTIMATE TABLE === */
   .estimate-table {
     border: 2px solid var(--gold);
@@ -1186,11 +1196,12 @@
     .estimate-table table td:first-child,
     .estimate-table table th:nth-child(3),
     .estimate-table table td:nth-child(3) { display: none; }
-    .estimate-table table th { font-size: 12px; padding: 10px 12px; }
-    .estimate-table table td { font-size: 13px; padding: 12px 12px; }
-    .estimate-table table td:last-child { white-space: nowrap; }
-    .estimate-table .estimate-total td { font-size: 14px; }
-    .estimate-note { font-size: 11px; padding: 10px 12px; }
+    .estimate-table table th { font-size: 11px; padding: 10px 10px; }
+    .estimate-table table td { font-size: 12px; padding: 10px 10px; }
+    .estimate-table table td:last-child { white-space: nowrap; text-align: right; font-weight: 600; }
+    .estimate-table table td:nth-child(2) span { font-size: 10px; }
+    .estimate-table .estimate-total td { font-size: 13px; }
+    .estimate-note { font-size: 10px; padding: 8px 10px; }
 
     /* Vertical timeline */
     .v-timeline { padding-left: 32px; }
@@ -1222,9 +1233,24 @@
     .coverage-table td:first-child { font-size: 12px; }
     .coverage-table td:nth-child(3) { font-size: 14px; }
 
-    /* Evaluation table: responsive */
-    table th:nth-child(3),
-    table td:nth-child(3) { font-size: 12px; }
+    /* Goal setting table: hide 例 column, compact type column */
+    .goal-table th:first-child,
+    .goal-table td:first-child { width: 90px; font-size: 12px; }
+    .goal-table th:nth-child(3),
+    .goal-table td:nth-child(3) { display: none; }
+    .goal-table td:nth-child(2) { font-size: 12px; }
+
+    /* Evaluation metrics table: hide 測定方法, compact layout */
+    .eval-table th:first-child,
+    .eval-table td:first-child { width: auto; font-size: 12px; }
+    .eval-table th:nth-child(3),
+    .eval-table td:nth-child(3) { display: none; }
+    .eval-table td:nth-child(2) { font-size: 12px; }
+
+    /* Monthly fee box */
+    .monthly-fee { padding: 20px 16px !important; }
+    .monthly-fee .price-main { font-size: 32px !important; }
+    .monthly-fee .price-unit { font-size: 13px !important; }
   }
 
   /* Extra small screens */
@@ -1237,6 +1263,27 @@
     .process-step .step-title { font-size: 13px; }
     .process-step .step-desc { font-size: 11px; }
     .member-stats { grid-template-columns: 1fr; }
+
+    /* Goal table: single visible column */
+    .goal-table th:nth-child(2),
+    .goal-table td:nth-child(2) { font-size: 11px; }
+    .goal-table th:first-child,
+    .goal-table td:first-child { width: 72px; font-size: 11px; }
+
+    /* Eval table: compact */
+    .eval-table td:first-child { font-size: 11px; }
+    .eval-table td:nth-child(2) { font-size: 11px; }
+
+    /* Monthly fee: smaller price */
+    .monthly-fee .price-main { font-size: 28px !important; }
+
+    /* Pricing tier: compact */
+    .tier-card .tier-price .price-main { font-size: 26px; }
+    .tier-card .tier-name { font-size: 15px; }
+    .tier-card .tier-desc { font-size: 12px; }
+
+    /* Recommend flow: smaller step boxes */
+    .recommend-flow .rf-step-box { font-size: 10px; padding: 4px 8px; }
   }
 
   @media print {
@@ -1505,8 +1552,8 @@
 
   <p>KUDEN OS では、メンバー一人ひとりが<strong>3種類の目標</strong>を、予詩の哲学を学んだAIコーチと一緒に設定します。</p>
 
-  <table>
-    <tr><th style="width:140px;">目標の種類</th><th>内容</th><th style="width:180px;">例</th></tr>
+  <table class="goal-table">
+    <tr><th>目標の種類</th><th>内容</th><th>例</th></tr>
     <tr>
       <td><strong>成果目標</strong><br><span style="font-size:12px; color:var(--gray);">定量</span></td>
       <td>数字で測れる具体的な成果</td>
@@ -1526,23 +1573,23 @@
 
   <p style="margin-top: 20px;">各人の目標を理解したAIが、<strong>毎日の振り返り</strong>でコーチングを行います。</p>
 
-  <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin: 24px 0; flex-wrap: wrap;">
-    <div style="background: var(--gold-pale); border: 2px solid var(--gold); color: var(--navy); padding: 16px 20px; border-radius: 10px; text-align: center; flex: 1; min-width: 120px;">
-      <div style="font-size: 22px; margin-bottom: 4px;">&#x1F4AC;</div>
-      <div style="font-size: 14px; font-weight: 700;">体験</div>
-      <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">日々の営業・接客</div>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px auto; max-width: 480px;">
+    <div style="background: #EBF5FB; border: 1.5px solid #5DADE2; color: var(--navy); padding: 10px 14px; border-radius: 8px; text-align: center; flex: 1; min-width: 0;">
+      <div style="font-size: 16px; margin-bottom: 2px;">&#x1F4AC;</div>
+      <div style="font-size: 12px; font-weight: 700;">体験</div>
+      <div style="font-size: 10px; color: var(--gray); margin-top: 2px;">日々の営業・接客</div>
     </div>
-    <div style="font-size: 22px; color: var(--gold); flex-shrink: 0;">&rarr;</div>
-    <div style="background: var(--gold-pale); border: 2px solid var(--gold); color: var(--navy); padding: 16px 20px; border-radius: 10px; text-align: center; flex: 1; min-width: 120px;">
-      <div style="font-size: 22px; margin-bottom: 4px;">&#x1F4A1;</div>
-      <div style="font-size: 14px; font-weight: 700;">気づき</div>
-      <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">AIコーチとの振り返り</div>
+    <div style="font-size: 16px; color: #5DADE2; flex-shrink: 0;">&rarr;</div>
+    <div style="background: #EBF5FB; border: 1.5px solid #5DADE2; color: var(--navy); padding: 10px 14px; border-radius: 8px; text-align: center; flex: 1; min-width: 0;">
+      <div style="font-size: 16px; margin-bottom: 2px;">&#x1F4A1;</div>
+      <div style="font-size: 12px; font-weight: 700;">気づき</div>
+      <div style="font-size: 10px; color: var(--gray); margin-top: 2px;">AIコーチとの振り返り</div>
     </div>
-    <div style="font-size: 22px; color: var(--gold); flex-shrink: 0;">&rarr;</div>
-    <div style="background: var(--gold-pale); border: 2px solid var(--gold); color: var(--navy); padding: 16px 20px; border-radius: 10px; text-align: center; flex: 1; min-width: 120px;">
-      <div style="font-size: 22px; margin-bottom: 4px;">&#x1F680;</div>
-      <div style="font-size: 14px; font-weight: 700;">行動変容</div>
-      <div style="font-size: 11px; color: var(--gray); margin-top: 4px;">翌日のアクション改善</div>
+    <div style="font-size: 16px; color: #5DADE2; flex-shrink: 0;">&rarr;</div>
+    <div style="background: #EBF5FB; border: 1.5px solid #5DADE2; color: var(--navy); padding: 10px 14px; border-radius: 8px; text-align: center; flex: 1; min-width: 0;">
+      <div style="font-size: 16px; margin-bottom: 2px;">&#x1F680;</div>
+      <div style="font-size: 12px; font-weight: 700;">行動変容</div>
+      <div style="font-size: 10px; color: var(--gray); margin-top: 2px;">翌日のアクション改善</div>
     </div>
   </div>
 
@@ -1613,8 +1660,8 @@
   </div>
 
   <h3>トライアル期間の評価指標</h3>
-  <table>
-    <tr><th style="width:200px;">評価指標</th><th>目標値</th><th>測定方法</th></tr>
+  <table class="eval-table">
+    <tr><th>評価指標</th><th>目標値</th><th>測定方法</th></tr>
     <tr><td><strong>振り返り継続率</strong></td><td>週4回以上のメンバーが70%</td><td>システムログ</td></tr>
     <tr><td><strong>AIコーチ満足度</strong></td><td>4.0 以上/ 5.0 満点中 </td><td>ヒアリング</td></tr>
     <tr><td><strong>目標設定完了率</strong></td><td>100%</td><td>システム集計</td></tr>
@@ -1870,12 +1917,12 @@
   <h3>料金体系</h3>
 
   <!-- メイン：月額利用料 -->
-  <div style="border: 2px solid var(--gold); border-radius: 12px; padding: 32px; margin-bottom: 28px;">
+  <div class="monthly-fee" style="border: 2px solid var(--gold); border-radius: 12px; padding: 32px; margin-bottom: 28px;">
     <div style="font-size: 12px; letter-spacing: 3px; color: var(--gold); font-weight: 600; margin-bottom: 8px;">MONTHLY FEE</div>
     <div style="font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 16px;">月額利用料（AIコーチング利用料含む）</div>
-    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
-      <span style="font-family: 'Noto Serif JP', serif; font-size: 42px; font-weight: 700; color: var(--navy);">&yen;5,000</span>
-      <span style="font-size: 15px; color: var(--gray);">/ 1名 / 月（税別）</span>
+    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+      <span class="price-main" style="font-family: 'Noto Serif JP', serif; font-size: 42px; font-weight: 700; color: var(--navy);">&yen;5,000</span>
+      <span class="price-unit" style="font-size: 15px; color: var(--gray);">/ 1名 / 月（税別）</span>
     </div>
     <div style="font-size: 13px; color: var(--charcoal); line-height: 2;">
       AIコーチングの利用料を含みます。日々の振り返り・目標管理・AIとの対話が無制限でご利用いただけます。

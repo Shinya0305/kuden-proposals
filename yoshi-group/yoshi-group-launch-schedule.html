@@ -1193,12 +1193,15 @@
     .recommend-flow .rf-steps { flex-wrap: wrap; justify-content: center; }
     .recommend-flow .rf-step-box { font-size: 11px; padding: 5px 10px; }
 
-    /* Estimate table - horizontal scroll */
-    .estimate-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .estimate-table table { min-width: 500px; }
+    /* Estimate table - fit in viewport, hide No. & 数量 */
+    .estimate-table table { min-width: 0; }
+    .estimate-table table th:first-child,
+    .estimate-table table td:first-child,
+    .estimate-table table th:nth-child(3),
+    .estimate-table table td:nth-child(3) { display: none; }
     .estimate-table table th { font-size: 11px; padding: 10px 10px; }
     .estimate-table table td { font-size: 12px; padding: 10px 10px; }
-    .estimate-table table td:last-child { white-space: nowrap; text-align: right; font-weight: 600; }
+    .estimate-table table td:last-child { white-space: nowrap; text-align: right; font-weight: 600; width: 100px; }
     .estimate-table .estimate-total td { font-size: 13px; }
     .estimate-note { font-size: 10px; padding: 8px 10px; }
 

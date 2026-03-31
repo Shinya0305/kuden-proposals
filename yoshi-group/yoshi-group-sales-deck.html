@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOSHI GROUP 様向け ご提案資料 — KUDEN OS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&display=swap');
+
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A843;
+    --gold-pale: #F5ECD7;
+    --navy: #1a1a2e;
+    --navy-light: #2d2d44;
+    --charcoal: #333;
+    --gray: #666;
+    --gray-light: #999;
+    --bg: #FAFAF8;
+    --white: #fff;
+    --border: #E8E4DC;
+    --red-accent: #C0392B;
+    --green-accent: #27AE60;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--charcoal);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* === COVER === */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(184,134,11,0.08) 0%, transparent 60%);
+  }
+  .cover-label {
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.4;
+    position: relative;
+  }
+  .cover h1 span { color: var(--gold-light); }
+  .cover-sub {
+    font-size: 20px;
+    color: var(--gold-pale);
+    font-weight: 300;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .cover-tagline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(184,134,11,0.3);
+    padding-top: 30px;
+    max-width: 500px;
+    line-height: 2;
+    position: relative;
+  }
+  .cover-date {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+  }
+
+  /* === SECTIONS === */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .section-divider {
+    width: 100%;
+    background: var(--navy);
+    padding: 50px 40px;
+    text-align: center;
+  }
+  .section-divider h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .section-divider .section-num {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 30px 0 16px;
+  }
+  p { margin-bottom: 16px; color: var(--charcoal); }
+
+  /* === TABLES === */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 30px;
+    font-size: 14px;
+  }
+  th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: rgba(184,134,11,0.03); }
+  td strong { color: var(--navy); }
+
+  /* === QUOTE BLOCK === */
+  .quote-block {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    margin: 30px 0;
+    position: relative;
+  }
+  .quote-block::before {
+    content: '\201C';
+    font-family: 'Noto Serif JP', serif;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    line-height: 1;
+  }
+  .quote-block p {
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    line-height: 2;
+    padding-left: 30px;
+    margin-bottom: 8px;
+  }
+  .quote-block .highlight {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  /* === CONCEPT BOX === */
+  .concept-box {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    padding: 30px 35px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .concept-box p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    line-height: 2;
+    color: var(--navy);
+  }
+  .concept-box strong { color: var(--gold); }
+
+  /* === SPIRAL DIAGRAM === */
+  .spiral-diagram {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 30px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .spiral-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .spiral-item {
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .spiral-item .num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: var(--gold);
+    color: var(--white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .spiral-item .title {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 15px;
+  }
+  .spiral-item .desc {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+
+  /* === CHAT DEMO === */
+  .chat-demo {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px 0 30px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .chat-msg {
+    display: flex;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+  .chat-msg.ai { flex-direction: row; }
+  .chat-msg.user { flex-direction: row-reverse; }
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .chat-msg.ai .chat-avatar { background: var(--gold-pale); color: var(--gold); }
+  .chat-msg.user .chat-avatar { background: var(--navy); color: var(--white); font-size: 11px; }
+  .chat-bubble {
+    max-width: 75%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .chat-msg.ai .chat-bubble {
+    background: #f0ede6;
+    color: var(--charcoal);
+    border-bottom-left-radius: 4px;
+  }
+  .chat-msg.user .chat-bubble {
+    background: var(--navy);
+    color: var(--white);
+    border-bottom-right-radius: 4px;
+  }
+  .chat-action {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--navy);
+  }
+  .chat-action::before {
+    content: '\27A1';
+    margin-right: 6px;
+  }
+
+  /* === MONTHLY VIZ === */
+  .monthly-card {
+    background: var(--white);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px 0 30px;
+    text-align: center;
+  }
+  .monthly-card .name {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+  .monthly-card .title-line {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .flow-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .flow-item {
+    text-align: center;
+  }
+  .flow-item .value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .flow-item .label {
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .flow-arrow {
+    font-size: 24px;
+    color: var(--gold);
+  }
+  .monthly-highlight {
+    background: var(--gold-pale);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    text-align: left;
+    font-size: 14px;
+  }
+  .monthly-highlight .hl-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  /* === ALERT TABLE === */
+  .alert-table td:first-child {
+    font-weight: 500;
+    color: var(--red-accent);
+    white-space: nowrap;
+  }
+
+  /* === STATS GRID === */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 20px 0 30px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .stat-card .stat-value.red { color: var(--red-accent); }
+  .stat-card .stat-value.green { color: var(--green-accent); }
+  .stat-card .stat-label {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 6px;
+  }
+  .stat-card .stat-change {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .stat-card .stat-change.green { color: var(--green-accent); }
+
+  /* === TIMELINE === */
+  .timeline {
+    display: flex;
+    gap: 0;
+    margin: 30px 0;
+  }
+  .timeline-phase {
+    flex: 1;
+    padding: 24px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .timeline-phase:first-child { border-radius: 8px 0 0 8px; }
+  .timeline-phase:last-child { border-radius: 0 8px 8px 0; }
+  .timeline-phase .phase-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .timeline-phase .phase-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .timeline-phase ul {
+    list-style: none;
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .timeline-phase ul li {
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+  .timeline-phase ul li::before {
+    content: '\2022';
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+  }
+  .timeline-phase.active {
+    background: var(--gold-pale);
+    border-color: var(--gold);
+  }
+
+  /* === COMPARISON === */
+  .comparison-table th:first-child { background: transparent; color: var(--gray); }
+  .comparison-table th:nth-child(2) { background: var(--gold); }
+
+  /* === PRICING === */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .price-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .price-card.featured {
+    border: 2px solid var(--gold);
+    transform: scale(1.03);
+    box-shadow: 0 4px 30px rgba(184,134,11,0.15);
+  }
+  .price-card .plan-name {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+  .price-card .plan-price {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .price-card .plan-unit {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+  .price-card ul {
+    list-style: none;
+    text-align: left;
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .price-card ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-card ul li::before {
+    content: '\2713';
+    color: var(--gold);
+    margin-right: 8px;
+    font-weight: 700;
+  }
+
+  /* === CLOSING === */
+  .closing {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .closing p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    line-height: 2.4;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+  .closing .closing-product {
+    font-size: 28px;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin-top: 30px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    color: var(--gray-light);
+    border-top: 1px solid var(--border);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 28px; }
+    .spiral-grid { grid-template-columns: 1fr; }
+    .timeline { flex-direction: column; }
+    .timeline-phase { border-radius: 0 !important; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .price-card.featured { transform: none; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .section { padding: 50px 24px; }
+  }
+
+  @media print {
+    .cover { min-height: auto; padding: 40px; }
+    .section { padding: 30px 20px; }
+    .section-divider { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-label">CONFIDENTIAL PROPOSAL</div>
+  <h1>YOSHI GROUP 様向け<br><span>ご提案資料</span></h1>
+  <div class="cover-sub">KUDEN OS — ホステスマネジメント・プラットフォーム</div>
+  <div class="cover-tagline">
+    5店舗・150名超のホステスを、<br>
+    ママの"分身"が見守る仕組みへ。
+  </div>
+  <div class="cover-date">2026.03.13 / 機密資料</div>
+</div>
+
+<!-- ===== 1. ご挨拶 ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 01</div>
+  <h2>ご挨拶 — YOSHI GROUP様の成長に対する敬意</h2>
+</div>
+<div class="section">
+  <p>川岡夕益ママが2016年にクラブ予詩を立ち上げてから9年。<br>
+  5店舗・6法人・従業員45名（ホステス推定130〜175名）のグループへと成長されました。</p>
+
+  <div class="concept-box">
+    <p>「出会う一人一人を大切に思い、おもてなしの意味を考える」</p>
+  </div>
+
+  <p>この理念のもと、実力主義・ホワイト経営を貫き、27歳のマネージャーに新店舗立ち上げを任せる。<br>
+  銀座の伝統を守りながら、新しい経営の形を切り拓いておられます。</p>
+
+  <p>本資料は、YOSHI GROUPが次の成長ステージに進むために、<br>
+  <strong>ホステスのマネジメントを"仕組み"にする</strong>ご提案です。</p>
+</div>
+
+<!-- ===== 2. 問いかけ ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 02</div>
+  <h2>本質的な問いかけ</h2>
+</div>
+<div class="section">
+  <h3>川岡ママ、こんなことを感じていませんか？</h3>
+
+  <div class="quote-block">
+    <p>全部の店を自分の目で見ることは、もう物理的にできない。</p>
+    <p>七瀬ママに七凪を任せ、益田くんに新店を任せている。<br>
+    でも、<span class="highlight">ホステス一人ひとりの顔が見えなくなっている。</span></p>
+    <p>長く続けてくれるホステスを育てたい。<br>
+    でも育成は属人的で、自分のやり方を伝えきれない。</p>
+    <p>顧客情報はホステス個人のノートにしかない。<br>
+    <span class="highlight">辞められたら、お客様との関係も消えてしまう。</span></p>
+  </div>
+</div>
+
+<!-- ===== 3. 構造的課題 ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 03</div>
+  <h2>銀座クラブ経営の構造的課題</h2>
+</div>
+<div class="section">
+  <h3>3.1 業界全体のデータ</h3>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-value red">50%</div>
+      <div class="stat-label">入店半年後の離職率</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">5%</div>
+      <div class="stat-label">1年後に一人前として活躍</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="font-size:20px; padding-top:10px;">個人ノート</div>
+      <div class="stat-label">顧客情報の管理方法<br>（退職で消失）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="font-size:20px; padding-top:10px;">ママの頭</div>
+      <div class="stat-label">店舗間の情報共有手段</div>
+    </div>
+  </div>
+
+  <h3>3.2 離職の主要因 — 係制度の構造的矛盾</h3>
+  <table>
+    <tr><th>原因</th><th>ホステスの声</th></tr>
+    <tr><td><strong>売上と努力の乖離</strong></td><td>「同伴しても私の売上にならない」</td></tr>
+    <tr><td><strong>昇格の見えなさ</strong></td><td>「どんなに頑張っても係になれない」</td></tr>
+    <tr><td><strong>評価の不透明さ</strong></td><td>「何をすれば認められるかわからない」</td></tr>
+    <tr><td><strong>成長実感の欠如</strong></td><td>「頑張ってるけど、成長している気がしない」</td></tr>
+  </table>
+
+  <h3>3.3 YOSHI GROUP 固有の課題（推定）</h3>
+  <table>
+    <tr><th style="width:190px;">課題</th><th>詳細</th><th style="width:80px;">緊急度</th></tr>
+    <tr><td><strong>ママの分身不在</strong></td><td>5店舗を川岡ママ一人では見きれない。七瀬ママ・益田氏に権限委譲しているが、育成方針の統一が困難</td><td style="color:var(--red-accent); font-weight:700;">★★★</td></tr>
+    <tr><td><strong>全員の状況把握不能</strong></td><td>ホステス一人ひとりのコンディション・成長段階・課題を店舗横断で把握する仕組みがない</td><td style="color:var(--red-accent); font-weight:700;">★★★</td></tr>
+    <tr><td><strong>暗黙知の消失リスク</strong></td><td>川岡ママの育成ノウハウ、トップホステスの接客技術が言語化・蓄積されていない</td><td style="color:var(--red-accent); font-weight:700;">★★★</td></tr>
+    <tr><td><strong>店舗間の品質格差</strong></td><td>plus予詩と七凪でサービスレベルの統一が取れているか、客観的に測定できない</td><td>★★☆</td></tr>
+    <tr><td><strong>店舗間送客の非最適化</strong></td><td>5店舗間の顧客回遊が感覚頼み</td><td>★★☆</td></tr>
+    <tr><td><strong>経営数値の分断</strong></td><td>6法人・5店舗の売上・人件費・ホステス別収益貢献度がバラバラ</td><td>★★☆</td></tr>
+  </table>
+</div>
+
+<!-- ===== 4. コンセプト ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 04</div>
+  <h2>ご提案 — KUDEN OS for YOSHI GROUP</h2>
+</div>
+<div class="section">
+  <div class="concept-box">
+    <p><strong>「AIはホステスの代わりではなく、ママの分身になる。」</strong></p>
+    <p style="font-size:15px; margin-top:12px;">川岡ママの経営哲学・育成方針・おもてなしの心をAIに注入し、<br>
+    5店舗・150名超のホステス一人ひとりに、ママと同じ視点でのコーチング・フォローを届ける。</p>
+    <p style="font-size:15px;">人と人のつながりを、テクノロジーが支える。<br>
+    テクノロジーが代替するのではなく、<strong>増幅する</strong>。</p>
+  </div>
+
+  <h3>Success Spiral Engine — 8つのステップ</h3>
+
+  <div class="spiral-diagram">
+    <div class="spiral-grid">
+      <div class="spiral-item">
+        <span class="num">1</span><span class="title">YOSHI DNA注入</span>
+        <div class="desc">ママの理念・育成方針をAIに教え込む</div>
+      </div>
+      <div class="spiral-item">
+        <span class="num">8</span><span class="title">暗黙知の蓄積</span>
+        <div class="desc">組織のノウハウが自動的に溜まる</div>
+      </div>
+      <div class="spiral-item">
+        <span class="num">2</span><span class="title">目標設定コーチング</span>
+        <div class="desc">ホステスがAIと対話で自分の目標をつくる</div>
+      </div>
+      <div class="spiral-item">
+        <span class="num">7</span><span class="title">年間成長の可視化</span>
+        <div class="desc">12ヶ月の成長軌跡をストーリーとして見る</div>
+      </div>
+      <div class="spiral-item">
+        <span class="num">3</span><span class="title">毎日15分の振り返り</span>
+        <div class="desc">営業後にAIコーチと今日の接客を振り返る</div>
+      </div>
+      <div class="spiral-item">
+        <span class="num">6</span><span class="title">月次の実感</span>
+        <div class="desc">「努力→行動→成果」の因果が見える</div>
+      </div>
+      <div class="spiral-item">
+        <span class="num">4</span><span class="title">翌日のアクション提示</span>
+        <div class="desc">「明日はこの3つをやりましょう」</div>
+      </div>
+      <div class="spiral-item">
+        <span class="num">5</span><span class="title">ママへの自動報告</span>
+        <div class="desc">問題があるホステスだけママに通知が届く</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 5. 機能詳細 ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 05</div>
+  <h2>具体的な機能と効果</h2>
+</div>
+<div class="section">
+
+  <!-- 5.1 -->
+  <h3>5.1 YOSHI DNA注入</h3>
+  <p>ママの哲学をAIに教え込む</p>
+  <table>
+    <tr><th>注入する情報</th><th>例</th></tr>
+    <tr><td><strong>経営理念</strong></td><td>「出会う一人一人を大切に思い、おもてなしの意味を考える」</td></tr>
+    <tr><td><strong>接客の心得</strong></td><td>川岡ママが大切にしている接客の原則・NGルール</td></tr>
+    <tr><td><strong>店舗コンセプト</strong></td><td>plus予詩の華やかさ、七凪の和の穏やかさ、路トの大人の落ち着き</td></tr>
+    <tr><td><strong>育成方針</strong></td><td>「ノルマより"みんなで頑張ろう"」「実力主義・経歴不問」</td></tr>
+    <tr><td><strong>業界用語</strong></td><td>係制度、同伴、アフター、売上の仕組み</td></tr>
+  </table>
+  <p><strong>効果:</strong> AIが「YOSHI GROUPらしい」言葉でホステスに語りかける。ママが直接言えない場面でも、ママの考え方が伝わる。</p>
+
+  <!-- 5.2 -->
+  <h3>5.2 目標設定コーチング</h3>
+  <p>ホステスがAIと対話して、自分の成長目標をつくる</p>
+
+  <div class="chat-demo">
+    <div class="chat-msg ai">
+      <div class="chat-avatar">AI</div>
+      <div class="chat-bubble">先月の接客で、一番うまくいったのはどんな場面でしたか？</div>
+    </div>
+    <div class="chat-msg user">
+      <div class="chat-avatar" style="font-size:9px;">ホステス</div>
+      <div class="chat-bubble">お客様が仕事の悩みを話してくださって、ゆっくり聞いていたら「また来たい」と言ってもらえました</div>
+    </div>
+    <div class="chat-msg ai">
+      <div class="chat-avatar">AI</div>
+      <div>
+        <div class="chat-bubble">素晴らしいですね。"傾聴力"がお客様の信頼につながった事例ですね。来月はこの力をもっと磨いてみませんか？<br><br>
+        例えば…<br>
+        ・ 週に3人のお客様に"前回のお話の続き"を聞いてみる<br>
+        ・ 新規のお客様に15分以内に趣味の話を引き出す<br><br>
+        こんな目標はいかがですか？</div>
+      </div>
+    </div>
+  </div>
+  <p><strong>効果:</strong> ママが一人ひとりの目標設定に時間をかけなくてよい（<strong>目標設定時間 50%削減</strong>）。ホステスが「やらされ感」なく、自分で考えた目標を持てる。</p>
+
+  <!-- 5.3 -->
+  <h3>5.3 毎日15分の振り返り</h3>
+  <p>営業終了後、AIコーチと15分の振り返り</p>
+
+  <div class="chat-demo">
+    <div class="chat-msg ai">
+      <div class="chat-avatar">AI</div>
+      <div class="chat-bubble">お疲れさまでした。今日の営業はいかがでしたか？</div>
+    </div>
+    <div class="chat-msg user">
+      <div class="chat-avatar" style="font-size:9px;">ホステス</div>
+      <div class="chat-bubble">新しいお客様が2組いらっしゃって、1組は盛り上がったんですが、もう1組はちょっと会話が弾まなくて…</div>
+    </div>
+    <div class="chat-msg ai">
+      <div class="chat-avatar">AI</div>
+      <div class="chat-bubble">会話が弾まなかった組について、もう少し聞かせてください。どんなお客様でしたか？</div>
+    </div>
+    <div class="chat-msg user">
+      <div class="chat-avatar" style="font-size:9px;">ホステス</div>
+      <div class="chat-bubble">50代の経営者の方で、最初はあまりお話されなくて</div>
+    </div>
+    <div class="chat-msg ai">
+      <div class="chat-avatar">AI</div>
+      <div>
+        <div class="chat-bubble">なるほど。初回でまだ緊張されていたかもしれませんね。<br><br>
+        川岡ママが大切にしている<strong>"最初の15分は聞き役に徹する"</strong>というアプローチを試してみるのもいいかもしれません。</div>
+        <div class="chat-action">明日のフォーカス: もし静かなお客様がいらしたら、最初の15分は質問せず、空間を共有することを意識してみる</div>
+      </div>
+    </div>
+  </div>
+  <p><strong>効果:</strong> ホステスが自分の接客を<strong>毎日言語化</strong>し、成長を実感。ママの接客哲学がAIを通じて日常的に浸透する。</p>
+
+  <!-- 5.4 -->
+  <h3>5.4 ママへの自動報告</h3>
+  <p>問題があるホステスだけ、ママに通知が届く</p>
+  <table class="alert-table">
+    <tr><th>検知シグナル</th><th>対応</th></tr>
+    <tr><td>振り返り3日連続ゼロ</td><td>「出勤はしているが、振り返りが止まっています」→ ママに通知</td></tr>
+    <tr><td>ネガティブ感情の増加</td><td>「接客への自信を失っている様子です」→ 処方箋を自動生成</td></tr>
+    <tr><td>目標進捗 20%以上遅れ</td><td>「目標達成が厳しい状況です。声かけをお勧めします」→ 声かけ案を提示</td></tr>
+    <tr><td>本人が相談を希望</td><td>「ママに相談したいことがあります」→ 状況サマリー付きで通知</td></tr>
+  </table>
+  <p><strong>効果:</strong> ママは問題のないホステスの進捗確認から<strong>解放</strong>。介入が必要なときだけ、状況と対応策がセットで届く。5店舗・150名超でも「ケアの漏れ」がゼロに。</p>
+
+  <!-- 5.5 -->
+  <h3>5.5 月次の実感</h3>
+  <p>「頑張っている感」を「成長の証拠」に変える</p>
+
+  <div class="monthly-card">
+    <div class="name">七凪 / 田中花子さん</div>
+    <div class="title-line">3月の成果</div>
+    <div class="flow-row">
+      <div class="flow-item">
+        <div class="value">22</div>
+        <div class="label">振り返り</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-item">
+        <div class="value">48</div>
+        <div class="label">アクション</div>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-item">
+        <div class="value" style="color:var(--green-accent);">85%</div>
+        <div class="label">達成率</div>
+      </div>
+    </div>
+    <div class="monthly-highlight">
+      <div class="hl-label">今月のベストアクション</div>
+      「初回のお客様に前職の話を深掘りして、3回目のご来店につなげた」
+    </div>
+    <div class="monthly-highlight">
+      <div class="hl-label">AI からのメッセージ</div>
+      22回の振り返りで48のアクションを実行。傾聴力の目標に対して、リピート率が先月比+12%と大きく伸びています。来月はVIPテーブルでの会話の質をもう一段上げてみませんか？
+    </div>
+  </div>
+  <p><strong>効果:</strong> ホステスが「自分は成長している」と<strong>数字で実感</strong>できる → 離職防止の最大の武器。</p>
+
+  <!-- 5.6 -->
+  <h3>5.6 暗黙知の蓄積</h3>
+  <p>トップホステスのノウハウを、組織の財産にする</p>
+  <table>
+    <tr><th>蓄積される知識の例</th><th>活用方法</th></tr>
+    <tr><td>「VIPのお客様には最初の10分で時事ネタを3つ振る」</td><td>新人ホステスの研修コンテンツに</td></tr>
+    <tr><td>「2回目のご来店時に前回の話題を出すと同伴率が上がる」</td><td>AIコーチが振り返り時にアドバイスとして提示</td></tr>
+    <tr><td>「同伴の際はお客様のオフィス近くで待ち合わせ」</td><td>成功パターンとして全店舗に共有</td></tr>
+  </table>
+  <p><strong>効果:</strong> ホステスが退職しても<strong>ノウハウは残る</strong>。新人の育成期間が短縮（目標：<strong>20%短縮</strong>）。川岡ママの暗黙知が組織のDNAとして永続的に蓄積。</p>
+</div>
+
+<!-- ===== 6. カスタマイズ ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 06</div>
+  <h2>YOSHI GROUP様 専用カスタマイズ</h2>
+</div>
+<div class="section">
+  <table>
+    <tr><th>カスタマイズ項目</th><th>内容</th></tr>
+    <tr><td><strong>業界コンテキスト</strong></td><td>係制度、同伴、アフター、売上・ヘルプの仕組みをAIに組み込み</td></tr>
+    <tr><td><strong>営業時間対応</strong></td><td>20:00〜翌1:00の営業に合わせた振り返りタイミング（翌1:30頃）</td></tr>
+    <tr><td><strong>マルチ店舗ダッシュボード</strong></td><td>ママが5店舗を一画面で俯瞰できる経営ビュー</td></tr>
+    <tr><td><strong>店舗間異動対応</strong></td><td>ホステスの所属店舗変更時にデータを引き継ぎ</td></tr>
+    <tr><td><strong>顧客情報の組織化</strong></td><td>ホステス個人のノートからの移行支援、退職時の引き継ぎ機能</td></tr>
+    <tr><td><strong>目標テンプレート</strong></td><td>銀座クラブ特有の目標例（同伴率、リピート率、新規紹介数、VIP対応力など）</td></tr>
+    <tr><td><strong>プライバシー設計</strong></td><td>ホステスの個人的な振り返り内容はAIのみが読み、ママには「状況サマリー」のみ共有</td></tr>
+  </table>
+</div>
+
+<!-- ===== 7. 導入ステップ ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 07</div>
+  <h2>導入ステップ</h2>
+</div>
+<div class="section">
+  <div class="timeline">
+    <div class="timeline-phase active">
+      <div class="phase-label">STEP 1</div>
+      <div class="phase-title">１店舗 試験導入<br><small style="font-weight:400; color:var(--gray);">3ヶ月間</small></div>
+      <ul>
+        <li>plus予詩にて先行導入</li>
+        <li>川岡ママの理念・育成方針をAIに注入</li>
+        <li>毎日の振り返り＋AIコーチ運用開始</li>
+        <li>月次振り返り・自動報告を稼働</li>
+      </ul>
+      <p style="font-size:12px; color:var(--gold); margin-top:12px; font-weight:600;">効果測定: 振り返り継続率・離職率・目標達成率</p>
+    </div>
+    <div class="timeline-phase">
+      <div class="phase-label">STEP 2</div>
+      <div class="phase-title">全店舗導入<br><small style="font-weight:400; color:var(--gray);">4ヶ月目〜</small></div>
+      <ul>
+        <li>七凪・MESNIL・路ト・neighbor NAMIKIに展開</li>
+        <li>店舗横断ダッシュボード稼働</li>
+        <li>成功パターンの自動抽出開始</li>
+        <li>グループ全体のナレッジ蓄積</li>
+      </ul>
+      <p style="font-size:12px; color:var(--gold); margin-top:12px; font-weight:600;">効果測定: グループ全体の目標達成率・売上推移</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 8. 効果 ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 08</div>
+  <h2>期待される効果</h2>
+</div>
+<div class="section">
+  <h3>8.1 定量的効果</h3>
+  <table>
+    <tr><th>指標</th><th>現状（業界平均）</th><th>導入後目標</th><th>効果</th></tr>
+    <tr><td><strong>半年後の離職率</strong></td><td>50%</td><td>30%以下</td><td style="color:var(--green-accent); font-weight:700;">▲20pt改善</td></tr>
+    <tr><td><strong>1年後の一人前率</strong></td><td>5%</td><td>15%</td><td style="color:var(--green-accent); font-weight:700;">3倍</td></tr>
+    <tr><td><strong>目標設定の時間</strong></td><td>75時間</td><td>15時間</td><td style="color:var(--green-accent); font-weight:700;">80%削減</td></tr>
+    <tr><td><strong>ママの進捗確認時間</strong></td><td>週10時間以上</td><td>週2時間以下</td><td style="color:var(--green-accent); font-weight:700;">80%削減</td></tr>
+    <tr><td><strong>新人の戦力化期間</strong></td><td>6ヶ月</td><td>4ヶ月</td><td style="color:var(--green-accent); font-weight:700;">33%短縮</td></tr>
+  </table>
+
+  <h3>8.2 定性的効果</h3>
+  <table>
+    <tr><th>効果</th><th>詳細</th></tr>
+    <tr><td><strong>ママの分身ができる</strong></td><td>5店舗・150名を「見ている」状態を維持。問題があればすぐわかる</td></tr>
+    <tr><td><strong>ホステスが辞めない</strong></td><td>「自分は成長している」と実感できる仕組みが、最大の離職防止策</td></tr>
+    <tr><td><strong>ノウハウが消えない</strong></td><td>トップホステスの暗黙知が、退職後も組織に残る</td></tr>
+    <tr><td><strong>ホワイト経営の武器</strong></td><td>客観的な評価・育成の仕組みが「ホワイト企業」ブランドを強化</td></tr>
+    <tr><td><strong>採用の差別化</strong></td><td>「AIコーチ付きの育成環境」は採用競争で圧倒的な差別化要因に</td></tr>
+  </table>
+</div>
+
+<!-- ===== 9. 競合 ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 09</div>
+  <h2>競合ツールとの違い</h2>
+</div>
+<div class="section">
+  <table class="comparison-table">
+    <tr><th></th><th>KUDEN OS</th><th>Melty / Pappimane</th><th>TRUST POSレジ</th></tr>
+    <tr><td><strong>対象</strong></td><td>経営者（ママ）+ ホステス</td><td>ホステス個人</td><td>店舗経営者</td></tr>
+    <tr><td><strong>目的</strong></td><td>育成・マネジメント</td><td>顧客管理メモ</td><td>売上・会計</td></tr>
+    <tr><td><strong>AI</strong></td><td><strong>コーチング・停滞検知・ナレッジ抽出</strong></td><td>なし</td><td>なし</td></tr>
+    <tr><td><strong>複数店舗</strong></td><td><strong>5店舗横断ダッシュボード</strong></td><td>不可</td><td>店舗単位</td></tr>
+    <tr><td><strong>離職防止</strong></td><td><strong>成長実感の可視化</strong></td><td>対応なし</td><td>対応なし</td></tr>
+    <tr><td><strong>組織知の蓄積</strong></td><td><strong>自動抽出・共有</strong></td><td>個人完結</td><td>対応なし</td></tr>
+  </table>
+
+  <div class="concept-box">
+    <p style="font-size:15px;"><strong>空白市場:</strong> 「銀座高級クラブ × 複数店舗 × 経営者向けマネジメントSaaS」は、現時点で<strong>競合ゼロ</strong>です。</p>
+  </div>
+</div>
+
+<!-- ===== 10. 料金 ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 10</div>
+  <h2>料金イメージ</h2>
+</div>
+<div class="section">
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="plan-name">初期導入費</div>
+      <div class="plan-price">&yen;200,000</div>
+      <div class="plan-unit">一括（税別）</div>
+      <ul>
+        <li>YOSHI DNA注入</li>
+        <li>初期セットアップ</li>
+        <li>データ移行支援</li>
+        <li>導入トレーニング</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <div class="plan-name">月額利用料</div>
+      <div class="plan-price">&yen;5,000</div>
+      <div class="plan-unit">1 ID あたり / 月（税別）</div>
+      <ul>
+        <li>全機能利用可能</li>
+        <li>AIコーチング</li>
+        <li>店舗横断ダッシュボード</li>
+        <li>自動報告・月次レポート</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="plan-name">カスタマイズ</div>
+      <div class="plan-price">お見積り</div>
+      <div class="plan-unit"></div>
+      <ul>
+        <li>ママのコンテキストの形式知化</li>
+        <li>業務フローに合わせた機能追加</li>
+        <li>独自レポート設計</li>
+        <li>外部システム連携</li>
+        <li>専任サポート</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CLOSING ===== -->
+<div class="closing">
+  <p>銀座の夜は、人と人のつながりで成り立っている。<br>
+  AIがその代わりになることはない。</p>
+  <p>でも、ママの「目」と「心」を<br>5つの店舗に届けることは、<br>テクノロジーにしかできないことです。</p>
+  <p>ママが一人ひとりのホステスに<br>向けてきた眼差しを、<br>150名全員に届ける仕組み。</p>
+  <div class="closing-product">それが KUDEN OS です。</div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <p>作成日: 2026-03-13 / 本資料は YOSHI GROUP 様向けの機密資料です。</p>
+</div>
+
+</body>
+</html>

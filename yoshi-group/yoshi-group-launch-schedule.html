@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOSHI GROUP 様 — KUDEN OS 導入スケジュール</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&display=swap');
+
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A843;
+    --gold-pale: #F5ECD7;
+    --navy: #1a1a2e;
+    --navy-light: #2d2d44;
+    --charcoal: #333;
+    --gray: #666;
+    --gray-light: #999;
+    --bg: #FAFAF8;
+    --white: #fff;
+    --border: #E8E4DC;
+    --red-accent: #C0392B;
+    --green-accent: #27AE60;
+    --blue-accent: #2980B9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--charcoal);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* === COVER === */
+  .cover {
+    min-height: 60vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(184,134,11,0.08) 0%, transparent 60%);
+  }
+  .cover-label {
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.4;
+    position: relative;
+  }
+  .cover h1 span { color: var(--gold-light); }
+  .cover-sub {
+    font-size: 18px;
+    color: var(--gold-pale);
+    font-weight: 300;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    position: relative;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .meta-value {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+  .cover-meta-item .meta-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+  .cover-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .cover-logos img {
+    height: 48px;
+    width: auto;
+    opacity: 0.95;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  }
+  .cover-logos .logo-yoshi-club {
+    height: 56px;
+  }
+  .cover-logos .logo-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(184,134,11,0.4);
+  }
+  .cover-logos .logo-kuden-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+  .cover-logos .logo-kuden-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+  .closing-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(184,134,11,0.2);
+  }
+  .closing-logos img {
+    height: 36px;
+    width: auto;
+    opacity: 0.7;
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  }
+  .closing-logos .logo-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(184,134,11,0.3);
+  }
+  .closing-logos .logo-kuden-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    opacity: 0.7;
+  }
+  .cover-date {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+  }
+
+  /* === SECTIONS === */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+  .section-divider {
+    width: 100%;
+    background: var(--navy);
+    padding: 40px 40px;
+    text-align: center;
+  }
+  .section-divider h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .section-divider .section-num {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 28px 0 14px;
+  }
+  p { margin-bottom: 14px; color: var(--charcoal); }
+
+  /* === OVERVIEW CARDS === */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+  }
+  .overview-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .overview-card .ov-label {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 6px;
+  }
+  .overview-card .ov-value {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .overview-card .ov-sub {
+    font-size: 12px;
+    color: var(--gray-light);
+    margin-top: 4px;
+  }
+  .overview-card.highlight {
+    border: 2px solid var(--gold);
+    background: var(--gold-pale);
+  }
+  .overview-card.highlight .ov-value {
+    color: var(--gold);
+  }
+
+  /* === GANTT-LIKE SCHEDULE === */
+  .schedule-container {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0 36px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .schedule-header {
+    display: grid;
+    grid-template-columns: 180px repeat(5, 1fr);
+    background: var(--navy);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .schedule-header > div {
+    padding: 14px 12px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .schedule-header > div:first-child {
+    text-align: left;
+    font-weight: 600;
+  }
+  .schedule-header > div:last-child {
+    border-right: none;
+  }
+  .schedule-header .month-current {
+    background: var(--gold);
+    color: var(--white);
+    font-weight: 700;
+  }
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 180px repeat(5, 1fr);
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    min-height: 56px;
+  }
+  .schedule-row:last-child {
+    border-bottom: none;
+  }
+  .schedule-row:nth-child(even) {
+    background: rgba(184,134,11,0.02);
+  }
+  .schedule-row .row-label {
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    border-right: 1px solid var(--border);
+  }
+  .schedule-row .row-label small {
+    display: block;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  .schedule-cell {
+    padding: 8px 6px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    border-right: 1px solid var(--border);
+  }
+  .schedule-cell:last-child {
+    border-right: none;
+  }
+  .bar {
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--white);
+    width: 90%;
+    position: relative;
+  }
+  .bar.prep {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+  }
+  .bar.trial {
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+  }
+  .bar.active-run {
+    background: linear-gradient(90deg, #8E44AD 0%, #A569BD 100%);
+  }
+  .bar.launch {
+    background: linear-gradient(90deg, var(--green-accent) 0%, #2ecc71 100%);
+  }
+  .bar.review {
+    background: var(--blue-accent);
+    width: auto;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+  .bar-span {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* === Multi-cell bar === */
+  .schedule-row .bar-wide {
+    grid-column: span 2;
+    padding: 8px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .schedule-row .bar-wide .bar {
+    width: 95%;
+  }
+
+  /* milestone marker */
+  .milestone {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .milestone::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .milestone.navy { color: var(--navy); }
+  .milestone.navy::before { background: var(--navy); }
+  .milestone.green { color: var(--green-accent); }
+  .milestone.green::before { background: var(--green-accent); }
+  .milestone.blue { color: var(--blue-accent); }
+  .milestone.blue::before { background: var(--blue-accent); }
+
+  /* === VERTICAL TIMELINE === */
+  .v-timeline {
+    position: relative;
+    padding-left: 40px;
+    margin: 30px 0;
+  }
+  .v-timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .v-timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+    padding-bottom: 8px;
+  }
+  .v-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -29px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--gold);
+    z-index: 1;
+  }
+  .v-timeline-item.done::before {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .v-timeline-item.active::before {
+    background: var(--green-accent);
+    border-color: var(--green-accent);
+    box-shadow: 0 0 0 4px rgba(39,174,96,0.2);
+  }
+  .v-timeline-item.future::before {
+    background: var(--white);
+    border-color: var(--gray-light);
+  }
+  .v-timeline-date {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .v-timeline-item.active .v-timeline-date {
+    color: var(--green-accent);
+  }
+  .v-timeline-item.future .v-timeline-date {
+    color: var(--gray-light);
+  }
+  .v-timeline-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .v-timeline-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .v-timeline-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
+  .v-timeline-tag.prep {
+    background: rgba(26,26,46,0.1);
+    color: var(--navy);
+  }
+  .v-timeline-tag.trial {
+    background: var(--gold-pale);
+    color: var(--gold);
+  }
+  .v-timeline-tag.launch {
+    background: rgba(39,174,96,0.1);
+    color: var(--green-accent);
+  }
+
+  /* === PHASE BOXES === */
+  .phase-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .phase-box.active-phase {
+    border: 2px solid var(--gold);
+    background: linear-gradient(135deg, var(--white) 0%, var(--gold-pale) 100%);
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .phase-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .phase-badge.prep-badge { background: var(--navy); color: var(--white); }
+  .phase-badge.trial-badge { background: var(--gold); color: var(--white); }
+  .phase-badge.launch-badge { background: var(--green-accent); color: var(--white); }
+  .phase-header-text .phase-period {
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .phase-header-text .phase-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .task-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .task-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .task-list li:last-child {
+    border-bottom: none;
+  }
+  .task-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+    min-width: 100px;
+  }
+  .task-content {
+    flex: 1;
+  }
+  .task-content strong {
+    color: var(--navy);
+  }
+  .task-content .task-detail {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  /* === CONCEPT BOX === */
+  .concept-box {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    padding: 24px 30px;
+    margin: 24px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .concept-box p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    line-height: 2;
+    color: var(--navy);
+  }
+  .concept-box strong { color: var(--gold); }
+
+  /* === MEMBER NOTE === */
+  .member-note {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 30px;
+    margin: 24px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .member-note .note-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .member-note .note-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .member-note .note-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .member-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .member-stat {
+    text-align: center;
+    padding: 12px;
+    background: var(--bg);
+    border-radius: 8px;
+  }
+  .member-stat .ms-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .member-stat .ms-label {
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  /* === TABLES === */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+  th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: rgba(184,134,11,0.03); }
+  td strong { color: var(--navy); }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    color: var(--gray-light);
+    border-top: 1px solid var(--border);
+  }
+
+  /* === CLOSING === */
+  .closing {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .closing p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    line-height: 2.2;
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+  .closing .closing-bold {
+    font-size: 22px;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin-top: 24px;
+  }
+
+  /* === PROCESS FLOW === */
+  .process-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 30px 0;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .process-step {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 12px;
+    text-align: center;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .process-step.active-step {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+  }
+  .process-step .step-num {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .process-step.active-step .step-num {
+    background: var(--gold);
+  }
+  .process-step .step-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .process-step .step-desc {
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .process-arrow {
+    font-size: 22px;
+    color: var(--gold);
+    padding: 0 6px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  /* === COVERAGE BAR === */
+  .coverage-section {
+    margin: 28px 0;
+  }
+  .coverage-bar-container {
+    background: #e8e4dc;
+    border-radius: 12px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    margin: 12px 0 8px;
+  }
+  .coverage-bar-fill {
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .coverage-bar-fill.filled {
+    background: linear-gradient(90deg, var(--green-accent) 0%, #2ecc71 100%);
+  }
+  .coverage-legend {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 6px;
+  }
+  .coverage-legend span::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: -1px;
+  }
+  .coverage-legend .leg-done::before {
+    background: var(--green-accent);
+  }
+  .coverage-legend .leg-todo::before {
+    background: #e8e4dc;
+  }
+
+  /* === COVERAGE TABLE === */
+  .coverage-table td:nth-child(3) {
+    text-align: center;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .status-ok {
+    color: var(--green-accent);
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .status-ng {
+    color: var(--red-accent);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .status-partial {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* === STRUCTURED DNA BLOCK === */
+  .dna-block {
+    background: var(--navy);
+    color: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 24px 0;
+    font-size: 13px;
+    line-height: 1.9;
+    overflow-x: auto;
+  }
+  .dna-block .dna-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(184,134,11,0.3);
+  }
+  .dna-block .dna-category {
+    color: var(--gold-light);
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
+  .dna-block .dna-item {
+    padding-left: 16px;
+    color: rgba(255,255,255,0.8);
+  }
+  .dna-block .dna-item::before {
+    content: '\2022';
+    color: var(--gold);
+    margin-right: 8px;
+  }
+  .dna-block .dna-sub {
+    padding-left: 32px;
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+  }
+  .dna-block .dna-sub::before {
+    content: '\2013';
+    color: rgba(184,134,11,0.5);
+    margin-right: 6px;
+  }
+
+  /* === ESTIMATE TABLE === */
+  .estimate-table {
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+  .estimate-table table {
+    margin: 0;
+  }
+  .estimate-table th {
+    background: var(--gold);
+  }
+  .estimate-table .estimate-total td {
+    background: var(--gold-pale);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+  }
+  .estimate-note {
+    font-size: 12px;
+    color: var(--gray);
+    padding: 12px 16px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+
+  /* === PRICING TIERS === */
+  .pricing-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .tier-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 22px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .tier-card.recommended {
+    border: 3px solid var(--gold);
+    box-shadow: 0 4px 30px rgba(184,134,11,0.15);
+    transform: scale(1.02);
+  }
+  .tier-recommend-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  }
+  .tier-card .tier-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .tier-card .tier-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .tier-card .tier-price {
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .tier-card .tier-price .price-main {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .tier-card .tier-price .price-unit {
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .tier-card .tier-price-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray-light);
+    margin-bottom: 20px;
+  }
+  .tier-card .tier-desc {
+    font-size: 13px;
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 18px;
+    line-height: 1.7;
+    padding: 0 4px;
+  }
+  .tier-card .tier-includes {
+    list-style: none;
+    font-size: 13px;
+    color: var(--charcoal);
+    flex: 1;
+  }
+  .tier-card .tier-includes li {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 20px;
+    position: relative;
+  }
+  .tier-card .tier-includes li:last-child {
+    border-bottom: none;
+  }
+  .tier-card .tier-includes li::before {
+    content: '\2713';
+    color: var(--gold);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+  }
+  .tier-card .tier-coverage {
+    margin-top: 16px;
+    text-align: center;
+  }
+  .tier-card .tier-coverage-bar {
+    height: 8px;
+    background: #e8e4dc;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 6px 0;
+  }
+  .tier-card .tier-coverage-bar .tier-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--green-accent) 0%, #2ecc71 100%);
+  }
+  .tier-card .tier-coverage-label {
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  /* recommendation arrow / flow */
+  .recommend-flow {
+    background: var(--gold-pale);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 24px 30px;
+    margin: 28px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .recommend-flow .rf-badge {
+    background: var(--gold);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+  }
+  .recommend-flow .rf-content {
+    flex: 1;
+  }
+  .recommend-flow .rf-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .recommend-flow .rf-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 0;
+  }
+  .recommend-flow .rf-steps {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .recommend-flow .rf-step-box {
+    background: var(--white);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .recommend-flow .rf-step-box.active-rf {
+    background: var(--gold);
+    color: var(--white);
+    border-color: var(--gold);
+  }
+  .recommend-flow .rf-arrow {
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    /* Cover */
+    .cover { padding: 40px 20px; min-height: 50vh; }
+    .cover h1 { font-size: 24px; }
+    .cover-sub { font-size: 15px; }
+    .cover-meta { flex-direction: column; gap: 14px; }
+    .cover-meta-item .meta-value { font-size: 22px; }
+    .cover-date { right: 20px; bottom: 16px; }
+
+    /* Sections */
+    .section { padding: 36px 16px; }
+    .section-divider { padding: 28px 16px; }
+    .section-divider h2 { font-size: 19px; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 15px; }
+
+    /* Overview cards */
+    .overview-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .overview-card { padding: 14px 8px; }
+    .overview-card .ov-value { font-size: 16px; }
+    .overview-card .ov-sub { font-size: 10px; }
+
+    /* Gantt chart - horizontal scroll */
+    .schedule-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .schedule-header, .schedule-row { min-width: 640px; }
+    .schedule-header > div { padding: 10px 8px; font-size: 12px; }
+    .schedule-row .row-label { padding: 10px 10px; font-size: 12px; }
+    .schedule-row .row-label small { font-size: 10px; }
+
+    /* Phase boxes */
+    .phase-box { padding: 20px 16px; }
+    .phase-header { gap: 10px; }
+    .phase-badge { width: 40px; height: 40px; font-size: 12px; }
+    .phase-header-text .phase-name { font-size: 16px; }
+    .task-list li { flex-direction: column; gap: 4px; }
+    .task-date { min-width: auto; font-size: 12px; }
+    .task-content { font-size: 13px; }
+    .task-content .task-detail { font-size: 11px; }
+
+    /* Member note */
+    .member-note { padding: 18px 16px; }
+    .member-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .member-stat { padding: 10px 6px; }
+    .member-stat .ms-value { font-size: 20px; }
+
+    /* Concept box */
+    .concept-box { padding: 18px 16px; }
+    .concept-box p { font-size: 14px; }
+
+    /* Tables */
+    table { font-size: 13px; }
+    th { padding: 10px 10px; font-size: 12px; }
+    td { padding: 10px 10px; }
+
+    /* Coverage table - stack on mobile */
+    .coverage-table td:first-child { font-size: 13px; }
+    .coverage-table td:nth-child(2) { font-size: 12px; }
+
+    /* Coverage bar */
+    .coverage-bar-container { height: 34px; }
+    .coverage-bar-fill { font-size: 12px; }
+    .coverage-legend { flex-direction: column; gap: 6px; font-size: 12px; }
+
+    /* Process flow */
+    .process-flow { gap: 0; }
+    .process-step { min-width: 0; max-width: none; padding: 12px 8px; flex: 1; }
+    .process-step .step-title { font-size: 11px; }
+    .process-step .step-desc { font-size: 9px; }
+    .process-step .step-num { width: 20px; height: 20px; font-size: 10px; line-height: 20px; }
+    .process-arrow { font-size: 16px; padding: 0 2px; }
+
+    /* DNA blocks */
+    .dna-block { padding: 20px 16px; font-size: 12px; }
+    .dna-block .dna-title { font-size: 14px; }
+    .dna-block .dna-category { font-size: 13px; }
+    .dna-block .dna-item { padding-left: 12px; font-size: 12px; }
+    .dna-block .dna-sub { padding-left: 24px; font-size: 11px; }
+
+    /* Pricing tiers */
+    .pricing-tiers { grid-template-columns: 1fr; gap: 20px; }
+    .tier-card { padding: 24px 18px; }
+    .tier-card.recommended { transform: none; }
+    .tier-card .tier-price .price-main { font-size: 30px; }
+
+    /* Recommend flow */
+    .recommend-flow { flex-direction: column; text-align: center; padding: 20px 16px; gap: 12px; }
+    .recommend-flow .rf-title { font-size: 15px; }
+    .recommend-flow .rf-desc { font-size: 12px; text-align: left; }
+    .recommend-flow .rf-steps { flex-wrap: wrap; justify-content: center; }
+    .recommend-flow .rf-step-box { font-size: 11px; padding: 5px 10px; }
+
+    /* Estimate table - hide No. & 数量 columns on mobile */
+    .estimate-table table th:first-child,
+    .estimate-table table td:first-child,
+    .estimate-table table th:nth-child(3),
+    .estimate-table table td:nth-child(3) { display: none; }
+    .estimate-table table th { font-size: 12px; padding: 10px 12px; }
+    .estimate-table table td { font-size: 13px; padding: 12px 12px; }
+    .estimate-table table td:last-child { white-space: nowrap; }
+    .estimate-table .estimate-total td { font-size: 14px; }
+    .estimate-note { font-size: 11px; padding: 10px 12px; }
+
+    /* Vertical timeline */
+    .v-timeline { padding-left: 32px; }
+    .v-timeline-item::before { left: -21px; width: 12px; height: 12px; }
+    .v-timeline-title { font-size: 14px; }
+    .v-timeline-desc { font-size: 12px; }
+    .v-timeline-date { font-size: 12px; }
+
+    /* Logos */
+    .cover-logos { gap: 20px; margin-bottom: 24px; }
+    .cover-logos img { height: 36px; }
+    .cover-logos .logo-yoshi-club { height: 42px; }
+    .cover-logos .logo-divider { height: 32px; }
+    .cover-logos .logo-kuden-text { font-size: 18px; letter-spacing: 3px; }
+    .cover-logos .logo-kuden-sub { font-size: 8px; }
+    .closing-logos { gap: 20px; margin-top: 28px; }
+    .closing-logos img { height: 28px; }
+    .closing-logos .logo-kuden-text { font-size: 15px; }
+
+    /* Closing */
+    .closing { padding: 40px 20px; }
+    .closing p { font-size: 15px; }
+    .closing .closing-bold { font-size: 19px; }
+
+    /* Coverage table: hide detail column on mobile */
+    .coverage-table th:nth-child(2),
+    .coverage-table td:nth-child(2) { display: none; }
+    .coverage-table th:first-child { width: auto; }
+    .coverage-table td:first-child { font-size: 12px; }
+    .coverage-table td:nth-child(3) { font-size: 14px; }
+
+    /* Evaluation table: responsive */
+    table th:nth-child(3),
+    table td:nth-child(3) { font-size: 12px; }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 400px) {
+    .cover h1 { font-size: 20px; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .process-flow { flex-direction: column; gap: 4px; }
+    .process-arrow { transform: rotate(90deg); padding: 2px 0; font-size: 14px; }
+    .process-step { max-width: none; width: 100%; }
+    .process-step .step-title { font-size: 13px; }
+    .process-step .step-desc { font-size: 11px; }
+    .member-stats { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    .cover { min-height: auto; padding: 40px; }
+    .section { padding: 30px 20px; }
+    .section-divider { padding: 20px; }
+    .phase-box { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-logos">
+    <img src="https://yoshi-group.jp/wp-content/themes/yoshi-group/asset/img/yoshi.svg" alt="予詩" class="logo-yoshi-club">
+    <div class="logo-divider"></div>
+    <div>
+      <div class="logo-kuden-text">KUDEN OS</div>
+      <div class="logo-kuden-sub">AI COACHING PLATFORM</div>
+    </div>
+  </div>
+  <div class="cover-label">YOSHI GROUP &times; KUDEN OS</div>
+  <h1>導入計画のご提案</h1>
+  <div class="cover-sub">トライアル導入から本格展開までの全体計画</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="meta-value">~50名</div>
+      <div class="meta-label">トライアル対象</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="meta-value">5.7<span style="font-size:16px; font-weight:400;"> 2026</span></div>
+      <div class="meta-label">トライアル開始</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="meta-value">7月〜</div>
+      <div class="meta-label">本格導入</div>
+    </div>
+  </div>
+  <div class="cover-date">2026.03.31 / 機密資料</div>
+</div>
+
+<!-- ===== 1. 全体概要 ===== -->
+<div class="section-divider">
+  <div class="section-num">SECTION 01</div>
+  <h2>全体スケジュール概要</h2>
+</div>
+<div class="section">
+
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="ov-label">Phase 1</div>
+      <div class="ov-value">準備期間</div>
+      <div class="ov-sub">4月</div>
+    </div>
+    <div class="overview-card highlight">
+      <div class="ov-label">Phase 2</div>
+      <div class="ov-value">トライアル</div>
+      <div class="ov-sub">5月〜6月（2ヶ月）</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-label">Phase 3</div>
+      <div class="ov-value">本格導入</div>
+      <div class="ov-sub">7月〜</div>
+    </div>
+  </div>
+
+  <!-- Gantt Chart -->
+  <div class="schedule-container">
+    <div class="schedule-header">
+      <div>タスク</div>
+      <div class="month-current">4月</div>
+      <div>5月</div>
+      <div>6月</div>
+      <div>7月</div>
+      <div>8月〜</div>
+    </div>
+
+    <!-- Row: メンバー選定 -->
+    <div class="schedule-row">
+      <div class="row-label">メンバー選定<small>確定</small></div>
+      <div class="schedule-cell"><span class="milestone navy">4/3</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+    </div>
+
+    <!-- Row: 環境構築 -->
+    <div class="schedule-row">
+      <div class="row-label">環境構築・設定<small>アカウント発行等</small></div>
+      <div class="schedule-cell"><span class="bar prep" style="width:85%;">4月</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+    </div>
+
+    <!-- Row: リーダー打合せ -->
+    <div class="schedule-row">
+      <div class="row-label">リーダー陣(P)打合せ<small>方針すり合わせ</small></div>
+      <div class="schedule-cell"><span class="bar prep">4月中旬</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+    </div>
+
+    <!-- Row: メンバー説明会 -->
+    <div class="schedule-row">
+      <div class="row-label">メンバー説明会<small>利用方法レクチャー</small></div>
+      <div class="schedule-cell"><span class="bar prep">4月末</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+    </div>
+
+    <!-- Row: トライアル -->
+    <div class="schedule-row">
+      <div class="row-label">トライアル運用<small>~50名</small></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"><span class="bar active-run" style="width:95%;">運用</span></div>
+      <div class="schedule-cell"><span class="bar active-run" style="width:95%;">運用</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+    </div>
+
+    <!-- Row: 進捗会議 -->
+    <div class="schedule-row">
+      <div class="row-label">進捗会議<small>中間振り返り</small></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"><span class="milestone blue">5月末</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+    </div>
+
+    <!-- Row: 本格導入会議 -->
+    <div class="schedule-row">
+      <div class="row-label">本格導入判断会議<small>全社展開Go/NoGo</small></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"><span class="milestone green">6月末</span></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+    </div>
+
+    <!-- Row: 本格導入 -->
+    <div class="schedule-row">
+      <div class="row-label">本格導入<small>全社展開</small></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"></div>
+      <div class="schedule-cell"><span class="bar launch" style="width:95%;">展開開始</span></div>
+      <div class="schedule-cell"><span class="bar launch" style="width:95%;">定着化</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 2. Phase 1 準備 ===== -->
+<div class="section-divider">
+  <div class="section-num">PHASE 1</div>
+  <h2>トライアル準備 — 4月</h2>
+</div>
+<div class="section">
+
+  <div class="concept-box">
+    <p>トライアル成功の鍵は<strong>「事前準備」</strong>にあります。<br>
+    リーダー陣の理解と、メンバーの期待値設定を丁寧に行います。</p>
+  </div>
+
+  <div class="phase-box active-phase">
+    <div class="phase-header">
+      <div class="phase-badge prep-badge">P1</div>
+      <div class="phase-header-text">
+        <div class="phase-period">2026年4月</div>
+        <div class="phase-name">トライアル準備フェーズ</div>
+      </div>
+    </div>
+    <ul class="task-list">
+      <li>
+        <div class="task-date">4月3日（金）</div>
+        <div class="task-content">
+          <strong>トライアルメンバー選定 確定</strong>
+          <div class="task-detail">対象 約50名弱の最終リストを確定。店舗別の内訳・役職バランスを確認</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">4月上旬〜</div>
+        <div class="task-content">
+          <strong>環境構築・アカウント準備</strong>
+          <div class="task-detail">KUDEN OS 環境セットアップ、約50名分のアカウント発行。YOSHI GROUPの現行ビジョン・方針をAIコーチングのコンテキストに反映</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">4月中旬</div>
+        <div class="task-content">
+          <strong>リーダー陣（P）との打合せ</strong>
+          <div class="task-detail">トライアルの目的・運用ルール・評価基準の共有、目標設定の方法。リーダーの役割と期待値をすり合わせ</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">4月末</div>
+        <div class="task-content">
+          <strong>メンバー説明会</strong>
+          <div class="task-detail">KUDEN OS の使い方レクチャー、振り返りの習慣づけ、AIコーチとの対話デモ</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- メンバー情報 -->
+  <div class="member-note">
+    <div class="note-header">
+      <div class="note-icon">&#128101;</div>
+      <div class="note-title">トライアル対象メンバー</div>
+    </div>
+    <p style="font-size:14px; color:var(--gray);">現在のメンバー一覧は以下のスプレッドシートで管理しています。<br>4月3日のメンバー選定確定に向けて、最終調整中です。</p>
+    <div class="member-stats">
+      <div class="member-stat">
+        <div class="ms-value">~50</div>
+        <div class="ms-label">トライアル対象者数</div>
+      </div>
+      <div class="member-stat">
+        <div class="ms-value">2</div>
+        <div class="ms-label">対象店舗数</div>
+      </div>
+      <div class="member-stat">
+        <div class="ms-value">2ヶ月</div>
+        <div class="ms-label">トライアル期間</div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--blue-accent); margin-top:14px; margin-bottom: 0;">
+      <a href="https://docs.google.com/spreadsheets/d/1ihq9uKbzu6M3YtHA8Zf-8ulp2lPlvzTOvl-mTs_7wtA/edit?gid=861814011#gid=861814011" target="_blank" style="color:var(--blue-accent); text-decoration:underline;">
+        メンバー管理スプレッドシートを開く &rarr;
+      </a>
+    </p>
+  </div>
+</div>
+
+<!-- ===== 3. Phase 2 トライアル ===== -->
+<div class="section-divider">
+  <div class="section-num">PHASE 2</div>
+  <h2>トライアル運用 — 5月〜6月</h2>
+</div>
+<div class="section">
+
+  <div class="concept-box">
+    <p><strong>2ヶ月間で「効果の実感」を創る。</strong><br>
+    振り返り習慣の定着、AIコーチの有用性、メンバーの成長実感を測定します。</p>
+  </div>
+
+  <div class="phase-box">
+    <div class="phase-header">
+      <div class="phase-badge trial-badge">P2</div>
+      <div class="phase-header-text">
+        <div class="phase-period">2026年5月7日 〜 6月末</div>
+        <div class="phase-name">トライアル運用フェーズ</div>
+      </div>
+    </div>
+    <ul class="task-list">
+      <li>
+        <div class="task-date">5月7日（木）</div>
+        <div class="task-content">
+          <strong>トライアル運用開始</strong>
+          <div class="task-detail">約50名がKUDEN OSの利用を開始。毎日の振り返り・AIコーチングを運用</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">5月中</div>
+        <div class="task-content">
+          <strong>初期フォロー・定着支援</strong>
+          <div class="task-detail">利用状況モニタリング、操作に関する問い合わせ対応</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">5月末</div>
+        <div class="task-content">
+          <strong>進捗会議（中間振り返り）</strong>
+          <div class="task-detail">1ヶ月目の利用データ共有、課題の洗い出し、運用改善のすり合わせ</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">6月中</div>
+        <div class="task-content">
+          <strong>トライアル後半・効果測定</strong>
+          <div class="task-detail">振り返り継続率、目標達成率、ユーザー満足度のデータ収集・分析</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">6月末</div>
+        <div class="task-content">
+          <strong>本格導入に向けた判断会議</strong>
+          <div class="task-detail">トライアル結果の総括報告、全社導入の Go/NoGo 判断、導入範囲・スケジュールの決定</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <h3>トライアル期間の評価指標</h3>
+  <table>
+    <tr><th style="width:200px;">評価指標</th><th>目標値</th><th>測定方法</th></tr>
+    <tr><td><strong>振り返り継続率</strong></td><td>週4回以上のメンバーが70%</td><td>システムログ</td></tr>
+    <tr><td><strong>AIコーチ満足度</strong></td><td>4.0 以上/ 5.0 満点中 </td><td>ヒアリング</td></tr>
+    <tr><td><strong>目標設定完了率</strong></td><td>100%</td><td>システム集計</td></tr>
+    <tr><td><strong>目標達成率</strong></td><td>75%以上</td><td>システム集計</td></tr>
+    <tr><td><strong>メンバーの状況把握</strong></td><td>月次で80%以上把握</td><td>ヒアリング</td></tr>
+  </table>
+</div>
+
+<!-- ===== 4. Phase 3 本格導入 ===== -->
+<div class="section-divider">
+  <div class="section-num">PHASE 3</div>
+  <h2>本格導入 — 7月〜</h2>
+</div>
+<div class="section">
+
+  <div class="phase-box">
+    <div class="phase-header">
+      <div class="phase-badge launch-badge">P3</div>
+      <div class="phase-header-text">
+        <div class="phase-period">2026年7月〜</div>
+        <div class="phase-name">全社本格導入フェーズ</div>
+      </div>
+    </div>
+    <ul class="task-list">
+      <li>
+        <div class="task-date">7月上旬</div>
+        <div class="task-content">
+          <strong>全社導入開始</strong>
+          <div class="task-detail">トライアル対象外メンバーへの展開、全店舗でのKUDEN OS稼働</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">7月〜</div>
+        <div class="task-content">
+          <strong>成功パターンの自動抽出・共有</strong>
+          <div class="task-detail">トップホステスの暗黙知を組織ナレッジとして蓄積、新人育成に活用</div>
+        </div>
+      </li>
+      <li>
+        <div class="task-date">8月〜</div>
+        <div class="task-content">
+          <strong>定着化・継続改善</strong>
+          <div class="task-detail">月次での効果測定レポート、機能改善フィードバック反映、運用最適化</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="concept-box">
+    <p>トライアルで得た知見を活かし、<strong>全社150名超への展開</strong>をスムーズに実行。<br>
+    「ママの分身」が全店舗で機能する体制を構築します。</p>
+  </div>
+</div>
+
+<!-- ===== 5. YOSHI DNA注入プロセス ===== -->
+<div class="section-divider">
+  <div class="section-num">YOSHI DNA</div>
+  <h2>AI への哲学注入 — プロセスとお見積もり</h2>
+</div>
+<div class="section">
+
+  <p>KUDEN OS がYOSHI GROUPの「ママの分身」として機能するためには、<br>
+  川岡夕益ママの哲学・想い・育成方針をAIに正確に注入する必要があります。</p>
+
+  <h3>注入プロセス（5ステップ）</h3>
+
+  <div class="process-flow">
+    <div class="process-step active-step">
+      <div class="step-num">1</div>
+      <div class="step-title">ママからの<br>ヒアリング</div>
+      <div class="step-desc">60分セッション<br>人間コーチが実施</div>
+    </div>
+    <div class="process-arrow">&rarr;</div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-title">テキスト化</div>
+      <div class="step-desc">ヒアリング内容を<br>文書として整理</div>
+    </div>
+    <div class="process-arrow">&rarr;</div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-title">構造化<br>リファクタリング</div>
+      <div class="step-desc">AIが理解しやすい<br>形式に変換</div>
+    </div>
+    <div class="process-arrow">&rarr;</div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <div class="step-title">AIへの<br>コンテキスト注入</div>
+      <div class="step-desc">KUDEN OSに<br>組み込み・テスト</div>
+    </div>
+    <div class="process-arrow">&rarr;</div>
+    <div class="process-step">
+      <div class="step-num">5</div>
+      <div class="step-title">予詩専用AI<br>完成</div>
+      <div class="step-desc">ママの哲学で<br>コーチングするAI</div>
+    </div>
+  </div>
+
+  <!-- 充当状況の可視化 -->
+  <h3>現在の充当状況</h3>
+
+  <p>夕益ママからいただいた「YOSHI GROUPの考え」により、AIコンテキストの<strong>約70%</strong>はすでに充当できています。</p>
+
+  <div class="coverage-section">
+    <div class="coverage-bar-container">
+      <div class="coverage-bar-fill filled" style="width: 70%;">70% 充当済</div>
+    </div>
+    <div class="coverage-legend">
+      <span class="leg-done">充当済み（黒服・経営・価値観）</span>
+      <span class="leg-todo">追加ヒアリング必要（ホステス向け）</span>
+    </div>
+  </div>
+
+  <!-- 充当テーブル -->
+  <table class="coverage-table">
+    <tr><th style="width:200px;">要素</th><th>内容</th><th style="width:80px;">状況</th></tr>
+    <tr>
+      <td><strong>Vision（なりたい姿）</strong></td>
+      <td>トップクラスの売上・「ここに関われて良かった」と思える会社・真摯に向き合う人財の組織・社会貢献</td>
+      <td class="status-ok">&#10003;</td>
+    </tr>
+    <tr>
+      <td><strong>Mission（存在意義）</strong></td>
+      <td>「日常から離れたお客様の今日や明日をほんの少し前向きにすること」</td>
+      <td class="status-ok">&#10003;</td>
+    </tr>
+    <tr>
+      <td><strong>5つの価値観</strong></td>
+      <td>スピード・執念・素直・自責・真摯 — 全メンバー共通の行動指針</td>
+      <td class="status-ok">&#10003;</td>
+    </tr>
+    <tr>
+      <td><strong>黒服ステップアップ条件</strong></td>
+      <td>経験値・女性導入力・マネジメント・お客様対応力・他店交流・身だしなみ・営業業務力・数字把握力・人間力</td>
+      <td class="status-ok">&#10003;</td>
+    </tr>
+    <tr>
+      <td><strong>ママの経営哲学</strong></td>
+      <td>「焦るな、日々の一つ一つに向き合え」「店目線 &gt; 個人感情」「自分と向き合えない人間が人と向き合うのは不可能」</td>
+      <td class="status-ok">&#10003;</td>
+    </tr>
+    <tr style="background: rgba(192,57,43,0.05);">
+      <td><strong>ホステスの成長像</strong></td>
+      <td>ママが考える「良いホステスとは何か」。入店直後 &rarr; 半年 &rarr; 1年 &rarr; 係、各段階で何を求めるか</td>
+      <td class="status-ng">未取得</td>
+    </tr>
+    <tr style="background: rgba(192,57,43,0.05);">
+      <td><strong>ホステスへの声かけの流儀</strong></td>
+      <td>落ち込んでいる子には？ 伸びている子には？ ママならどんな言葉をかけるか</td>
+      <td class="status-ng">未取得</td>
+    </tr>
+    <tr style="background: rgba(192,57,43,0.05);">
+      <td><strong>同伴・アフターの考え方</strong></td>
+      <td>どこまで推奨？どこからがNG？ 店舗ごとの方針の違い</td>
+      <td class="status-ng">未取得</td>
+    </tr>
+    <tr style="background: rgba(192,57,43,0.05);">
+      <td><strong>NGライン</strong></td>
+      <td>ママが絶対に許さないこと（お客様の悪口、遅刻、態度 etc.）</td>
+      <td class="status-ng">未取得</td>
+    </tr>
+    <tr style="background: rgba(192,57,43,0.05);">
+      <td><strong>接客の成功パターン</strong></td>
+      <td>新規・VIP・リピーター、それぞれの理想的な接客の流れ</td>
+      <td class="status-ng">未取得</td>
+    </tr>
+  </table>
+
+  <div class="concept-box">
+    <p><strong>充当済みの70%</strong> = 「組織としてどうあるべきか」（経営理念・価値観・黒服の基準）<br>
+    <strong>未取得の30%</strong> = 「ホステス一人ひとりにどう向き合うか」（コーチング・声かけ・成長支援）<br><br>
+    AIコーチがホステスと毎日対話するために、この<strong>30%の追加ヒアリング</strong>が必要です。</p>
+  </div>
+
+  <!-- 構造化リファクタリング: 黒服・事務方向け -->
+  <h3>構造化リファクタリング — 黒服・経営層向けコンテキスト</h3>
+  <p>以下は、夕益ママからいただいた内容をAIが理解しやすい形式に変換したものです。<br>
+  このフォーマットでAIのコンテキスト（プロンプト）に注入します。</p>
+
+  <div class="dna-block">
+    <div class="dna-title">YOSHI GROUP DNA — 黒服・経営層向け（構造化済み）</div>
+
+    <div class="dna-category">## Vision</div>
+    <div class="dna-item">トップクラスの売上と影響力を誇る企業</div>
+    <div class="dna-item">スタッフもお客様も「ここに関われて良かった」と思える会社</div>
+    <div class="dna-item">真摯に向き合い共に成長する人財が集う組織</div>
+    <div class="dna-item">ナイトレジャーを通じた社会貢献（児童支援・動物愛護）</div>
+
+    <div class="dna-category">## Mission</div>
+    <div class="dna-item">「日常から離れたお客様の今日や明日をほんの少し前向きにすること」</div>
+    <div class="dna-sub">社会で活躍する方が安心して過ごせる場所</div>
+    <div class="dna-sub">銀座の高級感と安心感 &times; 女性の美しさとおもてなし</div>
+    <div class="dna-sub">お客様が明日に向かって前向きになれる = 社会にとっての力</div>
+
+    <div class="dna-category">## Core Values（5つの行動指針）</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">スピード</strong>: レスポンスの速さ=信頼。お待たせしない=最大のおもてなし。小さな会社が大企業に勝てるのはスピードだけ</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">執念</strong>: 天才に凡人が勝つのは執念のみ。女性の導入・教育こそ忍耐と執念</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">素直</strong>: 言われたことをすぐやる素直さは武器。感謝とお詫びを素直に伝える</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">自責</strong>: 「銀座が暇だから」ではなく「なぜそうなのか」を考える</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">真摯</strong>: 人の強みに目を向ける / 何が間違っていたかに関心 / 人の成長に刺激を受ける / 高い基準 / 実践家であれ</div>
+
+    <div class="dna-category">## 黒服ステップアップ条件（9項目）</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">経験値</strong>: 最短3年の勉強期間が必要</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">女性導入力</strong>: 質の高い女性を導入できること = 会社への大きな貢献</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">女性マネジメント</strong>: 共感力を持って寄り添いつつ、徹底的な店目線を持つ。1人のホステスを数字でも人間としても成長させられれば一流</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">お客様対応力</strong>: VIP対応力、クレーム対応力（ミスはチャンス）、お客様の仕事への興味</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">他店交流</strong>: 情報収集 &rarr; 女性導入・物件確保。Give &amp; Takeのバランス</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">身だしなみ</strong>: 美しい女性をフォローする者として清潔感は言語道断レベルの必須</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">営業業務力</strong>: ホール・メンバー・ボトル・フロントのうち最低2つ。急遽欠員にも対応</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">数字把握力</strong>: ホス給の適正・会計の適正・伝票。数字がわからなければ重要な役職にはつけない</div>
+    <div class="dna-item"><strong style="color:var(--gold-light);">人間力</strong>: 失敗を糧にする強さ。驕らない。自分ベースではなく組織ベースで判断</div>
+
+    <div class="dna-category">## Mama's Principles（行間の哲学）</div>
+    <div class="dna-item">焦るな。成果ばかり取りに行くのは自分ベース。日々の一つ一つに向き合え</div>
+    <div class="dna-item">店目線 &gt; 個人感情。女性同士のトラブルも店として正しい目線で解決</div>
+    <div class="dna-item">自分と向き合えない人間が人と向き合うのは不可能</div>
+    <div class="dna-item">上へのアイデア提案、自他の貢献・失敗の共有を歓迎する文化</div>
+    <div class="dna-item">人の成功や成長を自分への良い刺激にできる度量</div>
+  </div>
+
+  <!-- ホステス向けの未取得コンテキスト -->
+  <h3>追加ヒアリング項目 — ホステス向けコンテキスト</h3>
+  <p>以下をリーダー陣(P)打合せまたはママへの追加セッションで取得します。</p>
+
+  <div class="dna-block" style="background: var(--navy-light); border: 2px dashed var(--gold); opacity: 0.85;">
+    <div class="dna-title" style="border-bottom-style: dashed;">YOSHI GROUP DNA — ホステス向け（要ヒアリング）</div>
+
+    <div class="dna-category">## ホステスの理想像</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">ママが考える「良いホステス」の定義（技術面・人間面）</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">各店舗ごとの求めるホステス像の違い（plus予詩 vs 七凪 vs 路ト）</div>
+
+    <div class="dna-category">## 成長ステージ定義</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">入店〜3ヶ月: 何を身につけるべきか</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">3ヶ月〜1年: どこまで到達すべきか</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">1年〜: 係を目指すホステスに求めること</div>
+
+    <div class="dna-category">## 声かけの流儀</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">落ち込んでいるホステスへの声かけ例</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">成長しているホステスへの声かけ例</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">辞めたいと言っているホステスへの対応</div>
+
+    <div class="dna-category">## 同伴・アフターの方針</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">推奨ライン / NGライン / 店舗別の違い</div>
+
+    <div class="dna-category">## 絶対NGルール</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">ママが絶対に許さないこと（お客様対応・勤務態度・人間関係）</div>
+
+    <div class="dna-category">## 接客の成功パターン</div>
+    <div class="dna-item" style="color: rgba(255,255,255,0.5);">新規のお客様 / VIPのお客様 / リピーターのお客様、それぞれの理想の流れ</div>
+  </div>
+
+  <!-- 見積もり -->
+  <h3>初期導入費 お見積もり（3プラン）</h3>
+
+  <p>YOSHI DNA の注入レベルに応じて、3つのプランをご用意しています。</p>
+
+  <div class="pricing-tiers">
+    <!-- Plan A: ベース -->
+    <div class="tier-card">
+      <div class="tier-label">PLAN A</div>
+      <div class="tier-name">ベース導入</div>
+      <div class="tier-price">
+        <span class="price-main">&yen;200,000</span>
+        <div class="price-unit">税別</div>
+      </div>
+      <div class="tier-price-note">初期導入費</div>
+      <div class="tier-desc">KUDEN OS の標準セットアップ。<br>予詩の哲学等は注入しないベース版</div>
+      <ul class="tier-includes">
+        <li>環境構築・セットアップ</li>
+        <li>約50名分のアカウント発行</li>
+        <li>標準AIコーチング機能</li>
+        <li>導入トレーニング</li>
+      </ul>
+      <div class="tier-coverage">
+        <div class="tier-coverage-bar"><div class="tier-fill" style="width:0%;"></div></div>
+        <div class="tier-coverage-label">YOSHI DNA 注入なし</div>
+      </div>
+    </div>
+
+    <!-- Plan B: 黒服用DNA注入（推奨） -->
+    <div class="tier-card recommended">
+      <div class="tier-recommend-badge">RECOMMENDED</div>
+      <div class="tier-label">PLAN B</div>
+      <div class="tier-name">黒服用DNA注入</div>
+      <div class="tier-price">
+        <span class="price-main">&yen;400,000</span>
+        <div class="price-unit">税別</div>
+      </div>
+      <div class="tier-price-note">初期導入費 ¥200,000 + DNA注入 ¥200,000</div>
+      <div class="tier-desc">既にいただいた「YOSHI GROUPの考え」を<br>構造化し、予詩専用AIを構築</div>
+      <ul class="tier-includes">
+        <li>Plan A の全内容</li>
+        <li>黒服用コンテキストの構造化リファクタリング</li>
+        <li>AIコンテキストへの注入・チューニング</li>
+        <li>予詩専用AIの構築・応答品質テスト</li>
+      </ul>
+      <div class="tier-coverage">
+        <div class="tier-coverage-bar"><div class="tier-fill" style="width:70%;"></div></div>
+        <div class="tier-coverage-label">YOSHI DNA 70% 注入</div>
+      </div>
+    </div>
+
+    <!-- Plan C: フルDNA注入 -->
+    <div class="tier-card">
+      <div class="tier-label">PLAN C</div>
+      <div class="tier-name">フルDNA注入</div>
+      <div class="tier-price">
+        <span class="price-main">&yen;700,000</span>
+        <div class="price-unit">税別</div>
+      </div>
+      <div class="tier-price-note">Plan B ¥400,000 + ママヒアリング ¥300,000</div>
+      <div class="tier-desc">ホステス向けの不足30%を<br>ママへのヒアリングで補完し、完全版を構築</div>
+      <ul class="tier-includes">
+        <li>Plan B の全内容</li>
+        <li>ママへの60分コーチングセッション（弊社代表が実施）</li>
+        <li>ホステス向けコンテキストのテキスト化・構造化</li>
+        <li>ホステス成長像・声かけ・NGライン等のAI注入</li>
+        <li>フル版 予詩専用AIの構築</li>
+      </ul>
+      <div class="tier-coverage">
+        <div class="tier-coverage-bar"><div class="tier-fill" style="width:100%;"></div></div>
+        <div class="tier-coverage-label">YOSHI DNA 100% 注入</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- おすすめの進め方 -->
+  <div class="recommend-flow">
+    <div class="rf-badge">RECOMMEND</div>
+    <div class="rf-content">
+      <div class="rf-title">おすすめの進め方</div>
+      <p class="rf-desc">
+        トライアルは<strong>Plan B（黒服用DNA注入）</strong>で走り始め、<br>
+        本格導入時（7月〜）にママへのヒアリングを実施してフルDNA版にアップグレード。<br>
+        トライアル期間の2ヶ月で「AIの効果」を実感した上で、ホステス向けの哲学注入に投資する流れが最も合理的です。
+      </p>
+      <div class="rf-steps">
+        <div class="rf-step-box active-rf">トライアル（5月〜）</div>
+        <div class="rf-arrow">&rarr;</div>
+        <div class="rf-step-box">Plan B で運用</div>
+        <div class="rf-arrow">&rarr;</div>
+        <div class="rf-step-box">本格導入時に +&yen;300,000 でフルDNA化</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 明細テーブル -->
+  <h3>Plan B 内訳（推奨プラン）</h3>
+  <div class="estimate-table">
+    <table>
+      <tr><th style="width:50px;">No.</th><th>項目</th><th style="width:100px;">数量</th><th style="width:140px;">金額（税別）</th></tr>
+      <tr>
+        <td>1</td>
+        <td><strong>KUDEN OS 環境構築・セットアップ</strong><br><span style="font-size:12px; color:var(--gray);">約50名分のアカウント発行、初期設定、導入トレーニング</span></td>
+        <td style="text-align:center;">一式</td>
+        <td style="text-align:right;">&yen;200,000</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>YOSHI DNA 構造化リファクタリング</strong><br><span style="font-size:12px; color:var(--gray);">「YOSHI GROUPの考え」をAIコンテキスト形式に変換・最適化</span></td>
+        <td style="text-align:center;">一式</td>
+        <td style="text-align:right;">&yen;100,000</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>予詩専用AI 構築・チューニング</strong><br><span style="font-size:12px; color:var(--gray);">AIコンテキスト注入、応答品質テスト、YOSHI GROUPらしさの微調整</span></td>
+        <td style="text-align:center;">一式</td>
+        <td style="text-align:right;">&yen;100,000</td>
+      </tr>
+      <tr class="estimate-total">
+        <td></td>
+        <td>Plan B 合計</td>
+        <td></td>
+        <td style="text-align:right;">&yen;400,000</td>
+      </tr>
+    </table>
+    <div class="estimate-note">
+      ※ 本格導入時の Plan C アップグレード費: &yen;300,000（ママヒアリング + ホステス向けDNA注入）<br>
+      ※ 月額利用料（&yen;5,000/ID/月）は別途
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 6. マイルストーン一覧 ===== -->
+<div class="section-divider">
+  <div class="section-num">MILESTONE</div>
+  <h2>マイルストーン一覧</h2>
+</div>
+<div class="section">
+
+  <div class="v-timeline">
+    <div class="v-timeline-item active">
+      <div class="v-timeline-date">2026年4月3日</div>
+      <div class="v-timeline-title">メンバー選定 確定</div>
+      <div class="v-timeline-desc">トライアル対象メンバーの最終リストを確定</div>
+      <span class="v-timeline-tag prep">準備</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年4月上旬</div>
+      <div class="v-timeline-title">契約締結</div>
+      <div class="v-timeline-desc">YOSHI GROUP 様とのご契約。トライアル ~50名でスタート決定</div>
+      <span class="v-timeline-tag prep">準備</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年4月中旬</div>
+      <div class="v-timeline-title">リーダー陣(P)打合せ</div>
+      <div class="v-timeline-desc">トライアルの目的・運用方針・リーダーの役割をすり合わせ</div>
+      <span class="v-timeline-tag prep">準備</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年4月末</div>
+      <div class="v-timeline-title">メンバー説明会</div>
+      <div class="v-timeline-desc">KUDEN OS の使い方レクチャー、AIコーチとの対話デモ</div>
+      <span class="v-timeline-tag prep">準備</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年5月7日</div>
+      <div class="v-timeline-title">トライアル開始</div>
+      <div class="v-timeline-desc">約50名での運用スタート。毎日の振り返り・AIコーチング開始</div>
+      <span class="v-timeline-tag trial">トライアル</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年5月末</div>
+      <div class="v-timeline-title">進捗会議</div>
+      <div class="v-timeline-desc">1ヶ月目の利用データ共有、課題の洗い出し、運用改善</div>
+      <span class="v-timeline-tag trial">トライアル</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年6月末</div>
+      <div class="v-timeline-title">本格導入 判断会議</div>
+      <div class="v-timeline-desc">トライアル総括報告、全社導入の Go/NoGo 判断</div>
+      <span class="v-timeline-tag trial">トライアル</span>
+    </div>
+
+    <div class="v-timeline-item future">
+      <div class="v-timeline-date">2026年7月〜</div>
+      <div class="v-timeline-title">全社本格導入</div>
+      <div class="v-timeline-desc">全店舗・全メンバーへの展開</div>
+      <span class="v-timeline-tag launch">本格導入</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== CLOSING ===== -->
+<div class="closing">
+  <p>トライアルの2ヶ月で、<br>
+  「ママの分身」がYOSHI GROUPに<br>
+  根づく土壌を築きます。</p>
+  <p>約50名の成功体験が、<br>
+  全社150名超への展開の礎となる。</p>
+  <div class="closing-bold">まずは、5月7日のスタートに向けて。</div>
+  <div class="closing-logos">
+    <img src="https://yoshi-group.jp/wp-content/themes/yoshi-group/asset/img/yoshi.svg" alt="予詩">
+    <div class="logo-divider"></div>
+    <div class="logo-kuden-text">KUDEN OS</div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <p>作成日: 2026-03-31 / 本資料は YOSHI GROUP 様向けの機密資料です。</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YKK株式会社 役員ご提案資料 — KUDEN Biz AI Reflection V1.5</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --ykk-navy: #002B5C;
+    --ykk-navy-dark: #001A3A;
+    --ykk-navy-light: #003D80;
+    --ykk-blue: #0066B3;
+    --ykk-blue-light: #E8F0F8;
+    --ykk-teal: #00838F;
+    --ykk-teal-light: #E0F2F4;
+    --charcoal: #1A1A1A;
+    --text: #333333;
+    --text-secondary: #5A6672;
+    --gray-light: #F5F6F8;
+    --gray-mid: #E2E5EA;
+    --white: #FFFFFF;
+    --border: #D0D5DC;
+    --accent-orange: #E8740C;
+    --accent-green: #2E8B57;
+    --accent-red: #C0392B;
+    --section-gap: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+    background: var(--white);
+  }
+
+  /* ===== UTILITIES ===== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* ===== COVER ===== */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--ykk-navy-dark) 0%, var(--ykk-navy) 40%, var(--ykk-navy-light) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(0,43,92,0.3) 100%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 80px);
+  }
+  .cover-logos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 4px;
+  }
+  .cover-logo-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.3);
+  }
+  .cover-label {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+  }
+  .cover-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    margin-bottom: 60px;
+    line-height: 1.9;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta {
+    position: relative;
+    z-index: 1;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .cover-meta strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .cover-bottom-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ykk-blue), var(--ykk-teal));
+  }
+
+  /* ===== PAGE SECTIONS ===== */
+  .page {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--gray-mid);
+    page-break-before: always;
+  }
+  .page:last-child { border-bottom: none; }
+  .page-alt { background: var(--gray-light); }
+  .page-navy { background: var(--ykk-navy); color: var(--white); }
+  .page-navy .section-subtitle { color: rgba(255,255,255,0.6); }
+  .page-navy .text-secondary { color: rgba(255,255,255,0.7); }
+
+  /* ===== SECTION HEADER ===== */
+  .section-num {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--ykk-blue);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .page-navy .section-num { color: rgba(255,255,255,0.4); }
+
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ykk-navy);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+  }
+  .page-navy .section-title { color: var(--white); }
+
+  .section-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--ykk-blue);
+    margin-bottom: 32px;
+  }
+  .page-navy .section-divider { background: rgba(255,255,255,0.3); }
+
+  /* ===== CALLOUT BOX ===== */
+  .callout {
+    background: var(--ykk-blue-light);
+    border-left: 3px solid var(--ykk-blue);
+    padding: 24px 28px;
+    margin: 32px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ykk-navy);
+    line-height: 1.7;
+  }
+  .callout-navy {
+    background: rgba(0,102,179,0.1);
+    border-left-color: rgba(255,255,255,0.4);
+    color: var(--white);
+  }
+  .callout-warn {
+    background: #FFF8F0;
+    border-left-color: var(--accent-orange);
+    color: var(--charcoal);
+  }
+
+  /* ===== TABLES ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+  table th {
+    background: var(--ykk-navy);
+    color: var(--white);
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--gray-mid);
+    vertical-align: top;
+  }
+  table tr:nth-child(even) td { background: var(--gray-light); }
+  table tr:hover td { background: var(--ykk-blue-light); }
+  .table-compact td { padding: 10px 14px; }
+
+  .page-navy table th {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+  }
+  .page-navy table td {
+    border-bottom-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.9);
+  }
+  .page-navy table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .page-navy table tr:hover td { background: rgba(255,255,255,0.07); }
+
+  /* ===== CARDS ===== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 32px 0;
+  }
+  .card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    padding: 28px;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 20px rgba(0,43,92,0.08); }
+  .card-accent { border-top: 3px solid var(--ykk-blue); }
+  .card-accent-teal { border-top: 3px solid var(--ykk-teal); }
+  .card-accent-orange { border-top: 3px solid var(--accent-orange); }
+
+  .card-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--ykk-blue);
+    opacity: 0.15;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+  .card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ykk-navy);
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    background: var(--ykk-blue-light);
+    color: var(--ykk-blue);
+  }
+
+  /* Navy card variant */
+  .card-navy {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+  }
+  .card-navy h4 { color: var(--white); }
+  .card-navy p { color: rgba(255,255,255,0.7); }
+  .card-navy .card-tag { background: rgba(0,102,179,0.3); color: rgba(255,255,255,0.8); }
+  .card-navy .card-num { color: var(--white); }
+
+  /* ===== BAR CHART ===== */
+  .bar-chart { margin: 32px 0; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .bar-label {
+    width: 140px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+  .bar-track {
+    flex: 1;
+    height: 28px;
+    background: var(--gray-light);
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ykk-navy), var(--ykk-blue));
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    transition: width 0.8s ease;
+  }
+  .bar-fill-low {
+    background: linear-gradient(90deg, var(--accent-orange), #F0A050);
+  }
+
+  /* ===== ICEBERG DIAGRAM ===== */
+  .iceberg {
+    background: linear-gradient(180deg, #F0F4F8 0%, #F0F4F8 35%, var(--ykk-navy) 35%, var(--ykk-navy-dark) 100%);
+    padding: 40px;
+    margin: 32px 0;
+  }
+  .iceberg-surface {
+    padding: 20px 28px;
+    margin-bottom: 0;
+  }
+  .iceberg-surface h5 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--accent-orange);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .iceberg-surface-items {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .iceberg-surface-item {
+    background: var(--white);
+    border: 1px solid var(--accent-orange);
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent-orange);
+  }
+  .iceberg-waterline {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ykk-blue), transparent);
+    margin: 20px 0;
+    position: relative;
+  }
+  .iceberg-waterline::after {
+    content: 'WATERLINE';
+    position: absolute;
+    right: 0;
+    top: -8px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--ykk-blue);
+    font-weight: 600;
+  }
+  .iceberg-deep {
+    padding: 28px;
+  }
+  .iceberg-layer {
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    border-left: 2px solid rgba(255,255,255,0.2);
+  }
+  .iceberg-layer:last-child { margin-bottom: 0; }
+  .iceberg-layer h5 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .iceberg-layer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ===== COMPARISON ===== */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 32px 0;
+    border: 1px solid var(--gray-mid);
+    overflow: hidden;
+  }
+  .comparison-col { padding: 28px; }
+  .comparison-before {
+    background: #F8F4F0;
+    border-right: 1px solid var(--gray-mid);
+  }
+  .comparison-after { background: var(--ykk-blue-light); }
+  .comparison-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid;
+  }
+  .comparison-before .comparison-label {
+    color: var(--text-secondary);
+    border-color: var(--text-secondary);
+  }
+  .comparison-after .comparison-label {
+    color: var(--ykk-blue);
+    border-color: var(--ykk-blue);
+  }
+  .comparison pre {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    color: var(--text);
+  }
+  .comparison-after pre { color: var(--ykk-navy); font-weight: 500; }
+
+  /* ===== ROADMAP ===== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 32px 0;
+  }
+  .roadmap-phase {
+    padding: 28px;
+    border: 1px solid var(--gray-mid);
+    border-right: none;
+    position: relative;
+  }
+  .roadmap-phase:last-child { border-right: 1px solid var(--gray-mid); }
+  .roadmap-phase::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid var(--gray-mid);
+    z-index: 1;
+  }
+  .roadmap-phase:last-child::after { display: none; }
+  .roadmap-num {
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--ykk-blue);
+    margin-bottom: 4px;
+  }
+  .roadmap-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ykk-navy);
+    margin-bottom: 4px;
+  }
+  .roadmap-duration {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-mid);
+  }
+  .roadmap-item {
+    font-size: 13px;
+    color: var(--text);
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .roadmap-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 6px;
+    height: 6px;
+    background: var(--ykk-blue);
+  }
+
+  /* ===== STRUCTURE TABLE ===== */
+  .structure-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr;
+    gap: 0;
+    margin: 32px 0;
+    border: 1px solid var(--gray-mid);
+  }
+  .structure-cell {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--gray-mid);
+    font-size: 14px;
+  }
+  .structure-cell:nth-child(3n+1) {
+    background: var(--gray-light);
+    font-weight: 600;
+    color: var(--ykk-navy);
+    border-right: 1px solid var(--gray-mid);
+  }
+  .structure-cell:nth-child(3n+2) {
+    border-right: 1px solid var(--gray-mid);
+    color: var(--text-secondary);
+  }
+  .structure-cell:nth-child(3n) {
+    background: var(--ykk-blue-light);
+    color: var(--ykk-navy);
+    font-weight: 500;
+  }
+  .structure-header {
+    background: var(--ykk-navy) !important;
+    color: var(--white) !important;
+    font-weight: 600 !important;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== AGREEMENT SECTION ===== */
+  .agreement-list {
+    counter-reset: agree;
+    margin: 32px 0;
+  }
+  .agreement-item {
+    counter-increment: agree;
+    padding: 24px 28px;
+    padding-left: 72px;
+    border: 1px solid var(--gray-mid);
+    margin-bottom: -1px;
+    position: relative;
+  }
+  .agreement-item::before {
+    content: counter(agree);
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    width: 32px;
+    height: 32px;
+    background: var(--ykk-navy);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .agreement-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ykk-navy);
+    margin-bottom: 6px;
+  }
+  .agreement-item p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing {
+    background: linear-gradient(160deg, var(--ykk-navy-dark) 0%, var(--ykk-navy) 100%);
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+  }
+  .closing::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ykk-blue), var(--ykk-teal));
+  }
+  .closing blockquote {
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.9);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.9;
+  }
+  .closing blockquote strong {
+    font-weight: 600;
+    color: var(--white);
+  }
+  .closing-sig {
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+    line-height: 2;
+  }
+  .closing-sig strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+  /* ===== MISC ===== */
+  .highlight { color: var(--ykk-blue); font-weight: 600; }
+  .highlight-teal { color: var(--ykk-teal); font-weight: 600; }
+  .text-secondary { color: var(--text-secondary); }
+  .text-sm { font-size: 13px; }
+  .text-lg { font-size: 17px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-32 { margin-top: 32px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-32 { margin-bottom: 32px; }
+  .fw-700 { font-weight: 700; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    margin-right: 8px;
+  }
+  .tag-blue { background: var(--ykk-blue-light); color: var(--ykk-blue); }
+  .tag-teal { background: var(--ykk-teal-light); color: var(--ykk-teal); }
+  .tag-orange { background: #FFF3E8; color: var(--accent-orange); }
+
+  /* ===== PRINT ===== */
+  @media print {
+    .cover { min-height: auto; padding: 60px 40px; }
+    .page { padding: 40px 0; page-break-inside: avoid; }
+    .card:hover { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== COVER ========== -->
+<section class="cover">
+  <img src="https://www.ykk.com/app-files/img/cmn_logo01.svg" alt="YKK" style="position:absolute; top:32px; right:40px; height:56px; opacity:0.8; z-index:2; filter:brightness(0) invert(1);">
+  <div class="cover-logos">
+    <span class="cover-logo-text">YKK</span>
+    <div class="cover-logo-divider"></div>
+    <span class="cover-logo-text" style="font-size:15px; letter-spacing:3px;">KUDEN Biz</span>
+  </div>
+  <div class="cover-label">EXECUTIVE PROPOSAL</div>
+  <h1>AIリフレクション → KUDEN OSのご提案<br><br>「パイロット中間報告」<br>「今後の進め方」<br></h1>
+  <p class="cover-sub">
+    「汎用AI振り返りツール」から、<strong style="color:rgba(255,255,255,0.95);">「成果直結型AIコーチ」</strong>へ
+  </p>
+  <p class="cover-meta">
+    <strong>株式会社 KUDEN WORLD</strong>&emsp;|&emsp;2026年4月
+  </p>
+  <div class="cover-bottom-line"></div>
+</section>
+
+<!-- ========== 1. EXECUTIVE SUMMARY ========== -->
+<section class="page">
+  <div class="container">
+    <div class="section-num">SECTION 01</div>
+    <h2 class="section-title">エグゼクティブ・サマリー</h2>
+    <div class="section-divider"></div>
+
+    <p class="text-lg mb-32">
+      YKK様との56名パイロットは、<strong>段階的な導入戦略</strong>のもと進めてまいりました。（その後６名の追加あり）
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:0; margin:0 0 32px; align-items:stretch;">
+      <div style="background:var(--gray-light); border:1px solid var(--gray-mid); padding:20px; text-align:center;">
+        <div style="font-size:11px; letter-spacing:2px; color:var(--text-secondary); font-weight:600; margin-bottom:6px;">STEP 1</div>
+        <div style="font-size:14px; font-weight:600; color:var(--ykk-navy);">DNA注入を含む<br>導入を提案・予算化</div>
+        <div style="font-size:12px; color:var(--text-secondary); margin-top:8px;">2025年5月承認</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 8px; color:var(--gray-mid); font-size:20px;">&#9654;</div>
+      <div style="background:var(--gray-light); border:1px solid var(--gray-mid); padding:20px; text-align:center;">
+        <div style="font-size:11px; letter-spacing:2px; color:var(--text-secondary); font-weight:600; margin-bottom:6px;">STEP 2</div>
+        <div style="font-size:14px; font-weight:600; color:var(--ykk-navy);">協議の結果<br>まずリフレクション単体で検証開始</div>
+        <div style="font-size:12px; color:var(--text-secondary); margin-top:8px;">2026年1月14日</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 8px; color:var(--gray-mid); font-size:20px;">&#9654;</div>
+      <div style="background:var(--ykk-blue-light); border:1px solid var(--ykk-blue); padding:20px; text-align:center;">
+        <div style="font-size:11px; letter-spacing:2px; color:var(--ykk-blue); font-weight:600; margin-bottom:6px;">NOW</div>
+        <div style="font-size:14px; font-weight:600; color:var(--ykk-navy);">習慣化は成功<br>次のステップへ</div>
+        <div style="font-size:12px; color:var(--ykk-blue); margin-top:8px;">2026年5月以降</div>
+      </div>
+    </div>
+
+    <p class="mb-16">
+      当初、弊社からはYKK DNAの注入を含めた導入をご提案し、予算化も頂きました。協議の結果、<strong>まずはAIリフレクション単体で「振り返りの習慣化」を検証する</strong>というステップを踏むことに。これは正しい判断でした。
+    </p>
+    <p class="mb-16">
+      その結果、複数チームで<span class="highlight">実施率90%超</span>を記録。<strong>「AIによる振り返りは定着する」</strong>ことが証明されました。
+    </p>
+    <p class="mb-16">
+      同時に、エンゲージメントチームがエンゲージメント向上の観点で推進いただく中、現場からは<strong>「もっと成果に直結する使い方をしたい」</strong>という前向きな声が上がっています。
+    </p>
+
+    <!-- Version Roadmap -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; margin-top:32px;">
+      <div style="padding:16px 20px; border:1px solid var(--gray-mid); border-right:none; background:var(--gray-light);">
+        <div style="font-size:20px; font-weight:900; color:var(--text-secondary); margin-bottom:4px;">V1.0</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text);">現在のテストバージョン</div>
+        <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">AIリフレクション単体</div>
+      </div>
+      <div style="padding:16px 20px; border:1px solid var(--ykk-blue); background:var(--ykk-blue-light);">
+        <div style="font-size:20px; font-weight:900; color:var(--ykk-blue); margin-bottom:4px;">V1.5</div>
+        <div style="font-size:13px; font-weight:600; color:var(--ykk-navy);">今回のご提案</div>
+        <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">DNA注入 + 目標連動</div>
+      </div>
+      <div style="padding:16px 20px; border:1px solid var(--gray-mid); border-left:none; background:var(--gray-light);">
+        <div style="font-size:20px; font-weight:900; color:var(--text-secondary); opacity:0.5; margin-bottom:4px;">V2.0</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text-secondary);">次世代OS（AIエージェント）</div>
+        <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">能動的AIパートナー</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:24px;">
+      <strong>習慣化は実証済み。次は当初提案のYKK DNA注入と目標連動を実装し、成果直結型へ進化させるステップです。</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 2. PILOT REPORT ========== -->
+<section class="page page-alt">
+  <div class="container">
+    <div class="section-num">SECTION 02</div>
+    <h2 class="section-title">パイロットの経緯と中間報告</h2>
+    <div class="section-divider"></div>
+
+    <!-- 2.1 Timeline -->
+    <p class="fw-700 mb-16" style="font-size:16px; color:var(--ykk-navy);">これまでの経緯</p>
+    <table class="mb-32">
+      <thead><tr><th style="width:25%;">時期</th><th>出来事</th></tr></thead>
+      <tbody>
+        <tr><td><strong>導入検討時</strong></td><td>弊社よりYKK DNA注入を含めた導入を提案・予算化</td></tr>
+        <tr><td><strong>パイロット開始</strong></td><td>協議の結果、<strong>まずはAIリフレクション単体</strong>で「振り返りの習慣化」を検証する方針に</td></tr>
+        <tr><td><strong>パイロット中</strong></td><td>エンゲージメントチームが、エンゲージメント向上の観点で推進</td></tr>
+        <tr><td><strong>現在</strong></td><td>習慣化は成功。現場から<strong>「もっと効果的に使いたい」</strong>という声</td></tr>
+      </tbody>
+    </table>
+    <p class="text-sm text-secondary mb-32">この段階的アプローチにより、「何が機能し、何が足りないか」が明確になりました。</p>
+
+    <!-- 2.2 Bar Chart -->
+    <p class="fw-700 mb-16" style="font-size:16px; color:var(--ykk-navy);">実施率（成果）</p>
+    <p class="text-sm text-secondary mb-16">計測期間：2026/1/14〜3/31 &emsp;|&emsp;56名でスタート → 参加要望+6名で<strong style="color:var(--ykk-navy);">62名</strong>に &emsp;|&emsp;<strong style="color:var(--ykk-navy); font-size:15px;">全体実施率：77.3%</strong></p>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">MPVシステム<span class="text-sm text-secondary">（6名）</span></span>
+        <div class="bar-track"><div class="bar-fill" style="width:97.6%;">97.6%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">チームサムライ<span class="text-sm text-secondary">（4名）</span></span>
+        <div class="bar-track"><div class="bar-fill" style="width:96.4%;">96.4%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">スライダーS<span class="text-sm text-secondary">（7名）</span></span>
+        <div class="bar-track"><div class="bar-fill" style="width:95.1%;">95.1%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">JPC大阪代理店G<span class="text-sm text-secondary">（4名）</span></span>
+        <div class="bar-track"><div class="bar-fill" style="width:92.8%;">92.8%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">企画G<span class="text-sm text-secondary">（5名）</span></span>
+        <div class="bar-track"><div class="bar-fill" style="width:84.8%;">84.8%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">国際人事G<span class="text-sm text-secondary">（6名）</span></span>
+        <div class="bar-track"><div class="bar-fill" style="width:78.7%;">78.7%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">アパレル2T<span class="text-sm text-secondary">（5名）</span></span>
+        <div class="bar-track"><div class="bar-fill bar-fill-low" style="width:52%;">52.0%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">マーケティング室<span class="text-sm text-secondary">（4名）</span></span>
+        <div class="bar-track"><div class="bar-fill bar-fill-low" style="width:42.3%;">42.3%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">デジタル本部<span class="text-sm text-secondary">（2名）</span></span>
+        <div class="bar-track"><div class="bar-fill bar-fill-low" style="width:42%;">42.0%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:220px;">東日本営業特販G<span class="text-sm text-secondary">（3名）</span></span>
+        <div class="bar-track"><div class="bar-fill bar-fill-low" style="width:41.8%;">41.8%</div></div>
+      </div>
+      <div class="bar-row" style="margin-top:8px; padding-top:12px; border-top:2px solid var(--ykk-navy);">
+        <span class="bar-label" style="width:220px;"><strong style="color:var(--ykk-navy);">全体合計</strong></span>
+        <div class="bar-track"><div class="bar-fill" style="width:77.3%; background:linear-gradient(90deg, var(--ykk-navy), var(--ykk-teal));">77.3%</div></div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+      <div style="background:var(--white); border:1px solid var(--gray-mid); padding:16px;">
+        <p class="text-sm"><strong style="color:var(--ykk-navy);">上位4チーム（製造系・技術系）が90%超の驚異的な定着率。</strong><br>56名でスタート後、参加要望が6名増え62名に。「振り返り」の受容性は証明されました。</p>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--gray-mid); padding:16px;">
+        <p class="text-sm"><strong style="color:var(--ykk-navy);">スマートファクトリー推進室の山崎氏自身が率先垂範。</strong><br>本提案の推進リーダーとしての適性を裏付けています。</p>
+      </div>
+    </div>
+
+    <!-- 2.3 Two Categories of Issues -->
+    <p class="fw-700 mt-32 mb-8" style="font-size:20px; color:var(--ykk-navy);">2つの課題</p>
+    <p class="text-secondary mb-32">トライアルを通じて、<strong>サービス側の改善課題</strong>と、<strong>YKK様固有の本質的な組織課題</strong>の2つが明確になりました。</p>
+
+    <!-- A. Service Issues -->
+    <div style="margin-bottom:40px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div style="background:var(--ykk-blue); color:var(--white); font-size:13px; font-weight:700; padding:4px 14px; letter-spacing:1px;">A</div>
+        <p class="fw-700" style="font-size:16px; color:var(--ykk-navy); margin:0;">AIリフレクション（サービス）の課題</p>
+      </div>
+      <p class="text-sm text-secondary mb-16">現場の声をもとに、弊社サービスとして改善すべき点です。</p>
+      <table>
+        <thead><tr><th style="width:70px; white-space:nowrap;">#</th><th style="width:200px;">課題</th><th>現場の声</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:nowrap;"><strong>S-1</strong></td><td><strong>対話時間の超過</strong></td><td>「1日10分の想定が20〜30分かかる」「AIの深掘り質問が終わらず、クローズできない」</td></tr>
+          <tr><td style="white-space:nowrap;"><strong>S-2</strong></td><td><strong>過剰な承認・褒めすぎ</strong></td><td>「当たり前のことを大げさに褒められすぎて違和感がある」</td></tr>
+          <tr><td style="white-space:nowrap;"><strong>S-3</strong></td><td><strong>目標・成果との非連動</strong></td><td>「目標管理や成果に繋げたい」「振り返りだけでなく、明日の行動に活かしたい」</td></tr>
+          <tr><td style="white-space:nowrap;"><strong>S-4</strong></td><td><strong>既存システムとの二重入力</strong></td><td>「Salesforceとの使い分けが負担」「出張先での両方入力は困難」営業部署の問題</td></tr>
+        </tbody>
+      </table>
+      <div class="callout" style="margin-top:16px; font-size:14px;">
+        <strong>S-1〜S-2は改善済み。</S-2ha>S-3はV1.5で改善。</strong>S-4はV2.0（Salesforce API連携）で対応可能。
+      </div>
+    </div>
+
+    <!-- B. YKK Fundamental Issues -->
+    <div style="margin-bottom:40px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div style="background:var(--ykk-navy); color:var(--white); font-size:13px; font-weight:700; padding:4px 14px; letter-spacing:1px;">B</div>
+        <p class="fw-700" style="font-size:16px; color:var(--ykk-navy); margin:0;">YKK様の本質的な組織課題</p>
+      </div>
+      <p class="text-sm text-secondary mb-16">トライアルを通じて浮き彫りになった、YKK様固有の組織的な課題。AIリフレクションの活用を通じて、これらの解決に貢献できると考えています。</p>
+      <p class="text-sm mb-16" style="color:var(--ykk-navy); font-weight:500;">各人の明確な目標設定がなく（人事上のものは上司との年1回の面談で設定）、目標に基づいた日々の行動や成長への意識が希薄化しています。この背景が、以下4つの課題として現れています。</p>
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="card card-accent" style="border-top-color:var(--ykk-navy);">
+          <div class="card-num" style="color:var(--ykk-navy);">Y-1</div>
+          <h4>上位方針と個人目標の断絶</h4>
+          <p>中期経営計画や事業方針が、部門→チーム→個人の行動目標に落とし込まれていない。年1回の人事面談で設定される目標は抽象的で、日々の行動指針として機能していない。</p>
+        </div>
+        <div class="card card-accent" style="border-top-color:var(--ykk-navy);">
+          <div class="card-num" style="color:var(--ykk-navy);">Y-2</div>
+          <h4>現場のサイロ化と対話不足</h4>
+          <p>設計部門の「一人親方」体制や、製造現場（1,500名体制）の交替勤務により、上司と部下の文脈共有が欠如。目標や成長について対話する機会が構造的に不足している。</p>
+        </div>
+        <div class="card card-accent" style="border-top-color:var(--ykk-navy);">
+          <div class="card-num" style="color:var(--ykk-navy);">Y-3</div>
+          <h4>企業DNAの希薄化</h4>
+          <p>黒部マザー工場の平均年齢37歳。若年化と中途・多様なキャリアの増加により、YKKの100年の歴史や創業者（吉田忠雄氏）の理念が自然には浸透しづらくなっている。</p>
+        </div>
+        <div class="card card-accent" style="border-top-color:var(--ykk-navy);">
+          <div class="card-num" style="color:var(--ykk-navy);">Y-4</div>
+          <h4>暗黙知の属人化と流出リスク</h4>
+          <p>優秀な製造・営業人材のノウハウが個人に閉じており、退職や異動で組織から失われるリスクがある。目標も成長記録もないため、引き継ぎが困難。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>結論：サービス課題を改善し、さらにYKK様の本質的な組織課題の解決に向けてプロダクトをアップグレードすることで、真の貢献を果たしていきます。</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3. V1.5 PROPOSAL ========== -->
+<section class="page">
+  <div class="container">
+    <div class="section-num">SECTION 03</div>
+    <h2 class="section-title">ご提案：V1.5 へのアップグレード</h2>
+    <p class="section-subtitle">トライアルで得た知見とYKK現場の声を反映し、プロダクトを進化させます</p>
+    <div class="section-divider"></div>
+
+    <p class="mb-16">弊社はYKK様の現場の声を継続的にプロダクトに反映し、進化を重ねています。V1.5は<strong>サービス課題の改善</strong>と、<strong>YKK様の本質課題への対応</strong>を同時に実現する進化版です。</p>
+    <table class="mb-32">
+      <thead><tr><th style="width:35%;">対応</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td><strong style="color:var(--ykk-blue);">サービス改善</strong></td><td>対話時間の短縮（S-1）、クリティカルシンキングへの転換（S-2）、目標連動（S-3）</td></tr>
+        <tr><td><strong style="color:var(--ykk-navy);">本質課題への貢献</strong></td><td>方針→個人目標の一貫性確保（Y-1）、DNA浸透の自動化（Y-3）、暗黙知の形式知化（Y-4）</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Feature Cards -->
+    <div class="card-grid">
+      <div class="card card-accent">
+        <div class="card-num">01</div>
+        <span class="card-tag tag-blue">CONTEXT INJECTION</span>
+        <h4>YKK DNA注入</h4>
+        <p class="mb-16">YKKの歴史・YKK精神・経営理念・コアバリュー・中期経営計画をAIに学習させる。</p>
+        <table class="table-compact" style="font-size:13px;">
+          <tr><td style="width:80px; font-weight:600; background:none; padding:6px 0;">効果</td><td style="background:none; padding:6px 0;">AIが「YKKの基準」で対話。過剰な褒めではなく、クリティカルシンキングを促す</td></tr>
+          <tr><td style="font-weight:600; background:none; padding:6px 0;">UX変化</td><td style="background:none; padding:6px 0;">「当たり前を褒められる」→「YKK基準で、さらに考えるべきでは？」</td></tr>
+        </table>
+      </div>
+      <div class="card card-accent">
+        <div class="card-num">02</div>
+        <span class="card-tag tag-blue">AI-DRIVEN ALIGNMENT</span>
+        <h4>AI支援 個人目標設定</h4>
+        <p class="mb-16">チーム方針・部門目標をAIと事前連携し、AIが個人目標設定を対話で支援。</p>
+        <table class="table-compact" style="font-size:13px;">
+          <tr><td style="width:80px; font-weight:600; background:none; padding:6px 0;">効果</td><td style="background:none; padding:6px 0;">上位方針→個人目標の一貫性を確保。「何を目指すか」が明確に</td></tr>
+          <tr><td style="font-weight:600; background:none; padding:6px 0;">UX変化</td><td style="background:none; padding:6px 0;">「抽象的なスローガン」→「具体的な行動目標」</td></tr>
+        </table>
+      </div>
+      <div class="card card-accent">
+        <div class="card-num">03</div>
+        <span class="card-tag tag-blue">DAILY COACHING</span>
+        <h4>目標連動デイリーチェックイン</h4>
+        <p class="mb-16">設定した個人目標を毎日のチェックインに連携。AIが目標に沿った問いかけを行う。</p>
+        <table class="table-compact" style="font-size:13px;">
+          <tr><td style="width:80px; font-weight:600; background:none; padding:6px 0;">効果</td><td style="background:none; padding:6px 0;">「漫然とした振り返り」→「目標達成に向けた軌道修正」</td></tr>
+          <tr><td style="font-weight:600; background:none; padding:6px 0;">時間</td><td style="background:none; padding:6px 0;"><strong style="color:var(--ykk-blue);">20〜30分 → 5〜10分</strong>（無駄な質問が激減）</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- AI Dialogue Comparison -->
+    <p class="fw-700 mt-32 mb-16" style="font-size:16px; color:var(--ykk-navy);">AI対話の変化：具体例</p>
+    <div class="comparison">
+      <div class="comparison-col comparison-before">
+        <div class="comparison-label">V1.0（現在）</div>
+        <pre><strong>User:</strong> 今日は品質チェックを予定通り完了しました
+
+<strong>AI:</strong>  素晴らしいですね！
+      予定通りに完了できたことは
+      大きな成果です！</pre>
+      </div>
+      <div class="comparison-col comparison-after">
+        <div class="comparison-label">V1.5（進化後）</div>
+        <pre><strong>User:</strong> 今日は品質チェックを予定通り完了しました
+
+<strong>AI:</strong>  予定通りの完了、基本動作の徹底ですね。
+      吉田忠雄氏は「一つ一つに最善を尽くす」
+      と語っています。
+      今日のチェックで、改善の余地を
+      感じた点はありましたか？
+      スマートファクトリーの品質基準に照らして、
+      どう評価しますか？</pre>
+      </div>
+    </div>
+
+    <!-- V1.0 vs V1.5 Table -->
+    <p class="fw-700 mt-32 mb-16" style="font-size:16px; color:var(--ykk-navy);">V1.0 vs V1.5 比較</p>
+    <table>
+      <thead>
+        <tr><th style="width:25%;">項目</th><th style="width:35%;">V1.0（現在）</th><th style="width:40%;">V1.5（提案）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>AIの基盤知識</strong></td><td>汎用LLMのみ</td><td class="highlight">YKKの歴史・理念・方針を学習済み</td></tr>
+        <tr><td><strong>対話スタンス</strong></td><td>受動的・過剰な承認</td><td class="highlight">能動的提案・クリティカルシンキング</td></tr>
+        <tr><td><strong>所要時間</strong></td><td>20〜30分</td><td><strong style="color:var(--ykk-blue); font-size:16px;">5〜10分</strong></td></tr>
+        <tr><td><strong>目標との連動</strong></td><td>なし</td><td class="highlight">個人目標・部門方針と完全連動</td></tr>
+        <tr><td><strong>行動への変換</strong></td><td>気づきで終了</td><td class="highlight">翌日の具体的アクションを自動生成</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 4. ORGANIZATION ========== -->
+<section class="page page-navy">
+  <div class="container">
+    <div class="section-num">SECTION 04</div>
+    <h2 class="section-title">展開ビジョンと推進体制のご提案</h2>
+    <p class="section-subtitle">パイロット62名の成果を、JPC 2,000名超への展開につなげる座組みをご提案します</p>
+    <div class="section-divider"></div>
+
+    <!-- Vision: Pilot → JPC (compact) -->
+    <p class="fw-700 mb-16" style="font-size:15px; color:rgba(255,255,255,0.9);">展開ビジョン</p>
+    <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:0; margin:0 0 8px; align-items:stretch;">
+      <div style="background:rgba(0,102,179,0.25); border:1px solid rgba(255,255,255,0.15); padding:16px 20px; text-align:center;">
+        <div style="font-size:10px; letter-spacing:2px; color:rgba(255,255,255,0.5); font-weight:600;">CURRENT</div>
+        <div style="font-size:14px; font-weight:700; color:var(--white);">パイロット</div>
+        <div style="font-size:28px; font-weight:900; color:var(--white); line-height:1.2;">62<span style="font-size:13px; font-weight:400;">名</span></div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:4px;">10チーム / 実施率 77.3%</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 12px;">
+        <div style="color:rgba(255,255,255,0.3); font-size:20px;">&#9654;</div>
+      </div>
+      <div style="background:rgba(0,131,143,0.2); border:1px solid rgba(255,255,255,0.15); padding:16px 20px; text-align:center;">
+        <div style="font-size:10px; letter-spacing:2px; color:rgba(255,255,255,0.5); font-weight:600;">NEXT</div>
+        <div style="font-size:14px; font-weight:700; color:var(--white);">JPC全体</div>
+        <div style="font-size:28px; font-weight:900; color:var(--white); line-height:1.2;">2,132<span style="font-size:13px; font-weight:400;">名</span></div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:4px;">製造統括部 1,619名 / 営業統括部 475名</div>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(255,255,255,0.1); padding:8px 20px; margin-bottom:32px; text-align:center; background:rgba(255,255,255,0.02);">
+      <p style="font-size:12px; color:rgba(255,255,255,0.5); margin:0;">JPCで機能すれば、<strong style="color:rgba(255,255,255,0.8);">グローバルに展開可能</strong></p>
+    </div>
+
+    <!-- Current Mismatch (compact) -->
+    <p class="fw-700 mb-8" style="font-size:15px; color:rgba(255,255,255,0.9);">現状の課題</p>
+    <div style="border-left:3px solid var(--accent-orange); background:rgba(232,116,12,0.1); padding:14px 20px; margin-bottom:32px; font-size:14px; color:rgba(255,255,255,0.8); line-height:1.7;">
+      推進側のミッション：エンゲージメント向上 ／ ユーザーの本音：<strong style="color:var(--white);">成果を上げたい・成長したい</strong><br>
+      → 現場感覚とのギャップにより意思決定に遅れ
+    </div>
+
+    <!-- Proposed Structure (compact) -->
+    <p class="fw-700 mb-16" style="font-size:15px; color:rgba(255,255,255,0.9);">提案：推進体制</p>
+    <div style="margin:0 0 24px; padding:24px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
+      <!-- Owner -->
+      <div style="text-align:center; margin-bottom:16px;">
+        <div style="display:inline-block; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); padding:10px 28px;">
+          <span style="font-size:10px; letter-spacing:2px; color:rgba(255,255,255,0.4); font-weight:600;">PROJECT OWNER</span>&emsp;
+          <span style="font-size:14px; font-weight:700; color:var(--white);">グローバルエンゲージメントチーム</span>
+          <span style="font-size:11px; color:rgba(255,255,255,0.4); margin-left:8px;">Jessica氏</span>
+        </div>
+      </div>
+      <div style="text-align:center; margin-bottom:12px; color:rgba(255,255,255,0.15); font-size:11px;">&#9650; レポート&emsp;|</div>
+      <!-- Leads -->
+      <div style="display:grid; grid-template-columns:1fr 16px 1fr; gap:0; align-items:stretch; margin-bottom:8px;">
+        <div style="border:1px solid rgba(0,102,179,0.5); background:rgba(0,102,179,0.25); padding:12px 16px; text-align:center;">
+          <div style="font-size:10px; letter-spacing:1px; color:rgba(255,255,255,0.4); font-weight:600;">PROJECT LEAD — 製造</div>
+          <div style="font-size:14px; font-weight:700; color:var(--white);">スマートファクトリー推進室</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.4);">山崎氏</div>
+        </div>
+        <div></div>
+        <div style="border:1px solid rgba(0,131,143,0.5); background:rgba(0,131,143,0.25); padding:12px 16px; text-align:center;">
+          <div style="font-size:10px; letter-spacing:1px; color:rgba(255,255,255,0.4); font-weight:600;">PROJECT LEAD — 営業</div>
+          <div style="font-size:14px; font-weight:700; color:var(--white);">営業推進室</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.4);">和泉氏</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 16px 1fr; gap:0; margin-bottom:8px;">
+        <div style="text-align:center; color:rgba(255,255,255,0.12); font-size:11px;">&#8595;</div>
+        <div></div>
+        <div style="text-align:center; color:rgba(255,255,255,0.12); font-size:11px;">&#8595;</div>
+      </div>
+      <!-- KUDEN -->
+      <div style="border:1px dashed rgba(255,255,255,0.12); padding:10px 20px; text-align:center;">
+        <span style="font-size:10px; letter-spacing:2px; color:rgba(255,255,255,0.35);">PARTNER</span>&emsp;
+        <span style="font-size:12px; font-weight:600; color:rgba(255,255,255,0.6);">KUDEN WORLD</span>&emsp;
+        <span style="font-size:11px; color:rgba(255,255,255,0.35);">— 日々のカウンターパートとして伴走</span>
+      </div>
+    </div>
+
+    <!-- Role description (compact) -->
+    <div style="border-left:3px solid var(--ykk-blue); background:rgba(0,102,179,0.08); padding:14px 20px; margin-bottom:24px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.8;">
+      プロジェクトリーダーがKUDENと連携し、<strong style="color:var(--white);">現場の業務課題を洗い出し</strong>、プロダクト改善と実施サポートを行う。進捗・成果はオーナーへ定期レポート。
+    </div>
+
+    <!-- Key Points (compact) -->
+    <div class="card-grid" style="gap:16px;">
+      <div class="card card-navy card-accent-teal" style="padding:18px;">
+        <h4 style="font-size:14px;">現場を知るリーダーが推進</h4>
+        <p style="font-size:13px;">製造と営業では課題が異なる。各推進室が現場文脈を持ってリード。</p>
+      </div>
+      <div class="card card-navy card-accent-teal" style="padding:18px;">
+        <h4 style="font-size:14px;">オーナーへの可視性を確保</h4>
+        <p style="font-size:13px;">リーダーからエンゲージメントチームへ定期レポート。説明責任を維持。</p>
+      </div>
+      <div class="card card-navy card-accent-teal" style="padding:18px;">
+        <h4 style="font-size:14px;">KUDENは伴走パートナー</h4>
+        <p style="font-size:13px;">日々リーダーと連携し、課題抽出・改善・実施サポートを継続。</p>
+      </div>
+    </div>
+
+    <!-- Why Now -->
+    <div class="callout callout-navy mt-32">
+      <strong>なぜ今このタイミングか</strong><br><br>
+      1. <strong>トライアルデータが揃った</strong> — 実施率・課題の両面でエビデンスがある<br>
+      2. <strong>現場からの具体的要請がある</strong> — 山崎氏（スマートファクトリー推進室）を中心にJPCリーダー陣が「あるべきAI」を描いている<br>
+      3. <strong>V1.5の開発準備が整っている</strong> — 弊社側でContext Injection・目標連動の技術設計が完了<br>
+      4. <strong>スマートファクトリー推進室が増員中</strong> — 17名→27名への拡大は、経営の投資意志の表れ
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. ROADMAP ========== -->
+<section class="page page-alt">
+  <div class="container">
+    <div class="section-num">SECTION 05</div>
+    <h2 class="section-title">実施ロードマップ</h2>
+    <div class="section-divider"></div>
+
+    <div class="roadmap" style="grid-template-columns:repeat(4, 1fr);">
+      <div class="roadmap-phase" style="background:var(--white);">
+        <div class="roadmap-num">PHASE 1</div>
+        <div class="roadmap-title">V1.0 トライアル</div>
+        <div class="roadmap-duration">2026/1/14〜5/13</div>
+        <div class="roadmap-item">AIリフレクション単体での検証</div>
+        <div class="roadmap-item">振り返りの習慣化を実証</div>
+        <div class="roadmap-item">62名・10チームで実施</div>
+        <div class="roadmap-item">サービス課題・組織課題の抽出</div>
+        <div class="roadmap-item" style="margin-top:8px; color:var(--ykk-blue); font-weight:600;">← 現在ここ</div>
+      </div>
+      <div class="roadmap-phase" style="background:var(--white);">
+        <div class="roadmap-num">PHASE 2</div>
+        <div class="roadmap-title">V1.5 利用</div>
+        <div class="roadmap-duration">2026/5/14〜7/13</div>
+        <div class="roadmap-item">JPC製造/営業を中心に目標連動型で実証実験</div>
+        <div class="roadmap-item">月次KPI検証・チューニング</div>
+        <div class="roadmap-item">スマートファクトリー推進室との連携</div>
+        <div class="roadmap-item">効果測定レポート</div>
+      </div>
+      <div class="roadmap-phase" style="background:var(--white);">
+        <div class="roadmap-num">PHASE 3</div>
+        <div class="roadmap-title">導入検討及び準備</div>
+        <div class="roadmap-duration">2026/7/14〜8/31</div>
+        <div class="roadmap-item">Phase 2の効果検証・評価</div>
+        <div class="roadmap-item">JPC全社展開の投資判断</div>
+        <div class="roadmap-item">導入範囲・体制の確定</div>
+        <div class="roadmap-item">運用設計・準備</div>
+      </div>
+      <div class="roadmap-phase" style="background:var(--white);">
+        <div class="roadmap-num">PHASE 4</div>
+        <div class="roadmap-title">JPCへ本格導入</div>
+        <div class="roadmap-duration">2026/9〜</div>
+        <div class="roadmap-item">JPC 2,132名への展開</div>
+        <div class="roadmap-item">製造統括部・営業統括部へ順次導入</div>
+        <div class="roadmap-item">継続的なプロダクト改善</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6. INVESTMENT ========== -->
+<section class="page">
+  <div class="container">
+    <div class="section-num">SECTION 06</div>
+    <h2 class="section-title">V1.5 当初予算使用</h2>
+    <div class="section-divider"></div>
+
+    <div class="card-grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <!-- Development Cost -->
+      <div>
+        <p class="fw-700 mb-16" style="font-size:16px; color:var(--ykk-navy);">開発費用</p>
+        <table>
+          <thead><tr><th>項目</th><th style="text-align:right;">費用</th></tr></thead>
+          <tbody>
+            <tr><td>YKK DNA注入（Context Injection）</td><td style="text-align:right;">1,500,000円</td></tr>
+            <tr><td>AI目標設定コーチ・デイリーチェックイン構築</td><td style="text-align:right;">3,500,000円</td></tr>
+            <tr><td>出精値引き</td><td style="text-align:right; color:var(--accent-red);">-2,900,000円</td></tr>
+            <tr style="background:var(--ykk-blue-light);"><td><strong>合計</strong></td><td style="text-align:right;"><strong style="font-size:18px; color:var(--ykk-navy);">2,100,000円</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- SaaS -->
+      <div>
+        <p class="fw-700 mb-16" style="font-size:16px; color:var(--ykk-navy);">SaaS利用料（変更なし）</p>
+        <table>
+          <thead><tr><th>項目</th><th style="text-align:right;">費用</th></tr></thead>
+          <tbody>
+            <tr><td>月額使用料 / ID</td><td style="text-align:right;">5,000円</td></tr>
+            <tr><td>ID数</td><td style="text-align:right;">62（既存パイロット継続）</td></tr>
+            <tr><td colspan="2" style="font-size:12px; color:var(--text-secondary);">AI従量課金・その他機能全ての使用料含む</td></tr>
+            <tr style="background:var(--ykk-blue-light);"><td><strong>月額合計</strong></td><td style="text-align:right;"><strong style="font-size:18px; color:var(--ykk-navy);">310,000円</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <p class="fw-700 mt-32 mb-16" style="font-size:16px; color:var(--ykk-navy);">投資対効果の見通し</p>
+    <table>
+      <thead><tr><th>効果</th><th>指標</th><th>目標</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>デイリーチェックイン時間短縮</td>
+          <td>20〜30分 → 5〜10分</td>
+          <td><strong class="highlight">50%以上短縮</strong></td>
+        </tr>
+        <tr>
+          <td>目標達成への貢献実感</td>
+          <td>現状: 低</td>
+          <td><strong class="highlight">70%以上が実感</strong></td>
+        </tr>
+        <tr>
+          <td>行動案の実行率</td>
+          <td>現状: 不明</td>
+          <td><strong class="highlight">60%以上</strong></td>
+        </tr>
+        <tr>
+          <td>上司のマネジメント時間削減</td>
+          <td>目標策定・進捗確認</td>
+          <td><strong class="highlight">30%削減</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 7. AGREEMENT ========== -->
+<section class="page page-alt">
+  <div class="container">
+    <div class="section-num">SECTION 07</div>
+    <h2 class="section-title">本提案で合意いただきたいこと</h2>
+    <div class="section-divider"></div>
+
+    <div class="agreement-list">
+      <div class="agreement-item">
+        <h4>V1.5アップグレードの実施</h4>
+        <p>開発費 210万円の投資判断</p>
+      </div>
+      <div class="agreement-item">
+        <h4>推進体制の変更</h4>
+        <p>プロジェクトの設計変更（スポンサー：Jessica氏、プロジェクトリーダー：スマートファクトリー推進室）</p>エンゲージメントチームの役割再定義（支援・効果測定）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLOSING ========== -->
+<section class="closing">
+  <blockquote>
+    単なるAIツールの導入ではなく、<br>
+    YKKの100年企業としてのDNAをデジタルに継承し、<br>
+    全社員の成長と成果を加速させる<br>
+    <strong>「組織進化OS」</strong>を共に創り上げたい。
+  </blockquote>
+  <p class="closing-sig">
+    <strong>株式会社 KUDEN WORLD</strong><br>
+    代表取締役社長&emsp;中島晋哉<br><br>
+    2026年4月
+  </p>
+</section>
+
+</body>
+</html>

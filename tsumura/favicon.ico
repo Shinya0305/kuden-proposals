@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<title>400エラー | ツムラ</title>
+<meta name="description" content>
+<link rel="icon" href="/assets/img/favicon.ico">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="400エラー | ツムラ">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.tsumura.co.jp/400.html">
+<meta property="og:image" content="https://www.tsumura.co.jp/assets/img/og-image.jpg">
+<meta property="og:description" content>
+<meta property="og:site_name" content>
+<meta name="twitter:card" content="Summary Card with Large Image">
+<meta name="twitter:site" content>
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/css/all.css" integrity="sha384-TwKeDzLi1zdsp7VEHf+IbZp0Es1VLVbwQePu0J5Sm0Jt6iMrX1uu56mHASvvoZc9" crossorigin="anonymous">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TWPSWW');</script>
+	<!-- End Google Tag Manager -->
+
+</head>
+<body>
+
+
+<!-- Include header -->
+<header class="l-header js-header js-scrollHeader">
+	<div class="l-header-inner">
+		<a href="/" class="l-header-logo"><img src="/assets/img/common/logo_corp.svg" alt="自然と健康を科学する ツムラ"></a>
+		<div class="l-header-nav__wrapper">
+			<nav class="l-header-nav__upper">
+				<ul class="l-header-nav__relative">
+					<li><a href="https://medical.tsumura.co.jp/" target="_blank" id="menu06">医療関係者の皆さま</a></li>
+					<li><a href="/recruit/" id="menu07">採用情報</a></li>
+					<li><a href="/qa/" id="menu08">お問い合わせ</a></li>
+					<li><a href="/news/" id="menu09">ニュース</a></li>
+				</ul><!--.l-header-nav__relative-->
+				<button class="l-header-search__trigger js-search-trigger"></button>
+				<button class="l-header-menu__trigger spOnly js-menuTrigger-sp">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<ul class="l-header-nav__lang">
+					<li><a href="/english/" lang="en" id="menu10">English</a></li>
+					<li><a href="/chinese/" lang="ch-cmn-Hans" id="menu11">中文</a></li>
+				</ul>
+			</nav><!--.l-header-nav__upper-->
+			<nav class="l-header-nav__lower js-menu-dropdown">
+				<ul class="l-header-nav__global js-globalNav js-header-current">
+					<li>
+						<a href="/corporate/" id="menu01"><span>ツムラについて</span></a>
+						<div class="l-header-dropdown js-dropdown">
+							<div class="l-header-dropdown__inner">
+								<div class="l-header-dropdown__parent">
+									<a class="l-header-dropdown__head" href="/corporate/" id="menu01_01">ツムラについてTOP</a>
+									<ul class="l-header-dropdown__links">
+										<li><a href="/corporate/message/" id="menu01_02"><span>CEOメッセージ</span><i class="l-header-arrow__sp"></i></a></li>
+										<li class="js-childTrigger">
+											<a href="/corporate/profile/" id="menu01_03"><span>会社情報</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/corporate/profile/" id="menu01_03a">会社情報TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/corporate/profile/officer/" id="menu01_03b"><span>役員情報</span></a></li>
+													<li><a href="/corporate/profile/network/" id="menu01_03c"><span>国内ネットワーク</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li><a href="/corporate/policy/" id="menu01_04"><span>企業理念</span><i class="l-header-arrow__sp"></i></a></li>
+										<li><a href="/corporate/one-minite-tsumura/" id="menu01_05"><span>1分でわかるツムラ</span><i class="l-header-arrow__sp"></i></a></li>
+										<li class="js-childTrigger">
+											<a href="/corporate/history/" id="menu01_06"><span>ツムラの歴史</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/corporate/history/" id="menu01_06a">ツムラの歴史TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/corporate/history/1893/" id="menu01_06b"><span>1893年~1945年<br>&emsp;創業から終戦まで</span></a></li>
+													<li><a href="/corporate/history/1946/" id="menu01_06c"><span>1946年~1970年<br>&emsp;戦後復興から漢方の復権へ</span></a></li>
+													<li><a href="/corporate/history/1971/" id="menu01_06d"><span>1971年~1992年<br>&emsp;薬価収載と事業の多角化</span></a></li>
+													<li><a href="/corporate/history/1993/" dir="menu01_06e"><span>1993年~<br>&emsp;危機からの脱出と価値の創造</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/corporate/quality/" id="menu01_07"><span>品質について</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/corporate/quality/" id="menu01_07a">品質についてTOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/corporate/quality/value-chain/" id="menu01_07b"><span>漢方の「品質」が患者さまに届くまで</span></a></li>
+													<li><a href="/corporate/quality/procurement/" id="menu01_07c"><span>原料生薬栽培・調達への取り組み</span></a></li>
+													<li><a href="/corporate/quality/quality-management/" id="menu01_07d"><span>品質管理・製造・流通への取り組み</span></a></li>
+													<li><a href="/corporate/quality/providing-activities/" id="menu01_07e"><span>情報収集・提供活動への取り組み</span></a></li>
+													<li><a href="/corporate/quality/consistency/" id="menu01_07f"><span>漢方製剤の均質性</span></a></li>
+													<li><a href="/corporate/quality/production-areas/" id="menu01_07g"><span>生薬の産地</span></a></li>
+													<li><a href="/corporate/quality/special-feature/" id="menu01_07h"><span>特集：「漢方の品質は畑から」</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/corporate/rd/" id="menu01_08"><span>研究開発</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/corporate/rd/" id="menu01_08a">研究開発TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/corporate/rd/personalized-medicine/" id="menu01_08b"><span>個別化医療</span></a></li>
+													<li><a href="/corporate/rd/mibyo/" id="menu01_08c"><span>未病</span></a></li>
+													<li><a href="/corporate/rd/ethical-guidelines/" id="menu01_08d"><span>倫理指針にて公開が求められる研究</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li><a href="/corporate/policy-list/" id="menu01_09"><span>指針・ポリシー一覧</span><i class="l-header-arrow__sp"></i></a></li>
+										<li class="js-childTrigger">
+											<a href="/corporate/corporate-governance/" id="menu01_10"><span>コーポレートガバナンス</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/corporate/corporate-governance/" id="menu01_10a">コーポレートガバナンスTOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/corporate/corporate-governance/basic/" id="menu01_10b"><span>基本的な考え方</span></a></li>
+													<li><a href="/corporate/corporate-governance/transition/" id="menu01_10c"><span>体制の変遷</span></a></li>
+													<li><a href="/corporate/profile/officer/" id="menu01_10d"><span>役員情報</span></a></li>
+													<li><a href="/corporate/corporate-governance/diversity/" id="menu01_10e"><span>取締役会の多様性に対する考え方</span></a></li>
+													<li><a href="/corporate/corporate-governance/governance-activities/" id="menu01_10f"><span>2023年度ガバナンス活動</span></a></li>
+													<li><a href="/corporate/corporate-governance/effectiveness/" id="menu01_10g"><span>取締役会の実効性評価</span></a></li>
+													<li><a href="/corporate/corporate-governance/executive-compensation/" id="menu01_10h"><span>役員報酬・構成</span></a></li>
+													<li><a href="/corporate/corporate-governance/total-amount/" id="menu01_10i"><span>役員区分ごとの報酬等の総額、報酬等の種類別の総額および対象となる役員の員数</span></a></li>
+													<li><a href="/corporate/corporate-governance/stock-held/" id="menu01_10j"><span>政策保有株式</span></a></li>
+													<li><a href="/corporate/corporate-governance/internal-control-system/" id="menu01_10k"><span>内部統制システム構築に関する基本方針</span></a></li>
+													<li><a href="/corporate/corporate-governance/compliance-promotion/" id="menu01_10l"><span>コンプライアンスを推進する仕組みと体制</span></a></li>
+													<li><a href="/corporate/corporate-governance/riskmanagement-system/" id="menu01_10m"><span>リスクマネジメント体制</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/corporate/group/" id="menu01_11"><span>ツムラグループ</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/corporate/group/" id="menu01_11a">ツムラグループTOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="https://www.yubari-tsumura.co.jp/" target="_blank" id="menu01_11b"><span>株式会社夕張ツムラ</span></a></li>
+													<li><a href="https://www.logitem-tsumura.co.jp/" target="_blank" id="menu01_11c"><span>株式会社ロジテムツムラ</span></a></li>
+													<li><a href="http://www.sztsumura.com.cn/" target="_blank" id="menu01_11d"><span>深圳津村薬業有限公司</span></a></li>
+													<li><a href="http://www.shtsumura-p.com/" target="_blank" id="menu01_11e"><span>上海津村製薬有限公司</span></a></li>
+													<li><a href="http://www.tjtsumura.com/" target="_blank" id="menu01_11f"><span>天津津村製薬有限公司</span></a></li>
+													<li><a href="https://pingan-tsumura.com.cn/" target="_blank" id="menu01_11g"><span>平安津村有限公司</span></a></li>
+													<li><a href="https://ja.shengshibaicao.com/" target="_blank" id="menu01_11h"><span>盛実百草薬業有限公司</span></a></li>
+													<li><a href="https://www.tsumura-usa.com/" target="_blank" lang="en" id="menu01_11i"><span>TSUMURA USA, INC.</span></a></li>
+													<li><a href="/corporate/group/lao/" lang="en" id="menu01_11j"><span>LAO TSUMURA CO.,LTD.</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<p id="menu01_12"><span>日本の自然と伝統文化</span><i class="l-header-arrow__pc"></i></p>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/japanese-tradition/" id="menu01_12a"><span>日本の自然と伝統文化&emsp;TOP</span></a></li>
+													<li><a href="/japanese-tradition/season/" id="menu01_12b"><span>暦と暮らそう<br>―四季と生きる―</span></a></li>
+													<li><a href="/japanese-tradition/movie-72seasons/" id="menu01_12c"><span>映像で観る季節の移り変わり<br>―生きる、72の季節―</span></a></li>
+													<li><a href="/japanese-tradition/movie-expresser/" id="menu01_12d"><span>映像で観る季節の移り変わり<br>―生きる、私の季節―</span></a></li>
+													<li><a href="/japanese-tradition/ekiken/" id="menu01_12e"><span>益軒さんの養生訓</span></a></li>
+													<li><a href="/japanese-tradition/tradition-innovation/" id="menu01_12f"><span>伝統と革新</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li><a href="https://note.com/tsumura_official" target="_blank" id="menu01_13"><span>ツムラ公式note</span></a></li>
+									</ul>
+								</div><!--.l-header-dropdown__parent-->
+								<div class="l-header-dropdown__bg"></div>
+								<div class="l-header-dropdown__free">
+									<ul class="l-header-dropdown__bnrs">
+										<li>
+											<a id="cor_01" href="/corporate/message/">
+												<figure>
+													<img src="/assets/img/common/img_corp_01.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>CEOメッセージ</span><i></i></p>
+											</a>
+										</li>
+										<li>
+											<a id="cor_02" href="/corporate/history/">
+												<figure>
+													<img src="/assets/img/common/img_corp_02.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>ツムラの歴史</span><i></i></p>
+											</a>
+										</li>
+										<li>
+											<a id="cor_03" href="/japanese-tradition/">
+												<figure>
+													<img src="/assets/img/common/img_corp_03.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>日本の自然と伝統文化</span><i></i></p>
+											</a>
+										</li>
+									</ul>
+								</div><!--.l-header-dropdown__free-->
+							</div><!--.l-header-dropdown__links-->
+						</div><!--.l-header-dropdown-->
+					</li>
+					<li>
+						<a href="/products/" id="menu02"><span>製品情報</span></a>
+						<div class="l-header-dropdown js-dropdown">
+							<div class="l-header-dropdown__inner">
+								<div class="l-header-dropdown__parent">
+									<a class="l-header-dropdown__head" href="/products/" id="menu02_01">製品情報TOP</a>
+									<ul class="l-header-dropdown__links">
+										<li><a href="/products/n_medical/" id="menu02_02"><span>医療用漢方製剤</span></a></li>
+										<li><a href="/brand/products/" target="_blank" id="menu02_03"><span>一般用漢方製剤・一般用医薬品</span></a></li>
+										<li><a href="/products/customer-voice/" id="menu02_04"><span>お客さまの声をかたちに</span></a></li>
+									</ul>
+								</div><!--.l-header-dropdown__parent-->
+								<div class="l-header-dropdown__bg"></div>
+								<div class="l-header-dropdown__free">
+									<div class="l-header-dropdown__products">
+										<p>医療用漢方製剤</p>
+										<ul>
+											<li><a id="pro_01" class="c-boxLink" href="/products/50_medical/"><span class="c-boxLink__inner"><i class="c-boxLink__icon"><img src="/assets/img/common/icon_words.svg" alt></i><span class="c-boxLink__text">50音順で探す</span></span><i class="c-boxLink__arrow"></i></a></li>
+											<li><a id="pro_02" class="c-boxLink" href="/products/n_medical/"><span class="c-boxLink__inner"><i class="c-boxLink__icon"><img src="/assets/img/common/icon_num.svg" alt></i><span class="c-boxLink__text">製品番号で探す</span></span><i class="c-boxLink__arrow"></i></a></li>
+										</ul>
+									</div>
+									<ul class="l-header-dropdown__bnrs">
+										<li>
+											<a id="pro_03" href="/brand/products/" target="_blank">
+												<figure>
+													<img src="/assets/img/common/img_products_01.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>一般用漢方製剤</span><i></i></p>
+											</a>
+										</li>
+									</ul>
+								</div><!--.l-header-dropdown__free-->
+							</div><!--.l-header-dropdown__links-->
+						</div><!--.l-header-dropdown-->
+					</li>
+					<li>
+						<a href="/kampo/" id="menu03"><span>漢方について</span></a>
+						<div class="l-header-dropdown js-dropdown">
+							<div class="l-header-dropdown__inner">
+								<div class="l-header-dropdown__parent">
+									<a class="l-header-dropdown__head" href="/kampo/" id="menu03_01">漢方についてTOP</a>
+									<ul class="l-header-dropdown__links">
+										<li class="js-childTrigger">
+											<a href="/kampo/features/" id="menu03_02"><span>漢方の特徴</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/kampo/features/" id="menu03_02a">漢方の特徴TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/kampo/features/nature-blessings/" id="menu03_02b"><span>漢方は自然の恵み</span></a></li>
+													<li><a href="/kampo/features/raised-Japan/" id="menu03_02c"><span>漢方は日本育ち</span></a></li>
+													<li><a href="/kampo/features/fusion/" id="menu03_02d"><span>漢方医学と西洋医学の融合</span></a></li>
+													<li><a href="/kampo/features/various-face/" id="menu03_02e"><span>いろいろな顔を持っている漢方</span></a></li>
+													<li><a href="/kampo/features/find/" id="menu03_02f"><span>私に合う漢方薬の見つけ方</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li><a href="/kampo/history/" id="menu03_03"><span>漢方の歴史</span><i class="l-header-arrow__sp"></i></a></li>
+										<li><a href="/kampo/ingenuity/" id="menu03_04"><span>漢方を飲みやすくする工夫</span><i class="l-header-arrow__sp"></i></a></li>
+										<li><a href="/kampo-view/" id="menu03_05" target="_blank"><span>Kampo View<br>（漢方がよく分かる総合サイト）</span></a></li>
+									</ul>
+								</div><!--.l-header-dropdown__parent-->
+								<div class="l-header-dropdown__bg"></div>
+								<div class="l-header-dropdown__free">
+									<ul class="l-header-dropdown__bnrs">
+										<li>
+											<a id="kampo_02" href="/kampo-view/" target="_blank">
+												<figure>
+													<img src="/assets/img/common/bnr_kampoView.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>Kampo View<br>（漢方がよく分かる総合サイト）</span><i></i></p>
+											</a>
+										</li>
+										<li>
+											<a id="kampo_01" href="/hellotsumura/" target="_blank">
+												<figure>
+													<img src="/assets/img/common/bnr_HelloTsumura.png" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>バーチャル漢方記念館<br>Hello！TSUMURA</span><i></i></p>
+											</a>
+										</li>
+									</ul>
+								</div><!--.l-header-dropdown__free-->
+							</div><!--.l-header-dropdown__links-->
+						</div><!--.l-header-dropdown-->
+					</li>
+					<li>
+						<a href="/ir/" id="menu04"><span>IR情報</span></a>
+						<div class="l-header-dropdown js-dropdown">
+							<div class="l-header-dropdown__inner">
+								<div class="l-header-dropdown__parent">
+									<a class="l-header-dropdown__head" href="/ir/" id="menu04_01">IR情報TOP</a>
+									<ul class="l-header-dropdown__links">
+										<li class="js-childTrigger">
+											<a href="/ir/management/" id="menu04_02"><span>経営方針</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/ir/management/" id="menu04_02a">経営方針TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/ir/management/message/" id="menu04_02b"><span>CEOメッセージ</span></a></li>
+													<li><a href="/ir/management/priority-issues/" id="menu04_02c"><span>価値創造ストーリーとマテリアリティ</span></a></li>
+													<li><a href="/ir/management/plan/" id="menu04_02d"><span>中期経営計画</span></a></li>
+													<li><a href="/ir/management/risk/" id="menu04_02e"><span>事業のリスク</span></a></li>
+													<li><a href="/ir/management/disclosure-policy/" id="menu04_02f"><span>ディスクロージャーポリシー</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/ir/library/" id="menu04_03"><span>IR資料室</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/ir/library/" id="menu04_03a">IR資料室TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/ir/library/document/" id="menu04_03b"><span>決算関連資料</span></a></li>
+													<li><a href="/ir/library/briefing-materials/" id="menu04_03c"><span>各種説明会資料</span></a></li>
+													<li><a href="/ir/library/securities-report/" id="menu04_03d"><span>有価証券報告書等</span></a></li>
+													<li><a href="/ir/library/integrated-report/" id="menu04_03e"><span>統合報告書</span></a></li>
+													<li><a href="/ir/library/overseas/" id="menu04_03f"><span>海外IR資料</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/ir/finance/" id="menu04_04"><span>業績･財務情報</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/ir/finance/" id="menu04_04a">業績・財務情報TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/ir/finance/chart-generator/" id="menu04_04b"><span>チャートジェネレーター</span></a></li>
+													<li><a href="/ir/finance/outlook/" id="menu04_04c"><span>決算ハイライト</span></a></li>
+													<li><a href="/ir/finance/rating/" id="menu04_04d"><span>格付・社債情報</span></a></li>
+													<li><a href="/ir/finance/stock-chart/" id="menu04_04e"><span>株価情報</span></a></li>
+													<li><a href="/ir/finance/factsheets/" id="menu04_04f"><span>ファクトシート</span></a></li>
+													<li><a href="https://sharedresearch.jp/ja/companies/4540" target="_blank" id="menu04_04g"><span>シェアードリサーチ</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/ir/stock/" id="menu04_05"><span>株式・株主総会関連</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/ir/stock/" id="menu04_05a">株式・株主総会関連TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/ir/stock/shareholders/" id="menu04_05b"><span>株主総会</span></a></li>
+													<li><a href="/ir/stock/situation/" id="menu04_05c"><span>株式の状況</span></a></li>
+													<li><a href="/ir/stock/memo/" id="menu04_05d"><span>株式手続きメモ</span></a></li>
+													<li><a href="/ir/stock/dividends/" id="menu04_05e"><span>株主還元（配当･優待）</span></a></li>
+													<li><a href="/ir/stock/articles/" id="menu04_05f"><span>定款・株式取扱規程</span></a></li>
+													<li><a href="/ir/stock/announcement/" id="menu04_05g"><span>電子公告</span></a></li>
+													<li><a href="/ir/stock/analyst/" id="menu04_05h"><span>アナリスト一覧</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/ir/investor/" id="menu04_06"><span>個人投資家の皆さまへ</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/ir/investor/" id="menu04_06a">個人投資家の皆さまへTOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/ir/investor/event/" id="menu04_06b"><span>個人投資家向けイベント</span></a></li>
+													<li><a href="/ir/investor/report/" id="menu04_06c"><span>株主通信</span></a></li>
+													<li><a href="/ir/investor/about-tsumura/" id="menu04_06d"><span>ツムラってどんな会社</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/ir/others/" id="menu04_07"><span>その他IR関連情報</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/ir/others/" id="menu04_07a">その他IR関連情報TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/ir/others/faq/" id="menu04_07b"><span>IRサイトよくある質問</span></a></li>
+													<li><a href="/ir/others/mail-service/" id="menu04_07c"><span>メール配信サービス</span></a></li>
+													<li><a href="/ir/others/precautions/" id="menu04_07d"><span>IRサイト注意事項</span></a></li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div><!--.l-header-dropdown__parent-->
+								<div class="l-header-dropdown__bg"></div>
+								<div class="l-header-dropdown__free">
+									<ul class="l-header-dropdown__bnrs">
+										<li>
+											<a id="ir_01" href="/ir/library/briefing-materials/">
+												<figure>
+													<img src="/assets/img/common/img_ir_01.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>各種説明会資料</span><i></i></p>
+											</a>
+										</li>
+										<li>
+											<a id="ir_02" href="/ir/library/">
+												<figure>
+													<img src="/assets/img/common/img_ir_02.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>IR資料室</span><i></i></p>
+											</a>
+										</li>
+										<li>
+											<a id="ir_03" href="/ir/finance/">
+												<figure>
+													<img src="/assets/img/common/img_ir_03.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>業績・財務情報</span><i></i></p>
+											</a>
+										</li>
+									</ul>
+								</div><!--.l-header-dropdown__free-->
+							</div><!--.l-header-dropdown__links-->
+						</div><!--.l-header-dropdown-->
+					</li>
+					<li>
+						<a href="/sustainability/" id="menu05"><span>サステナビリティ</span></a>
+						<div class="l-header-dropdown js-dropdown">
+							<div class="l-header-dropdown__inner">
+								<div class="l-header-dropdown__parent">
+									<a class="l-header-dropdown__head" href="/sustainability/" id="menu05_01">サステナビリティTOP</a>
+									<ul class="l-header-dropdown__links">
+										<li><a href="/sustainability/message/" id="menu05_02"><span>トップメッセージ</span></a></li>
+										<li class="js-childTrigger">
+											<a href="/sustainability/basic-policy/" id="menu05_03"><span>基本方針</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/sustainability/basic-policy/" id="menu05_03a">基本方針TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/sustainability/basic-policy/charter/" id="menu05_03b"><span>サステナビリティ憲章</span></a></li>
+													<li><a href="/sustainability/basic-policy/organization-human-capital/" id="menu05_03c"><span>組織・人的資本政策基本方針</span></a></li>
+													<li><a href="/sustainability/basic-policy/governance/" id="menu05_03d"><span>コーポレート・ガバナンス基本方針</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li><a href="/sustainability/tsumura-group/" id="menu05_04"><span>ツムラグループのサステナビリティ</span><i class="l-header-arrow__sp"></i></a></li>
+										<li><a href="/ir/management/priority-issues/#sec04" id="menu05_05"><span>マテリアリティ（重要課題）</span><i class="l-header-arrow__sp"></i></a></li>
+										<li class="js-childTrigger">
+											<a href="/sustainability/environment/" id="menu05_06"><span>環境</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/sustainability/environment/" id="menu05_06a">環境TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/corporate/policy-list/#individual-policy05" id="menu05_06b"><span>ツムラ環境基本理念方針</span></a></li>
+													<li><a href="/sustainability/environment/manegement/" id="menu05_06c"><span>環境マネジメント</span></a></li>
+													<li><a href="/sustainability/environment/climate-change/" id="menu05_06d"><span>気候変動への対応</span></a></li>
+													<li><a href="/sustainability/environment/biodiversity/" id="menu05_06f"><span>生物多様性・持続可能な原料調達</span></a></li>
+													<li><a href="/sustainability/environment/resource-circulation/" id="menu05_06e"><span>資源の循環利用</span></a></li>
+													<li><a href="/sustainability/environment/tnfd-tcfd/" id="menu05_06g"><span>TNFD／TCFD提言に基づく統合的な情報開示</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/sustainability/society/" id="menu05_07"><span>社会</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/sustainability/society/" id="menu05_07a">社会TOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/sustainability/society/human-rights/" id="menu05_07b"><span>人権の尊重</span></a></li>
+													<li><a href="/sustainability/society/promise-employees/" id="menu05_07d"><span>従業員への約束</span></a></li>
+													<li><a href="/sustainability/society/local-residents/" id="menu05_07e"><span>社会・地域の皆さまとともに</span></a></li>
+													<li><a href="/sustainability/society/access-to-medicine/" id="menu05_07f"><span>医薬品アクセス</span></a></li>
+													<li><a href="/corporate/quality/value-chain/" id="menu05_07c"><span>バリューチェーン</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li class="js-childTrigger">
+											<a href="/sustainability/governance/" id="menu05_08"><span>ガバナンス</span><i class="l-header-arrow__pc"></i></a>
+											<div class="l-header-dropdown__child js-child-dropdown">
+												<a class="l-header-dropdown__childHead" href="/sustainability/governance/" id="menu05_08a">ガバナンスTOP</a>
+												<ul class="l-header-dropdown__childList">
+													<li><a href="/corporate/corporate-governance/" id="menu05_08b"><span>コーポレートガバナンス</span></a></li>
+													<li><a href="/corporate/corporate-governance/compliance-promotion/" id="menu05_08c"><span>コンプライアンス</span></a></li>
+													<li><a href="/corporate/corporate-governance/riskmanagement-system/" id="menu05_08d"><span>リスクマネジメント</span></a></li>
+												</ul>
+											</div>
+										</li>
+										<li><a href="/sustainability/#data-collection" id="menu05_09"><span>データ集</span><i class="l-header-arrow__sp"></i></a></li>
+										<li><a href="/sustainability/external-evaluation/" id="menu05_10"><span>外部からの評価・イニシアチブ</span><i class="l-header-arrow__sp"></i></a></li>
+									</ul>
+								</div><!--.l-header-dropdown__parent-->
+								<div class="l-header-dropdown__bg"></div>
+								<div class="l-header-dropdown__free">
+									<ul class="l-header-dropdown__bnrs">
+										<li>
+											<a id="sus_01" href="/sustainability/message/">
+												<figure>
+													<img src="/assets/img/common/img_sustainability_01.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>トップメッセージ</span><i></i></p>
+											</a>
+										</li>
+										<li>
+											<a id="sus_02" href="/sustainability/tsumura-group/">
+												<figure>
+													<img src="/assets/img/common/img_sustainability_02.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>ツムラグループのサステナビリティ</span><i></i></p>
+											</a>
+										</li>
+										<li>
+											<a id="sus_03" href="/ir/management/priority-issues/#sec04">
+												<figure>
+													<img src="/assets/img/common/img_sustainability_03.jpg" loading="lazy" width="540" height="200" alt>
+												</figure>
+												<p><span>マテリアリティ（重要課題）</span><i></i></p>
+											</a>
+										</li>
+									</ul>
+								</div><!--.l-header-dropdown__free-->
+							</div><!--.l-header-dropdown__links-->
+						</div><!--.l-header-dropdown-->
+					</li>
+				</ul><!--.l-header-nav__global-->
+				<div class="js-copy-dom">
+				</div>
+			</nav><!--.l-header-nav__lower-->
+		</div>
+		<div class="l-header-search__dropdown js-search-dropdown">
+			<div class="l-header-search__inner">
+				<form role="searchbox" method="get" class="searchbox-form" action="/search/">
+					<input type="text" value name="q" id="headpc_q" class="searchbox-text" placeholder="キーワードを入力">
+					<input type="submit" class="searchsubmit" value="検索する">
+				</form>
+				<button class="l-header-search__close js-search-close"><span>閉じる</span><i></i></button>
+			</div>
+		</div>
+	</div><!--.l-header-inner-->
+</header><!--.l-header-->
+<div class="l-header-background"></div><!--.l-header-background-->
+
+<!-- Include header -->
+
+<main class="main">
+	<div class="l-breadcrumb-wrapper">
+    <ol class="l-breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+			<!-- 1つめ -->
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="/">
+          <span itemprop="name">HOME</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      <!-- 2つめ -->
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="/400.html">
+					<span itemprop="name">400エラー</span>
+        </a>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </div>
+  <!--.breadcrumb-wrapper-->
+	<div class="l-page-container">
+		<header>
+			<h1 class="c-title c-title__h1">お探しのページが見つかりませんでした</h1>
+		</header>
+
+		<section class="l-box">
+			<div class="l-box__inner">
+				<h2 class="l-box__head l-box__caution"><i></i><span>申し訳ございません。</span></h2>
+				<p class="c-text">ご指定されたページは移動または削除されたか、ご入力いただいたアドレスに誤りがある可能性がございます。</p>
+			</div>
+		</section>
+
+		<div>
+			<p class="c-text">恐れ入りますがURLをご確認のうえもう一度お試しいただくか、 上段ナビゲーションバーや、下段サイトマップなどから該当するページをお探しください。</p>
+			<div class="c-btn__box u-flex--center">
+				<a href="/" class="c-btn"><span>トップページへ</span><i></i></a>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- Include footer -->
+<footer class="l-footer">
+		<div class="l-footer-inner">
+			<a class="l-footer-pagetop" href="#"><span></span></a>
+			<ul class="l-footer-grid__list">
+				<li>
+					<a class="l-footer-grid__head" href="/corporate/"><span>ツムラについて</span></a>
+					<ul class="l-footer-child__list">
+						<li><a href="/corporate/message/">CEOメッセージ</a></li>
+						<li><a href="/corporate/profile/">会社情報</a></li>
+						<li><a href="/corporate/policy/">企業理念</a></li>
+						<li><a href="/corporate/one-minite-tsumura/">1分でわかるツムラ</a></li>
+						<li><a href="/corporate/history/">ツムラの歴史</a></li>
+						<li><a href="/corporate/quality/">品質について</a></li>
+						<li><a href="/corporate/policy-list/">指針・ポリシー一覧</a></li>
+						<li><a href="/corporate/rd/">研究開発</a></li>
+						<li><a href="/corporate/corporate-governance/">コーポレートガバナンス</a></li>
+						<li><a href="/corporate/group/">ツムラグループ</a></li>
+						<li><a href="https://note.com/tsumura_official" target="_blank">ツムラ公式note</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="l-footer-grid__head" href="/products/"><span>製品情報</span></a>
+					<ul class="l-footer-child__list">
+						<li>
+							<a href="/products/n_medical/">医療用漢方製剤</a>
+							<ul class="l-footer-mini__list">
+								<li><a href="/products/50_medical/">50音順で探す</a></li>
+								<li><a href="/products/n_medical/">製品番号で探す</a></li>
+							</ul>
+						</li>
+						<li><a href="/brand/" target="_blank">一般用漢方製剤・一般用医薬品</a></li>
+						<li><a href="/products/customer-voice/">お客さまの声をかたちに</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="l-footer-grid__head" href="/kampo/"><span>漢方について</span></a>
+					<ul class="l-footer-child__list">
+						<li><a href="/kampo/features/">漢方の特徴</a></li>
+						<li><a href="/kampo/history/">漢方の歴史</a></li>
+						<li><a href="/kampo/ingenuity/">漢方を飲みやすくする工夫</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="l-footer-grid__head" href="/japanese-tradition/"><span>日本の自然と伝統文化</span></a>
+					<ul class="l-footer-child__list">
+						<!--<li><a href="/japanese-tradition/season/">季節のひとこと</a></li>-->
+						<li><a href="/japanese-tradition/season/index.html">暦と暮らそう<br>―四季と生きる―</a></li>
+						<li><a href="/japanese-tradition/movie-72seasons/index.html">生きる、72の季節</a></li>
+						<li><a href="/japanese-tradition/movie-expresser/index.html">生きる、私の季節</a></li>
+						<li><a href="/japanese-tradition/ekiken/index.html">益軒さんの養生訓</a></li>
+						<li><a href="/japanese-tradition/tradition-innovation/">伝統と革新</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="l-footer-grid__head" href="/ir/"><span>IR情報</span></a>
+					<ul class="l-footer-child__list">
+						<li><a href="/ir/management/">経営方針</a></li>
+						<li><a href="/ir/library/">IR資料室</a></li>
+						<li><a href="/ir/finance/">業績・財務情報</a></li>
+						<li><a href="/ir/stock/">株式・株主総会関連</a></li>
+						<li><a href="/ir/investor/">個人投資家の皆さまへ</a></li>
+						<li><a href="/ir/others/">その他 IR関連情報</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="l-footer-grid__head" href="/sustainability/"><span>サステナビリティ</span></a>
+					<ul class="l-footer-child__list">
+						<li><a href="/sustainability/message/">トップメッセージ</a></li>
+						<li><a href="/sustainability/basic-policy">基本方針</a></li>
+						<li><a href="/sustainability/tsumura-group/">ツムラグループのサステナビリティ</a></li>
+						<li><a href="/ir/management/priority-issues/#sec04">マテリアリティ（重要課題）</a></li>
+						<li><a href="/sustainability/environment/">環境</a></li>
+						<li><a href="/sustainability/society/">社会</a></li>
+						<li><a href="/sustainability/governance/">ガバナンス</a></li>
+						<li><a href="/sustainability/#data-collection">データ集</a></li>
+						<li><a href="/sustainability/external-evaluation/">外部からの評価・イニシアチブ</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="l-footer-inner__foot">
+				<ul class="l-footer-foot__list">
+					<li><a href="https://medical.tsumura.co.jp/" target="_blank"><span>医療関係者の皆さま</span></a></li>
+					<li><a href="/recruit/"><span>採用情報</span></a></li>
+					<li><a href="/qa/"><span>お問い合わせ</span></a></li>
+					<li><a href="/news/"><span>ニュース</span></a></li>
+				</ul>
+				<ul class="l-footer-lang__list">
+					<li><a href="/english/" lang="en">English</a></li>
+					<li><a href="/chinese/" lang="ch-cmn-Hans">中文</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="l-footer-mid">
+			<ul>
+				<li><a href="https://www.tsumura.co.jp/hellotsumura/" target="_blank"><span>Hello! TSUMURA</span></a></li>
+				<li><a href="https://www.jjbotany.com/" target="_blank"><span>The Journal of Japanese Botany</span></a></li>
+				<li><a href="https://www.tsumura.co.jp/onemorechoice/" target="_blank"><span>#OneMoreChoice</span></a></li>
+				<li><a href="https://www.tsumura.co.jp/frailty-action/" target="_blank"><span>50歳からのフレイルアクション</span></a></li>
+				<li><a href="/kampo-view/" target="_blank"><span>漢方ビュー</span></a></li>
+				<li class="u-ml0"><a href="/seirino-nayami/" target="_blank"><span>生理の悩み相談しようプロジェクト</span></a></li>
+			</ul>
+		</div>
+		<div class="l-footer-bottom">
+			<ul>
+				<li><a href="/trademark-registration/">商品名の商標登録について</a></li>
+				<li><a href="/about-site/">サイトに関する注意</a></li>
+				<li><a href="/personal-information/">当社の個人情報保護に関する取り組みについて</a></li>
+				<li><a href="/social-media/">ソーシャルメディアについて</a></li>
+				<li><a href="/sitemap/">サイトマップ</a></li>
+				<li><a href="https://www.tsumura-p.jp/password/ms/index.htm" target="_blank">医療用医薬品代理店の皆さま</a></li>
+			</ul>
+			<small>© TSUMURA & CO. All Rights Reserved.</small>
+		</div>
+</footer>
+
+<!-- Include footer -->
+<!-- Include cookie -->
+
+<!-- Include cookie -->
+
+<script src="/assets/js/libs/libs.js" integrity="sha384-cypYJmoBd5G1jFXgy1ufNmZ3cKJuusPHpownDj2YuXCDC8a+y8PAd+SH1HRChL0c" crossorigin="anonymous"></script>
+
+<script src="/assets/js/all.min.js" integrity="sha384-XS0zxfscC/c6KHtv/uyyHIfetFiZ/bHAKMneCjzNxEpr22YuL0XkxniFUJaSPfHW" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

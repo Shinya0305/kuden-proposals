@@ -292,22 +292,6 @@
     <p style="font-size:12px;color:var(--gray-700);margin-top:10px;"><strong>Copilotには区切り方を指定する機能がありません。</strong>汎用AIではできない差です。</p>
   </div>
 
-  <!-- SVGイラスト: 70点 vs 98点 -->
-  <div style="text-align:center;margin:20px 0;">
-    <svg viewBox="0 0 600 160" style="width:100%;max-width:600px;" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Kaku Gothic ProN',sans-serif">
-      <!-- 70点バー -->
-      <rect x="30" y="20" width="540" height="48" rx="8" fill="#edf2f7" stroke="#e2e8f0" stroke-width="1"/>
-      <rect x="30" y="20" width="378" height="48" rx="8" fill="#feb2b2"/>
-      <text x="50" y="50" fill="#9b2c2c" font-size="14" font-weight="700">Copilot + 資料アップロード</text>
-      <text x="390" y="50" fill="#9b2c2c" font-size="20" font-weight="800">70点</text>
-      <!-- 98点バー -->
-      <rect x="30" y="90" width="540" height="48" rx="8" fill="#edf2f7" stroke="#e2e8f0" stroke-width="1"/>
-      <rect x="30" y="90" width="529" height="48" rx="8" fill="#9ae6b4"/>
-      <text x="50" y="120" fill="#276749" font-size="14" font-weight="700">本システム（8ヶ月 + 10,000件調整）</text>
-      <text x="510" y="120" fill="#276749" font-size="20" font-weight="800">98点</text>
-    </svg>
-  </div>
-
   <div class="card">
     <h3>この差を生む5つの調整</h3>
     <table class="summary-table mt-sm">
@@ -456,6 +440,21 @@
         <tr><td style="font-weight:700;">UI/UXの改善</td><td>現場で使いやすい画面・操作に繰り返し改善</td></tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- 正答率グラフ -->
+  <div style="text-align:center;margin:20px 0;">
+    <svg viewBox="0 0 600 160" style="width:100%;max-width:600px;" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Kaku Gothic ProN',sans-serif">
+      <rect x="30" y="20" width="540" height="48" rx="8" fill="#edf2f7" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="30" y="20" width="378" height="48" rx="8" fill="#feb2b2"/>
+      <text x="50" y="50" fill="#9b2c2c" font-size="14" font-weight="700">通常のRAG（調整なし）</text>
+      <text x="390" y="50" fill="#9b2c2c" font-size="20" font-weight="800">70点</text>
+      <rect x="30" y="90" width="540" height="48" rx="8" fill="#edf2f7" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="30" y="90" width="529" height="48" rx="8" fill="#9ae6b4"/>
+      <text x="50" y="120" fill="#276749" font-size="14" font-weight="700">本システム（8ヶ月 + 10,000件で磨き上げ）</text>
+      <text x="510" y="120" fill="#276749" font-size="20" font-weight="800">98点</text>
+    </svg>
+    <p class="text-xs text-muted">通常RAGの正答率70点を、8ヶ月・10,000件の改善サイクルで98点まで引き上げました。</p>
   </div>
 </div>
 </section>

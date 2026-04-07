@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRのためのツムラ漢方知識QAシステム ― ご説明資料</title>
+<style>
+  :root {
+    --primary: #1a365d; --primary-light: #2a4a7f;
+    --accent: #2b6cb0; --accent-light: #ebf4ff;
+    --danger: #e53e3e; --danger-light: #fff5f5;
+    --success: #38a169; --success-light: #f0fff4;
+    --gray-50: #f7fafc; --gray-100: #edf2f7; --gray-200: #e2e8f0;
+    --gray-600: #718096; --gray-700: #4a5568; --gray-800: #2d3748; --gray-900: #1a202c;
+    --orange: #dd6b20; --orange-light: #fffaf0;
+    --purple: #6b46c1; --purple-light: #faf5ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif; color:var(--gray-800); line-height:1.75; background:var(--gray-50); }
+
+  .hero { background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 50%,#3182ce 100%); color:#fff; padding:64px 24px 48px; text-align:center; }
+  .hero .badge { display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); border-radius:20px; padding:4px 18px; font-size:13px; margin-bottom:16px; }
+  .hero h1 { font-size:clamp(22px,4vw,36px); font-weight:800; line-height:1.3; margin-bottom:12px; }
+  .hero h1 em { font-style:normal; color:#90cdf4; }
+  .hero .subtitle { font-size:clamp(13px,2vw,15px); opacity:.85; max-width:600px; margin:0 auto; }
+
+  .container { max-width:860px; margin:0 auto; padding:0 24px; }
+  section { padding:48px 0; }
+  section+section { border-top:1px solid var(--gray-200); }
+  .section-num { display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:var(--accent); color:#fff; font-size:14px; font-weight:700; margin-right:10px; }
+  .section-header { display:flex; align-items:center; margin-bottom:6px; }
+  .section-label { font-size:11px; font-weight:700; letter-spacing:.1em; color:var(--accent); margin-bottom:2px; }
+  h2 { font-size:clamp(19px,3vw,26px); font-weight:800; color:var(--gray-900); margin-bottom:12px; }
+  h3 { font-size:16px; font-weight:700; color:var(--gray-900); margin-bottom:8px; }
+  p.lead { font-size:14px; color:var(--gray-600); margin-bottom:20px; }
+
+  .card { background:#fff; border-radius:10px; padding:20px 24px; margin:16px 0; box-shadow:0 1px 3px rgba(0,0,0,.05); border:1px solid var(--gray-200); }
+
+  .feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:16px 0; }
+  .feature-card { background:#fff; border-radius:10px; padding:18px; text-align:center; border:1px solid var(--gray-200); }
+  .feature-icon { font-size:32px; margin-bottom:8px; }
+  .feature-card h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .feature-card p { font-size:12px; color:var(--gray-700); line-height:1.5; }
+
+  .usecase-bubbles { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .usecase-bubble { background:var(--accent-light); color:var(--accent); font-size:12px; font-weight:600; padding:5px 14px; border-radius:16px; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0; }
+  @media(max-width:600px){ .two-col{grid-template-columns:1fr;} .compare-grid{grid-template-columns:1fr;} }
+  .info-source { padding:16px; border-radius:8px; text-align:center; }
+  .info-source .icon { font-size:28px; margin-bottom:4px; }
+  .info-source .label { font-weight:700; font-size:13px; margin-bottom:2px; }
+  .info-source .desc { font-size:11px; color:var(--gray-700); line-height:1.4; }
+
+  .caution-box { background:var(--gray-100); border-radius:8px; padding:14px 18px; margin:16px 0; border:1px solid var(--gray-200); font-size:12px; color:var(--gray-700); }
+  .caution-box .caution-title { font-weight:700; font-size:11px; color:var(--gray-600); margin-bottom:3px; }
+
+  .summary-table { width:100%; border-collapse:separate; border-spacing:0; margin:16px 0; font-size:13px; border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .summary-table th,.summary-table td { padding:10px 14px; text-align:left; border-bottom:1px solid var(--gray-200); }
+  .summary-table thead th { background:var(--primary); color:#fff; font-weight:700; font-size:12px; }
+  .summary-table tbody tr:nth-child(odd){ background:#fff; }
+  .summary-table tbody tr:nth-child(even){ background:var(--gray-50); }
+  .summary-table tbody tr:last-child td { border-bottom:none; }
+  .tag { display:inline-block; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:600; }
+  .tag.red { background:#fed7d7; color:#9b2c2c; }
+  .tag.green { background:#c6f6d5; color:#276749; }
+  .tag.orange { background:#feebc8; color:#9c4221; }
+
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin:16px 0; }
+  .stat-card { background:#fff; border-radius:10px; padding:16px; text-align:center; border:1px solid var(--gray-200); }
+  .stat-num { font-size:30px; font-weight:800; color:var(--accent); line-height:1.2; }
+  .stat-label { font-size:12px; color:var(--gray-600); margin-top:3px; }
+
+  .key-point { background:var(--orange-light); border-left:4px solid var(--orange); border-radius:8px; padding:14px 18px; margin:14px 0; font-size:13px; }
+  .key-point strong { color:var(--orange); }
+
+  .timeline { position:relative; margin:20px 0 20px 16px; padding-left:24px; border-left:3px solid var(--accent); }
+  .timeline-item { position:relative; margin-bottom:20px; }
+  .timeline-item:last-child { margin-bottom:0; }
+  .timeline-dot { position:absolute; left:-32px; top:2px; width:16px; height:16px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 2px var(--accent); }
+  .timeline-dot.done { background:var(--success); box-shadow:0 0 0 2px var(--success); }
+  .timeline-dot.next { background:var(--orange); box-shadow:0 0 0 2px var(--orange); }
+  .timeline-date { font-size:11px; font-weight:700; margin-bottom:2px; }
+  .timeline-date.done { color:var(--success); }
+  .timeline-date.next { color:var(--orange); }
+  .timeline-body { font-size:13px; }
+
+  .graph-visual { background:var(--gray-900); border-radius:10px; padding:16px 10px 12px; margin:16px 0; color:#fff; text-align:center; overflow-x:auto; }
+  .graph-visual h4 { color:#90cdf4; font-size:13px; margin-bottom:10px; }
+
+  .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+  .compare-card { border-radius:10px; padding:20px; border:2px solid; }
+  .compare-card.generic { background:var(--danger-light); border-color:#feb2b2; }
+  .compare-card.custom { background:var(--success-light); border-color:#9ae6b4; }
+  .card-badge { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:8px; margin-bottom:8px; }
+  .compare-card.generic .card-badge { background:#feb2b2; color:#9b2c2c; }
+  .compare-card.custom .card-badge { background:#9ae6b4; color:#276749; }
+  .compare-card h4 { font-size:14px; font-weight:700; margin-bottom:6px; }
+  .compare-card ul { padding-left:16px; font-size:13px; }
+  .compare-card li { margin-bottom:3px; line-height:1.6; color:var(--gray-700); }
+
+  .disclaimer-banner { background:var(--danger-light); border:2px solid #feb2b2; border-radius:10px; padding:22px; margin-bottom:14px; }
+  .disclaimer-banner .source-badge { display:inline-block; background:var(--danger); color:#fff; font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; margin-bottom:8px; }
+  .disclaimer-banner blockquote { font-size:15px; font-weight:700; line-height:1.5; border-left:4px solid var(--danger); padding-left:14px; margin:8px 0; }
+  .disclaimer-banner .translation { font-size:13px; background:#fff; border-radius:6px; padding:10px 14px; margin-top:8px; }
+  .other-quote { background:var(--gray-100); border-radius:6px; padding:10px 14px; font-size:12px; margin-bottom:8px; }
+  .other-quote .en { color:var(--gray-600); font-style:italic; }
+  .other-quote .ja { color:var(--gray-900); margin-top:2px; }
+  .implication-box { background:var(--orange-light); border:2px solid #fbd38d; border-radius:10px; padding:18px; margin-top:14px; }
+  .implication-box h3 { color:var(--orange); font-size:14px; margin-bottom:4px; }
+
+  .cta-section { background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:#fff; padding:36px 24px; text-align:center; border-radius:14px; margin:36px 0 48px; }
+  .cta-section h2 { color:#fff; font-size:20px; margin-bottom:10px; }
+  .cta-section p { opacity:.9; font-size:14px; }
+
+  footer { text-align:center; padding:24px; font-size:11px; color:var(--gray-600); border-top:1px solid var(--gray-200); }
+  .mt-sm { margin-top:8px; } .mt-md { margin-top:16px; }
+  .text-sm { font-size:13px; } .text-xs { font-size:11px; } .text-muted { color:var(--gray-600); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">KUDEN Biz &mdash; MR向けご説明資料</div>
+  <h1>MRのための<br><em>ツムラ漢方知識QAシステム</em></h1>
+  <p class="subtitle">「CopilotやGeminiでも同じでは？」にお答えします。</p>
+</div>
+
+<!-- ===== 1. このシステムとは ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">1</span><div><div class="section-label">OVERVIEW</div><h2>このシステムは何をしてくれるのか？</h2></div></div>
+  <p class="lead">漢方領域に特化した「考えるヒント」と「重要な気づき」を提供する知的支援システムです。</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">&#x1F4D1;</div>
+      <h4>エビデンスに基づく回答</h4>
+      <p>添付文書・公式資料など信頼できる情報源をもとに、論理的な裏付けを提供</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#x1F9E0;</div>
+      <h4>推論を得意とした洞察</h4>
+      <p>「なぜこの処方か」「類似処方との違いは」を漢方理論から立体的に整理</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#x1F3AF;</div>
+      <h4>文脈に応じた最適化</h4>
+      <p>患者背景・医師の専門性・面談シーンに合わせた情報整理と判断のヒント</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>活用シーン</h3>
+    <div class="usecase-bubbles">
+      <span class="usecase-bubble">処方の使い分けを整理</span>
+      <span class="usecase-bubble">医師への説明ポイント確認</span>
+      <span class="usecase-bubble">患者さんへの伝え方</span>
+      <span class="usecase-bubble">薬剤師が気にする点の整理</span>
+      <span class="usecase-bubble">講演会タイトルの検討</span>
+      <span class="usecase-bubble">日報からの示唆出し</span>
+      <span class="usecase-bubble">処方選択の意思決定整理</span>
+    </div>
+  </div>
+
+  <!-- 情報源 -->
+  <div class="card" style="border-left:4px solid var(--accent);">
+    <h3>回答の情報源</h3>
+    <p class="text-sm" style="margin-bottom:10px;">2つの知識を組み合わせて回答を生成します。</p>
+    <div class="two-col">
+      <div class="info-source" style="background:var(--accent-light);">
+        <div class="icon">&#x1F4C2;</div>
+        <div class="label" style="color:var(--accent);">ツムラ社内資料</div>
+        <div class="desc">添付文書・公式資料など<br><strong>回答の主たる根拠・出典</strong></div>
+      </div>
+      <div class="info-source" style="background:var(--purple-light);">
+        <div class="icon">&#x1F9E0;</div>
+        <div class="label" style="color:var(--purple);">AIの医学・漢方知識</div>
+        <div class="desc">事前学習した幅広い知識を<br><strong>推論・整理・説明</strong>に活用</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caution-box">
+    <div class="caution-title">&#x26A0;&#xFE0F; ご利用にあたっての注意</div>
+    推論重視の設計のため、生薬量（g数）など暗記的な要素は稀に誤りを含む可能性があります。情報提供の際は<strong>必ず公式資料・添付文書で最終確認</strong>をお願いします。本システムの情報は医師・薬剤師の医学的判断を代替するものではありません。
+  </div>
+</div>
+</section>
+
+<!-- ===== 2. 汎用AIとの違い ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">2</span><div><div class="section-label">VS COPILOT / GEMINI</div><h2>汎用AIとの3つの違い</h2></div></div>
+  <p class="lead">最近のAIは賢く、漢方の一般知識にも詳しい。これは事実です。では何が違うのか。</p>
+
+  <!-- 違い1 -->
+  <div class="card" style="border-left:4px solid var(--purple);">
+    <h3>&#x2460; 複数AIエンジンを最適に使い分けている</h3>
+    <div class="two-col mt-sm">
+      <div style="background:var(--danger-light);padding:14px;border-radius:8px;">
+        <p style="font-weight:700;font-size:12px;color:var(--danger);margin-bottom:4px;">Copilot / Gemini</p>
+        <p class="text-sm">提供元が選んだ<strong>1つのAIエンジン</strong>だけで回答</p>
+      </div>
+      <div style="background:var(--success-light);padding:14px;border-radius:8px;">
+        <p style="font-weight:700;font-size:12px;color:var(--success);margin-bottom:4px;">本システム</p>
+        <p class="text-sm">質問の種類に応じて<strong>複数のAIエンジンを使い分け</strong>、最も精度の高いLLMを進化に合わせて選択</p>
+      </div>
+    </div>
+    <p class="text-sm mt-sm">さらに、提供元のアップグレードだけでなく、AI専門チームが<strong>「漢方領域で最適なモデル構成か」を常に検証・更新</strong>しています。</p>
+  </div>
+
+  <!-- 違い2 -->
+  <div class="card" style="border-left:4px solid var(--danger);">
+    <h3>&#x2461; 回答の根拠がまったく違う</h3>
+    <table class="summary-table mt-sm">
+      <thead><tr><th>質問の種類</th><th>Copilot / Gemini</th><th>本システム</th></tr></thead>
+      <tbody>
+        <tr><td>葛根湯の構成生薬は？</td><td><span class="tag green">可</span> 公開情報</td><td><span class="tag green">可</span> 社内資料</td></tr>
+        <tr><td>一般的な飲み合わせ注意</td><td><span class="tag green">可</span> 公開情報</td><td><span class="tag green">可</span> 社内資料</td></tr>
+        <tr><td><strong>ツムラ社内の学術資料</strong>に基づく回答</td><td><span class="tag red">不可</span></td><td><span class="tag green">対応</span></td></tr>
+        <tr><td><strong>ツムラ独自のガイドライン</strong>に沿った回答</td><td><span class="tag red">不可</span></td><td><span class="tag green">対応</span></td></tr>
+        <tr><td><strong>出典つき</strong>（資料名・該当箇所）の回答</td><td><span class="tag red">不可</span></td><td><span class="tag green">対応</span></td></tr>
+        <tr><td>ツムラ公式見解と<strong>矛盾しない</strong>保証</td><td><span class="tag red">保証なし</span></td><td><span class="tag green">社内資料を主根拠</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 違い3 -->
+  <div class="card" style="border-left:4px solid var(--accent);">
+    <h3>&#x2462; 「資料にないこと」を混ぜない制御</h3>
+    <div class="two-col mt-sm">
+      <div style="background:var(--danger-light);padding:14px;border-radius:8px;">
+        <p style="font-weight:700;font-size:12px;color:var(--danger);margin-bottom:4px;">Copilot / Gemini</p>
+        <p class="text-sm">社内資料とAI自身の知識が混ざる。資料にないことも自信満々に答える（ハルシネーション）。MRには区別がつかない。</p>
+      </div>
+      <div style="background:var(--success-light);padding:14px;border-radius:8px;">
+        <p style="font-weight:700;font-size:12px;color:var(--success);margin-bottom:4px;">本システム</p>
+        <p class="text-sm">社内資料を主たる根拠とし、<strong>回答の出典を明示</strong>。AIの知識は推論・整理に活用し、根拠外の情報を混ぜない制御を実施。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ガバナンス -->
+  <div class="card" style="border-left:4px solid var(--orange);">
+    <h3>&#x2463; 社内ガバナンスの問題</h3>
+    <p class="text-sm">個人が独自にCopilot等にツムラの漢方資料を読み込ませて業務利用することは、一般的に<strong>以下の理由から社内規定上NGとなります。</strong></p>
+    <table class="summary-table mt-sm">
+      <tbody>
+        <tr><td style="width:35%;font-weight:700;">精度の保証がない</td><td>会社がオフィシャルに認めた精度水準に達していないツールは、情報提供活動には使用できない</td></tr>
+        <tr><td style="font-weight:700;">品質管理ができない</td><td>誰がどんな資料をどう読み込ませたか管理不能。誤情報の回答が出ても検知・修正できない</td></tr>
+        <tr><td style="font-weight:700;">情報漏洩リスク</td><td>社内機密資料を外部AIサービスにアップロードすること自体がセキュリティポリシーに抵触しうる</td></tr>
+        <tr><td style="font-weight:700;">回答の責任所在が不明</td><td>個人の設定次第で回答が変わるため、会社として回答品質に責任を持てない</td></tr>
+      </tbody>
+    </table>
+    <div class="key-point mt-sm">
+      <strong>本システムは：</strong>会社がオフィシャルに導入し、10,000件の検証で精度を確認済み。品質管理体制があり、全MRに同一品質の回答を提供。社内資料は管理された環境でのみ使用。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===== 3. 資料を入れれば同じでは？ ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">3</span><div><div class="section-label">WHY NOT JUST UPLOAD?</div><h2>「Copilotに資料を入れれば同じでは？」</h2></div></div>
+  <p class="lead">Copilotにも資料を読み込ませて回答させる機能（RAG）はあります。しかし「入れただけ」と「磨き上げたもの」は別物です。</p>
+
+  <!-- RAGとは -->
+  <div class="card" style="border-left:4px solid var(--accent);">
+    <h3>&#x1F4D6; RAG（ラグ）とは？</h3>
+    <p class="text-sm">AIは本来、学習済みの一般知識だけで回答します。<strong>RAGは「社内資料をAIに読ませてから答えさせる」仕組み</strong>です。CopilotもGeminiも本システムも、この仕組みを使っています。</p>
+    <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin:12px 0;">
+      <div style="background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;text-align:center;">社内資料を<br>断片に分割</div>
+      <div style="font-size:18px;color:var(--gray-600);">&#x2192;</div>
+      <div style="background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;text-align:center;">AIが検索<br>できる形に変換</div>
+      <div style="font-size:18px;color:var(--gray-600);">&#x2192;</div>
+      <div style="background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;text-align:center;">質問に近い<br>断片を検索</div>
+      <div style="font-size:18px;color:var(--gray-600);">&#x2192;</div>
+      <div style="background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;text-align:center;">見つけた断片で<br>AIが回答</div>
+    </div>
+    <p class="text-sm">同じRAGでも、<strong>最初のステップ「資料の分割の仕方（チャンキング）」</strong>で結果は大きく変わります。ここに決定的な差があります。</p>
+  </div>
+
+  <!-- チャンキングの違い -->
+  <div class="card" style="border-left:4px solid var(--danger);">
+    <h3>&#x2702;&#xFE0F; 最大の差：資料の「区切り方」</h3>
+    <div class="two-col mt-sm">
+      <div style="background:var(--danger-light);padding:14px;border-radius:8px;">
+        <p style="font-weight:700;font-size:12px;color:var(--danger);margin-bottom:4px;">Copilot / Gemini</p>
+        <p style="font-size:12px;">区切り方は<strong>AI任せ</strong>。調整不可。</p>
+        <div style="background:#fff;border-radius:6px;padding:8px;margin-top:6px;font-size:11px;line-height:1.5;">
+          <span style="background:#fed7d7;padding:1px 4px;border-radius:3px;">断片1</span> ...麻黄と桂皮の<br>
+          <span style="background:#fed7d7;padding:1px 4px;border-radius:3px;">断片2</span> 組み合わせが発汗作用の中心<br>
+          <span style="color:var(--danger);font-weight:700;">&#x2717; 主語が消える</span>
+        </div>
+      </div>
+      <div style="background:var(--success-light);padding:14px;border-radius:8px;">
+        <p style="font-weight:700;font-size:12px;color:var(--success);margin-bottom:4px;">本システム</p>
+        <p style="font-size:12px;"><strong>意味のまとまり</strong>で分割。</p>
+        <div style="background:#fff;border-radius:6px;padding:8px;margin-top:6px;font-size:11px;line-height:1.5;">
+          <span style="background:#c6f6d5;padding:1px 4px;border-radius:3px;">断片1</span> 麻黄と桂皮の組み合わせが発汗作用の中心<br>
+          <span style="color:var(--success);font-weight:700;">&#x2713; 主語と述語が揃う</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-700);margin-top:10px;"><strong>Copilotには区切り方を指定する機能がありません。</strong>汎用AIではできない差です。</p>
+  </div>
+
+  <!-- SVGイラスト: 70点 vs 98点 -->
+  <div style="text-align:center;margin:20px 0;">
+    <svg viewBox="0 0 600 160" style="width:100%;max-width:600px;" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Kaku Gothic ProN',sans-serif">
+      <!-- 70点バー -->
+      <rect x="30" y="20" width="540" height="48" rx="8" fill="#edf2f7" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="30" y="20" width="378" height="48" rx="8" fill="#feb2b2"/>
+      <text x="50" y="50" fill="#9b2c2c" font-size="14" font-weight="700">Copilot + 資料アップロード</text>
+      <text x="390" y="50" fill="#9b2c2c" font-size="20" font-weight="800">70点</text>
+      <!-- 98点バー -->
+      <rect x="30" y="90" width="540" height="48" rx="8" fill="#edf2f7" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="30" y="90" width="529" height="48" rx="8" fill="#9ae6b4"/>
+      <text x="50" y="120" fill="#276749" font-size="14" font-weight="700">本システム（8ヶ月 + 10,000件調整）</text>
+      <text x="510" y="120" fill="#276749" font-size="20" font-weight="800">98点</text>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>この差を生む5つの調整</h3>
+    <table class="summary-table mt-sm">
+      <tbody>
+        <tr><td style="width:40%;font-weight:700;">プロンプト設計</td><td>MRの口語的な質問にも正しく理解・回答する指示設計</td></tr>
+        <tr><td style="font-weight:700;">チャンキング調整</td><td>漢方文書の構造に合わせた資料の区切り方の最適化</td></tr>
+        <tr><td style="font-weight:700;">回答フォーマット</td><td>MRが現場で使いやすい回答形式</td></tr>
+        <tr><td style="font-weight:700;">AIエンジンの選定・組み合わせ</td><td>質問種別ごとに最適なAIを使い分ける設計</td></tr>
+        <tr><td style="font-weight:700;">誤答パターンの修正</td><td>10,000件の質問結果から誤答を特定し一つずつ改善</td></tr>
+      </tbody>
+    </table>
+    <p class="text-sm mt-sm"><strong>70点→98点に引き上げるには、8ヶ月・10,000件分の改善サイクルが必要</strong>です。</p>
+  </div>
+
+  <!-- 知識グラフ -->
+  <div class="card">
+    <h3>さらに：社内資料内の情報を自動でつなぐ「知識グラフ」</h3>
+    <p class="text-sm">汎用RAGは質問にヒットした断片だけ取得。本システムは<strong>情報同士の関係線をたどって、関連情報を自動で収集</strong>します。</p>
+  </div>
+
+  <div class="graph-visual" style="padding:16px 10px 12px;">
+    <h4>知識グラフのイメージ</h4>
+    <p style="font-size:11px;color:#94a3b8;margin-bottom:10px;">AIはこの線をたどって関連情報を自動取得します</p>
+    <svg viewBox="0 0 780 520" style="width:100%;max-width:780px;height:auto;" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif">
+      <defs>
+        <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#64748b"/></marker>
+        <marker id="ah-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#f87171"/></marker>
+        <marker id="ah-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#4ade80"/></marker>
+      </defs>
+      <line x1="160" y1="120" x2="390" y2="228" stroke="#64748b" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="260" y="162" fill="#fbbf24" font-size="11" font-weight="700" transform="rotate(12,260,162)">含有</text>
+      <line x1="160" y1="100" x2="390" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="270" y="90" fill="#fbbf24" font-size="11" font-weight="700">含有</text>
+      <line x1="160" y1="80" x2="390" y2="28" stroke="#64748b" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="260" y="42" fill="#fbbf24" font-size="11" font-weight="700" transform="rotate(-8,260,42)">含有</text>
+      <line x1="160" y1="240" x2="370" y2="240" stroke="#64748b" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="258" y="230" fill="#fbbf24" font-size="11" font-weight="700">含有</text>
+      <line x1="160" y1="260" x2="390" y2="340" stroke="#64748b" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="260" y="312" fill="#fbbf24" font-size="11" font-weight="700" transform="rotate(14,260,312)">含有</text>
+      <line x1="160" y1="380" x2="380" y2="260" stroke="#64748b" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="248" y="332" fill="#fbbf24" font-size="11" font-weight="700" transform="rotate(-25,248,332)">含有</text>
+      <line x1="160" y1="370" x2="390" y2="115" stroke="#64748b" stroke-width="2" marker-end="url(#ah)"/>
+      <line x1="160" y1="480" x2="380" y2="255" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,3" marker-end="url(#ah)"/>
+      <text x="240" y="388" fill="#fbbf24" font-size="11" font-weight="700" transform="rotate(-46,240,388)">含有</text>
+      <line x1="450" y1="100" x2="640" y2="60" stroke="#4ade80" stroke-width="2" marker-end="url(#ah-green)"/>
+      <text x="540" y="70" fill="#4ade80" font-size="11" font-weight="700">効能</text>
+      <line x1="450" y1="250" x2="640" y2="210" stroke="#f87171" stroke-width="2.5" marker-end="url(#ah-red)"/>
+      <text x="536" y="220" fill="#f87171" font-size="11" font-weight="700">過剰で</text>
+      <line x1="720" y1="195" x2="720" y2="138" stroke="#f87171" stroke-width="2" marker-end="url(#ah-red)"/>
+      <line x1="720" y1="225" x2="720" y2="282" stroke="#f87171" stroke-width="2" marker-end="url(#ah-red)"/>
+      <line x1="450" y1="345" x2="640" y2="345" stroke="#4ade80" stroke-width="2" marker-end="url(#ah-green)"/>
+      <text x="536" y="336" fill="#4ade80" font-size="11" font-weight="700">効能</text>
+      <line x1="120" y1="75" x2="660" y2="430" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ah)"/>
+      <text x="400" y="275" fill="#60a5fa" font-size="11" font-weight="700" transform="rotate(28,400,275)">適応</text>
+      <line x1="140" y1="265" x2="650" y2="490" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ah)"/>
+      <text x="400" y="400" fill="#60a5fa" font-size="11" font-weight="700" transform="rotate(24,400,400)">適応</text>
+      <rect x="50" y="72" width="120" height="48" rx="10" fill="#2563eb" opacity=".9"/>
+      <text x="110" y="102" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">葛根湯</text>
+      <rect x="50" y="216" width="120" height="48" rx="10" fill="#2563eb" opacity=".9"/>
+      <text x="110" y="246" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">芍薬甘草湯</text>
+      <rect x="50" y="356" width="120" height="48" rx="10" fill="#2563eb" opacity=".9"/>
+      <text x="110" y="386" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">小青竜湯</text>
+      <rect x="40" y="458" width="140" height="44" rx="10" fill="#92400e" opacity=".9"/>
+      <text x="110" y="486" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">市販風邪薬</text>
+      <circle cx="420" cy="100" r="30" fill="#166534" opacity=".9"/>
+      <text x="420" y="105" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">麻黄</text>
+      <circle cx="420" cy="30" r="26" fill="#166534" opacity=".9"/>
+      <text x="420" y="35" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">桂皮</text>
+      <circle cx="420" cy="240" r="36" fill="#166534" stroke="#4ade80" stroke-width="2" opacity=".95"/>
+      <text x="420" y="245" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">甘草</text>
+      <circle cx="420" cy="345" r="26" fill="#166534" opacity=".9"/>
+      <text x="420" y="350" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">芍薬</text>
+      <rect x="650" y="40" width="110" height="38" rx="8" fill="#166534" opacity=".8"/>
+      <text x="705" y="64" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">発汗作用</text>
+      <rect x="650" y="195" width="100" height="38" rx="8" fill="#dc2626" opacity=".9"/>
+      <text x="700" y="219" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">副作用</text>
+      <rect x="665" y="105" width="90" height="32" rx="7" fill="#991b1b" opacity=".8"/>
+      <text x="710" y="126" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">むくみ</text>
+      <rect x="665" y="285" width="90" height="32" rx="7" fill="#991b1b" opacity=".8"/>
+      <text x="710" y="306" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">血圧上昇</text>
+      <rect x="650" y="326" width="110" height="38" rx="8" fill="#166534" opacity=".8"/>
+      <text x="705" y="350" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">鎮痙作用</text>
+      <rect x="650" y="415" width="100" height="38" rx="8" fill="#1e40af" opacity=".7"/>
+      <text x="700" y="439" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">風邪</text>
+      <rect x="636" y="472" width="120" height="38" rx="8" fill="#1e40af" opacity=".7"/>
+      <text x="696" y="496" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">こむら返り</text>
+    </svg>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px;font-size:11px;">
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#2563eb;"></span><span style="color:#93c5fd;">漢方薬</span></span>
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:12px;height:12px;border-radius:8px;background:#166534;"></span><span style="color:#86efac;">生薬</span></span>
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#92400e;"></span><span style="color:#fbbf24;">市販薬</span></span>
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#dc2626;"></span><span style="color:#fca5a5;">副作用</span></span>
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:20px;height:2px;background:#fbbf24;"></span><span style="color:#fbbf24;">含有</span></span>
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:20px;height:2px;background:#4ade80;"></span><span style="color:#4ade80;">効能</span></span>
+      <span style="display:inline-flex;align-items:center;gap:4px;"><span style="display:inline-block;width:20px;height:2px;background:#f87171;"></span><span style="color:#f87171;">リスク</span></span>
+    </div>
+  </div>
+
+  <div class="key-point">
+    <strong>ポイント：</strong>Geminiに一般知識として飲み合わせを聞けば答えられる。しかし<strong>「ツムラ社内資料のA文書とB文書の情報を結びつけて答える」</strong>には、知識グラフが必要。
+  </div>
+</div>
+</section>
+
+<!-- ===== 4. 実績 ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">4</span><div><div class="section-label">TRACK RECORD</div><h2>これまでの実績</h2></div></div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">10,000<span style="font-size:15px">件+</span></div><div class="stat-label">実際の質問数</div></div>
+    <div class="stat-card"><div class="stat-num">100<span style="font-size:15px">名</span></div><div class="stat-label">トライアルMR</div></div>
+    <div class="stat-card"><div class="stat-num">8<span style="font-size:15px">ヶ月</span></div><div class="stat-label">改善期間</div></div>
+  </div>
+
+  <div class="card">
+    <table class="summary-table">
+      <tbody>
+        <tr><td style="width:35%;font-weight:700;">資料の区切り方の最適化</td><td>漢方文書の構造に合わせて何度も調整</td></tr>
+        <tr><td style="font-weight:700;">AIへの指示の改善</td><td>MRの質問パターンを分析し、口語にも対応</td></tr>
+        <tr><td style="font-weight:700;">誤答の分析と修正</td><td>10,000件の結果から誤答パターンを特定・改善</td></tr>
+        <tr><td style="font-weight:700;">UI/UXの改善</td><td>現場で使いやすい画面・操作に繰り返し改善</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===== 5. 今後 ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">5</span><div><div class="section-label">ROADMAP</div><h2>800名本格導入に向けて</h2></div></div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot done"></div>
+      <div class="timeline-date done">対応済み</div>
+      <h3>改良 1：漢方文書に合わせた資料分割の最適化</h3>
+      <div class="timeline-body">意味のまとまりで分割し、主語の欠落を解消。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot next"></div>
+      <div class="timeline-date next">次の改良</div>
+      <h3>改良 2：知識グラフで散在情報を自動接続</h3>
+      <div class="timeline-body">生薬・処方・症状の関係性をグラフ化し、複合的な質問に対応。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot next"></div>
+      <div class="timeline-date next">次の改良</div>
+      <h3>改良 3：AIが自ら追加検索する仕組み</h3>
+      <div class="timeline-body">情報が足りない場合、AIが自動で追加検索して最後まで答えきる。</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--accent);">
+    <table class="summary-table">
+      <thead><tr><th>時期</th><th>規模</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag green">2025年9月〜</span></td><td>100名</td><td>トライアル開始。10,000件で精度を磨き上げ</td></tr>
+        <tr><td><span class="tag orange">2026年5月〜</span></td><td>200名</td><td>東京支店MRへ先行導入</td></tr>
+        <tr><td><span class="tag" style="background:#e9d8fd;color:#553c9a;">2026年10月〜</span></td><td>800名</td><td>全MR本格導入。知識グラフ・自動追加検索を実装</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===== 6. まとめ比較 ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">6</span><div><div class="section-label">SUMMARY</div><h2>8つの違い ― まとめ</h2></div></div>
+
+  <table class="summary-table">
+    <thead><tr><th style="width:5%">#</th><th style="width:22%">観点</th><th>Copilot / Gemini</th><th>本システム</th></tr></thead>
+    <tbody>
+      <tr><td style="text-align:center;font-weight:700;">1</td><td><strong>AIエンジン構成</strong></td><td>提供元が選んだ1つのみ</td><td>複数を最適に使い分け</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">2</td><td><strong>AI進化への追従</strong></td><td>自動更新あり。ただし漢方基準ではない</td><td>漢方に最適かを専門チームが常に検証</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">3</td><td><strong>回答精度</strong></td><td>資料を入れただけの70点</td><td>10,000件の改善で98点</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">4</td><td><strong>信頼性</strong></td><td>資料外の知識を混ぜて回答</td><td>社内資料を主根拠。出典明示</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">5</td><td><strong>検索精度</strong></td><td>ヒットした断片のみ取得</td><td>知識グラフで関連情報を自動収集</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">6</td><td><strong>品質管理</strong></td><td>管理体制なし</td><td>継続モニタリング・改善体制</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">7</td><td><strong>MR最適化</strong></td><td>汎用チャット画面</td><td>MR業務に合わせたUI/UX</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">8</td><td><strong>社内ガバナンス</strong></td><td>個人のラグ利用は精度未保証</td><td>会社がオフィシャルに導入。精度検証済み</td></tr>
+    </tbody>
+  </table>
+
+  <div class="compare-grid">
+    <div class="compare-card generic">
+      <span class="card-badge">Copilot + 資料アップロード</span>
+      <h4>精度未検証 ― 業務利用NG</h4>
+      <ul>
+        <li>1つのAIエンジンだけ</li>
+        <li>精度改善は個人任せ</li>
+        <li>資料にないことも混ぜて回答</li>
+        <li>漢方に最適かは検証されない</li>
+        <li>品質管理体制なし</li>
+        <li><strong>社内規定上、業務利用はNG</strong></li>
+      </ul>
+    </div>
+    <div class="compare-card custom">
+      <span class="card-badge">ツムラ漢方知識QAシステム</span>
+      <h4>8ヶ月 + 10,000件で98点</h4>
+      <ul>
+        <li>複数AIを最適に使い分け</li>
+        <li>漢方に最適なモデル構成を常に検証</li>
+        <li>社内資料を主根拠に出典明示</li>
+        <li>知識グラフで関連情報を自動取得</li>
+        <li>継続的な品質管理・UI/UX改善</li>
+        <li><strong>会社オフィシャル導入。精度検証済み</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===== 7. Copilot利用規約 ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">7</span><div><div class="section-label">TERMS OF USE</div><h2>Microsoft自身が「重要な用途には使うな」と明記</h2></div></div>
+
+  <div class="disclaimer-banner">
+    <span class="source-badge">Microsoft Copilot 利用規約より原文引用</span>
+    <blockquote>
+      "Copilot is for entertainment purposes only.<br>
+      It can make mistakes, and it may not work as intended.<br>
+      Don't rely on Copilot for important advice."
+    </blockquote>
+    <div class="translation">
+      <strong>訳：</strong>Copilotは<strong style="color:var(--danger)">娯楽目的専用</strong>です。<strong style="color:var(--danger)">重要な助言にCopilotを頼らないでください。</strong>
+    </div>
+  </div>
+
+  <div class="other-quote">
+    <div class="en">"You might see Responses that seem convincing but are incomplete, inaccurate, or inappropriate."</div>
+    <div class="ja"><strong>訳：</strong>説得力があるように見えて<strong>不完全・不正確・不適切な回答</strong>が出ることがあります。</div>
+  </div>
+
+  <div class="implication-box">
+    <h3>MR業務への影響</h3>
+    <p class="text-sm">処方情報、飲み合わせ、禁忌情報は「重要な助言」そのもの。<strong style="color:var(--danger)">提供元自身がこの用途を想定していません。</strong></p>
+  </div>
+
+  <p class="text-xs text-muted mt-md">出典：Microsoft Copilot for Individuals Terms of Use（2026年4月時点）</p>
+</div>
+</section>
+
+<!-- CTA -->
+<div class="container">
+  <div class="cta-section">
+    <h2>AIの頭の良さは同じ。差がつくのは「磨き込み」。</h2>
+    <p><strong>「入れただけの70点」と「磨き上げた98点」<br>MRの現場で信頼できるのは、どちらでしょうか。</strong></p>
+  </div>
+</div>
+
+<footer>Confidential &mdash; ツムラ様 MR向けご説明資料 &mdash; KUDEN Biz</footer>
+
+</body>
+</html>

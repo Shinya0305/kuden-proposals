@@ -241,22 +241,7 @@
     </div>
   </div>
 
-  <!-- ガバナンス -->
-  <div class="card" style="border-left:4px solid var(--orange);">
-    <h3>&#x2463; 社内ガバナンスの問題</h3>
-    <p class="text-sm">個人が独自にCopilot等にツムラの漢方資料を読み込ませて業務利用することは、一般的に<strong>以下の理由から社内規定上NGとなります。</strong></p>
-    <table class="summary-table mt-sm">
-      <tbody>
-        <tr><td style="width:35%;font-weight:700;">精度の保証がない</td><td>会社がオフィシャルに認めた精度水準に達していないツールは、情報提供活動には使用できない</td></tr>
-        <tr><td style="font-weight:700;">品質管理ができない</td><td>誰がどんな資料をどう読み込ませたか管理不能。誤情報の回答が出ても検知・修正できない</td></tr>
-        <tr><td style="font-weight:700;">情報漏洩リスク</td><td>社内機密資料を外部AIサービスにアップロードすること自体がセキュリティポリシーに抵触しうる</td></tr>
-        <tr><td style="font-weight:700;">回答の責任所在が不明</td><td>個人の設定次第で回答が変わるため、会社として回答品質に責任を持てない</td></tr>
-      </tbody>
-    </table>
-    <div class="key-point mt-sm">
-      <strong>本システムは：</strong>会社がオフィシャルに導入し、10,000件の検証で精度を確認済み。品質管理体制があり、全MRに同一品質の回答を提供。社内資料は管理された環境でのみ使用。
-    </div>
-  </div>
+
 </div>
 </section>
 
@@ -337,10 +322,34 @@
     <p class="text-sm mt-sm"><strong>70点→98点に引き上げるには、8ヶ月・10,000件分の改善サイクルが必要</strong>です。</p>
   </div>
 
-  <!-- 知識グラフ -->
+  <!-- ガバナンス -->
+  <div class="card" style="border-left:4px solid var(--orange);">
+    <h3>そもそも：個人が独自にRAGを使うのは社内規定上NG</h3>
+    <table class="summary-table mt-sm">
+      <tbody>
+        <tr><td style="width:35%;font-weight:700;">精度の保証がない</td><td>会社が認めた精度水準に達していないツールは情報提供活動に使用不可</td></tr>
+        <tr><td style="font-weight:700;">品質管理ができない</td><td>誰が何をどう読み込ませたか管理不能。誤回答の検知・修正もできない</td></tr>
+        <tr><td style="font-weight:700;">情報漏洩リスク</td><td>社内機密資料を外部AIにアップロードすること自体がセキュリティポリシーに抵触</td></tr>
+        <tr><td style="font-weight:700;">責任所在が不明</td><td>個人の設定次第で回答が変わり、会社として品質に責任を持てない</td></tr>
+      </tbody>
+    </table>
+    <div class="key-point mt-sm">
+      <strong>本システムは：</strong>会社がオフィシャルに導入。10,000件で精度検証済み。品質管理体制あり。社内資料は管理された環境でのみ使用。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===== 4. 知識グラフ（今後導入） ===== -->
+<section>
+<div class="container">
+  <div class="section-header"><span class="section-num">4</span><div><div class="section-label">NEXT: KNOWLEDGE GRAPH</div><h2>今後導入予定：知識グラフで精度をさらに向上</h2></div></div>
+  <p class="lead">現在のRAGをさらに進化させる技術として、<strong>知識グラフ（ナレッジグラフ）</strong>の導入を予定しています。</p>
+
   <div class="card">
-    <h3>さらに：社内資料内の情報を自動でつなぐ「知識グラフ」</h3>
-    <p class="text-sm">汎用RAGは質問にヒットした断片だけ取得。本システムは<strong>情報同士の関係線をたどって、関連情報を自動で収集</strong>します。</p>
+    <h3>知識グラフとは</h3>
+    <p class="text-sm">通常のRAGは、質問にヒットした断片だけを取得します。知識グラフは、<strong>情報同士の関係線をたどって、関連情報を自動で収集</strong>する仕組みです。</p>
+    <p class="text-sm mt-sm">漢方の世界は「生薬 × 処方 × 症状 × 禁忌」が複雑に絡み合っており、この技術が特に有効です。</p>
   </div>
 
   <div class="graph-visual" style="padding:16px 10px 12px;">
@@ -422,15 +431,15 @@
   </div>
 
   <div class="key-point">
-    <strong>ポイント：</strong>Geminiに一般知識として飲み合わせを聞けば答えられる。しかし<strong>「ツムラ社内資料のA文書とB文書の情報を結びつけて答える」</strong>には、知識グラフが必要。
+    <strong>導入予定：</strong>800名本格導入（2026年10月）に向けて実装予定。<strong>ツムラ社内資料内の散在する情報を自動でつなぎ</strong>、回答精度をさらに向上させます。
   </div>
 </div>
 </section>
 
-<!-- ===== 4. 実績 ===== -->
+<!-- ===== 5. 実績 ===== -->
 <section>
 <div class="container">
-  <div class="section-header"><span class="section-num">4</span><div><div class="section-label">TRACK RECORD</div><h2>これまでの実績</h2></div></div>
+  <div class="section-header"><span class="section-num">5</span><div><div class="section-label">TRACK RECORD</div><h2>これまでの実績</h2></div></div>
 
   <div class="stats-grid">
     <div class="stat-card"><div class="stat-num">10,000<span style="font-size:15px">件+</span></div><div class="stat-label">実際の質問数</div></div>
@@ -454,7 +463,7 @@
 <!-- ===== 5. 今後 ===== -->
 <section>
 <div class="container">
-  <div class="section-header"><span class="section-num">5</span><div><div class="section-label">ROADMAP</div><h2>800名本格導入に向けて</h2></div></div>
+  <div class="section-header"><span class="section-num">6</span><div><div class="section-label">ROADMAP</div><h2>800名本格導入に向けて</h2></div></div>
 
   <div class="timeline">
     <div class="timeline-item">
@@ -493,7 +502,7 @@
 <!-- ===== 6. まとめ比較 ===== -->
 <section>
 <div class="container">
-  <div class="section-header"><span class="section-num">6</span><div><div class="section-label">SUMMARY</div><h2>8つの違い ― まとめ</h2></div></div>
+  <div class="section-header"><span class="section-num">7</span><div><div class="section-label">SUMMARY</div><h2>8つの違い ― まとめ</h2></div></div>
 
   <table class="summary-table">
     <thead><tr><th style="width:5%">#</th><th style="width:22%">観点</th><th>Copilot / Gemini</th><th>本システム</th></tr></thead>
@@ -502,7 +511,7 @@
       <tr><td style="text-align:center;font-weight:700;">2</td><td><strong>AI進化への追従</strong></td><td>自動更新あり。ただし漢方基準ではない</td><td>漢方に最適かを専門チームが常に検証</td></tr>
       <tr><td style="text-align:center;font-weight:700;">3</td><td><strong>回答精度</strong></td><td>資料を入れただけの70点</td><td>10,000件の改善で98点</td></tr>
       <tr><td style="text-align:center;font-weight:700;">4</td><td><strong>信頼性</strong></td><td>資料外の知識を混ぜて回答</td><td>社内資料を主根拠。出典明示</td></tr>
-      <tr><td style="text-align:center;font-weight:700;">5</td><td><strong>検索精度</strong></td><td>ヒットした断片のみ取得</td><td>知識グラフで関連情報を自動収集</td></tr>
+      <tr><td style="text-align:center;font-weight:700;">5</td><td><strong>検索精度</strong></td><td>ヒットした断片のみ取得</td><td>知識グラフで関連情報を自動収集<br><span class="text-xs text-muted">（今後導入予定）</span></td></tr>
       <tr><td style="text-align:center;font-weight:700;">6</td><td><strong>品質管理</strong></td><td>管理体制なし</td><td>継続モニタリング・改善体制</td></tr>
       <tr><td style="text-align:center;font-weight:700;">7</td><td><strong>MR最適化</strong></td><td>汎用チャット画面</td><td>MR業務に合わせたUI/UX</td></tr>
       <tr><td style="text-align:center;font-weight:700;">8</td><td><strong>社内ガバナンス</strong></td><td>個人のラグ利用は精度未保証</td><td>会社がオフィシャルに導入。精度検証済み</td></tr>
@@ -529,7 +538,7 @@
         <li>複数AIを最適に使い分け</li>
         <li>漢方に最適なモデル構成を常に検証</li>
         <li>社内資料を主根拠に出典明示</li>
-        <li>知識グラフで関連情報を自動取得</li>
+        <li>知識グラフで関連情報を自動取得（今後導入予定）</li>
         <li>継続的な品質管理・UI/UX改善</li>
         <li><strong>会社オフィシャル導入。精度検証済み</strong></li>
       </ul>
@@ -541,7 +550,7 @@
 <!-- ===== 7. Copilot利用規約 ===== -->
 <section>
 <div class="container">
-  <div class="section-header"><span class="section-num">7</span><div><div class="section-label">TERMS OF USE</div><h2>Microsoft自身が「重要な用途には使うな」と明記</h2></div></div>
+  <div class="section-header"><span class="section-num">8</span><div><div class="section-label">TERMS OF USE</div><h2>Microsoft自身が「重要な用途には使うな」と明記</h2></div></div>
 
   <div class="disclaimer-banner">
     <span class="source-badge">Microsoft Copilot 利用規約より原文引用</span>

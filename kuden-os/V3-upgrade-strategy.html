@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUDEN OS V3 アップグレード戦略書</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap');
+  :root{--ink:#1A1A2E;--text:#333346;--mid:#5A5A72;--light:#8888A0;--border:#E4E4EE;--bg:#FFFFFF;--warm:#FAFAFD;--tint:#F4F3FF;--blue:#4F6AFF;--blue-pale:#EEF0FF;--purple:#7C5CFC;--purple-pale:#F0ECFF;--emerald:#10B981;--emerald-pale:#ECFDF5;--coral:#FF6B6B;--coral-pale:#FFF0F0;--amber:#F5A623;--amber-pale:#FFF8EC;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans JP',-apple-system,sans-serif;background:#E8E8EE;color:var(--text);line-height:1.8;font-size:14px;display:flex;flex-direction:column;align-items:center;padding:40px 0;gap:40px;}
+  .page{width:960px;background:var(--bg);border-radius:6px;box-shadow:0 2px 24px rgba(0,0,0,.08);overflow:hidden;position:relative;padding:52px 60px;}
+  .page-num{position:absolute;bottom:18px;right:28px;font-size:11px;color:var(--light);letter-spacing:2px;}
+  .page-logo{position:absolute;bottom:18px;left:28px;font-size:10px;color:var(--light);letter-spacing:3px;font-weight:600;}
+  .dark{background:linear-gradient(135deg,#1A1A2E 0%,#2D2D5E 55%,#3A2D6E 100%);color:#fff;}
+  .dark .page-logo,.dark .page-num{color:rgba(255,255,255,.25);}
+  .label{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:8px;}
+  .dark .label{color:#7B8FFF;}
+  .title{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:8px;}
+  .dark .title{color:#fff;}
+  .sub{font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:28px;}
+  .dark .sub{color:rgba(255,255,255,.5);}
+  h3{font-size:18px;font-weight:700;color:var(--ink);margin:28px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border);}
+  h4{font-size:15px;font-weight:700;color:var(--ink);margin:20px 0 8px;}
+  p{margin-bottom:12px;}
+  strong{color:var(--ink);}
+  table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0 20px;font-size:13px;}
+  th,td{padding:10px 16px;text-align:left;border-bottom:1px solid #F0F0F6;}
+  th{background:var(--warm);font-weight:700;color:var(--mid);font-size:12px;}
+  tr:last-child td{border-bottom:none;}
+  .highlight-box{border-radius:12px;padding:20px 24px;margin:16px 0;}
+  .box-blue{background:var(--blue-pale);border:1px solid #D5DAFF;}
+  .box-purple{background:var(--purple-pale);border:1px solid #DDD6FE;}
+  .box-green{background:var(--emerald-pale);border:1px solid #C6F6D5;}
+  .box-coral{background:var(--coral-pale);border:1px solid #FDDEDE;}
+  .box-amber{background:var(--amber-pale);border:1px solid #FDE68A;}
+  .box-gray{background:var(--warm);border:1px solid var(--border);}
+  .box-label{font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:6px;}
+  .priority-tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:1px;margin-right:8px;}
+  .p0{background:var(--coral-pale);color:var(--coral);}
+  .p1{background:var(--blue-pale);color:var(--blue);}
+  .p2{background:var(--amber-pale);color:var(--amber);}
+  pre{background:var(--warm);border:1px solid var(--border);border-radius:8px;padding:16px 20px;font-size:13px;line-height:1.7;overflow-x:auto;margin:12px 0 16px;font-family:'Noto Sans JP',monospace;}
+  .cover{text-align:center;padding:80px 60px;}
+  .cover h1{font-family:'Noto Serif JP',serif;font-size:36px;font-weight:700;line-height:1.35;margin-bottom:16px;}
+  .cover h1 em{font-style:normal;color:#7B8FFF;}
+  .cover-sub{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:40px;}
+  .cover-meta{font-size:12px;color:rgba(255,255,255,.3);line-height:1.8;}
+  .section-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px;margin:0 0 20px;}
+  .flow-row{display:flex;gap:8px;align-items:center;margin:12px 0;}
+  .flow-step{background:var(--warm);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12px;flex:1;text-align:center;}
+  .flow-arrow{color:var(--light);font-size:14px;flex-shrink:0;}
+  ul{margin:8px 0 16px 20px;}
+  li{margin-bottom:4px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media print{body{background:none;padding:0;gap:0;}.page{box-shadow:none;border-radius:0;page-break-after:always;width:100%;}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="page dark cover">
+  <div class="label">Strategy Document</div>
+  <h1><em>KUDEN OS V3</em><br>アップグレード戦略書</h1>
+  <div class="cover-sub">管理しなくても、成果が出る。<br>一人15分の振り返りで、人が育ち、組織に知恵が残る。</div>
+  <div class="cover-meta">
+    Created: 2026-04-14 | Status: Draft<br>
+    Author: Shinya Nakajima + AI壁打ち<br>
+    Source: V2 BRD群（BRD-V2-001〜009）＋ 2026-04-14 戦略壁打ち
+  </div>
+  <span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- SECTION 1 -->
+<section class="page">
+  <div class="label">Section 1</div>
+  <div class="title">なぜV3が必要か</div>
+  <div class="section-divider"></div>
+
+  <h3>我々が向き合うべき問い</h3>
+  <p>KUDEN OSは本当に人を成長させるのか。本当に組織は進化するのか。</p>
+  <p>AIが代わりに考え、行動を指示し、管理を代行するだけなら——便利にはなるが、人は育たない。それでは汎用AIツールと何も変わらない。</p>
+
+  <h3>振り返りこそが、成長の装置である</h3>
+  <p>15年のコーチング実践から確信していることがある。<strong>人の成長の宝は、葛藤体験の中にある。</strong>自ら失敗に気づき、学び、行動を変える。その行動変容が成果を生む。それはAIに与えられた成果ではなく、自分の力で掴んだ成果である。</p>
+  <p>このサイクルを回す唯一の装置が、毎日の振り返りである。KUDEN OSの本質的価値は「行動案を出すAI」でも「管理効率化ツール」でもなく、<strong>振り返りを続けさせ、その中で人が育つ仕組み</strong>にある。</p>
+
+  <h3>現世ご利益と来世ご利益の融合</h3>
+  <p>「人の成長」は経営者に来世ご利益と受け取られる。時間がかかり、効果が見えにくい。一方「生産性向上」は現世ご利益。すぐ数字で見え、財布も大きい。</p>
+  <div class="highlight-box box-purple">
+    <p style="margin:0;">KUDEN OSはこの両方を一つの行為で実現する。振り返りの中で本人が気づく→翌日の行動が変わる→<strong>今月の成果が変わる（現世）</strong>。同時に、気づく力そのものが育つ→<strong>人として成長する（来世）</strong>。足し算ではなく、融合。</p>
+  </div>
+
+  <h3>AIは答えを出さない。問いを出す。</h3>
+  <p>AIが答えを出せば生産性は上がるが、人は育たない。AIが問いを出せば、本人が考え、気づき、行動する——生産性も上がり、人も育つ。</p>
+  <p>「過保護なAI」の定義を変える。答えを与える過保護ではなく、<strong>問いを絶やさない過保護</strong>。</p>
+
+  <h3>全階層にOSをインストールする</h3>
+  <p>日本の組織において、純粋な「メンバーだけの人」は最下層だけ。それ以外は全員が上司兼メンバー。このヒエラルキーを打破するのではなく、<strong>乗る</strong>。全階層が同じ体験——振り返りとAI対話——をする。ただし見える景色が階層で異なる。社長から新人まで全員が振り返る文化を作り、組織を内側から進化させる。</p>
+  <p>上司は2つの役割を持つが、AIが部下の状況把握・処方箋生成・進捗管理を引き受けることで、<strong>部下の管理に費やす時間が一気に減る</strong>。その分、自身の振り返りに集中し、自らの生産性を向上させることが可能になる。上司にとってKUDEN OSは負荷を増やすものではなく、<strong>管理から解放し、自分自身の成長と成果に時間を使えるようにする</strong>ものである。</p>
+
+  <h3>V2の課題</h3>
+  <p>V2はまだリリース前であり、新OSでのユーザー検証は行われていない。ただし前身のKUDEN Bizトライアルから以下の知見がある：</p>
+  <ul>
+    <li>振り返り実施率は企業差が大きい（平均63%〜100%）</li>
+    <li>実施率が高い企業でも<strong>「毎日が負担」という声が多い</strong></li>
+    <li>負担感がある状態は長期的な離脱リスクを抱えている</li>
+  </ul>
+
+  <table>
+    <thead><tr><th>#</th><th>V2の構造的弱点</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>習慣化の仕組みが薄い。「やりたくなる構造」がない</td></tr>
+      <tr><td>2</td><td>初日と100日目が同じ深さ。段階設計がなく、初日から負担感を生む</td></tr>
+      <tr><td>3</td><td>AIが答えを出しすぎる。本人が考えず、実行されず、成長しない</td></tr>
+      <tr><td>4</td><td>上司とメンバーの体験が未分化。全階層モード切替の設計がない</td></tr>
+      <tr><td>5</td><td>「成長」が可視化されない。達成率は見えるが、育ったことが見えない</td></tr>
+      <tr><td>6</td><td>売り方の設計がない。短期で効果を見せるファーストイン設計が欠如</td></tr>
+    </tbody>
+  </table>
+
+  <h3>V3の目的</h3>
+  <p>V2を否定するのではなく、V2の土台の上に<strong>「続く仕組み」「育つ仕組み」「売れる仕組み」</strong>を追加する。</p>
+
+  <span class="page-num">01</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- SECTION 2 -->
+<section class="page">
+  <div class="label">Section 2</div>
+  <div class="title">V3の世界観とメッセージ</div>
+  <div class="section-divider"></div>
+
+  <h3>コアメッセージ（仮置き）</h3>
+  <div class="highlight-box box-blue" style="text-align:center;">
+    <div style="font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:8px;">管理しなくても、成果が出る。</div>
+    <div style="font-size:15px;color:var(--mid);">一人15分の振り返りで、人が育ち、組織に知恵が残る。</div>
+  </div>
+
+  <h3>根底にある世界観</h3>
+  <ul>
+    <li>「いつも人から、すべては人から」——人の可能性を最大化する</li>
+    <li>人の成長→組織の成長→企業の成長→社会の成長</li>
+    <li>進化し続けなければ、衰退が待っている</li>
+    <li><strong>相反するものの融合</strong>：人×AI、伝統×革新、現世ご利益×来世ご利益、口伝×テクノロジー</li>
+  </ul>
+
+  <h3>営業上の鉄則</h3>
+  <table>
+    <thead><tr><th>原則</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>入口は「現世ご利益」で語る</td><td>「人の成長」は来世ご利益と受け取られ、研修と混同される</td></tr>
+      <tr><td>「来世ご利益」は構造的に勝手についてくる設計</td><td>売り文句ではなく、プロダクト設計で実現する</td></tr>
+      <tr><td>「日報」を入口にしない</td><td>日報実施率は実質2%。「うちは関係ない」で終わる</td></tr>
+      <tr><td>「AIコーチ」を差別化にしない</td><td>汎用AIでもできると思われる。差別化は「循環構造」と「企業DNA」</td></tr>
+    </tbody>
+  </table>
+
+  <span class="page-num">02</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- SECTION 3 OVERVIEW -->
+<section class="page">
+  <div class="label">Section 3</div>
+  <div class="title">V3 アップグレード一覧</div>
+  <div class="section-divider"></div>
+
+  <h3>前提条件</h3>
+  <p>V3のすべてのアップグレードは、<strong>V2-002（AI-Driven Alignment）の目標設定が機能していること</strong>を前提とする。全員が成果目標・行動目標・成長目標の3層を設定する。目標が曖昧なら振り返りも曖昧になる。</p>
+
+  <h3>全体マップ</h3>
+  <table>
+    <thead><tr><th>BRD</th><th>タイトル</th><th>優先度</th></tr></thead>
+    <tbody>
+      <tr><td>V3-001</td><td>習慣化エンジン＋AIコーチ設計方針（Habit Engine）</td><td><span class="priority-tag p0">P0</span></td></tr>
+      <tr><td>V3-002</td><td>全階層ダッシュボード＆モード切替（Dual-Mode）</td><td><span class="priority-tag p0">P0</span></td></tr>
+      <tr><td>V3-003</td><td>自己発見型アクション生成（Self-Discovery Action）</td><td><span class="priority-tag p1">P1</span></td></tr>
+      <tr><td>V3-004</td><td>成果と成長の可視化（Performance & Growth Metrics）</td><td><span class="priority-tag p1">P1</span></td></tr>
+      <tr><td>V3-005</td><td>上司のAI支援強化（AI-Powered Manager Support）</td><td><span class="priority-tag p1">P1</span></td></tr>
+      <tr><td>V3-006</td><td>ファーストイン設計（Trial & Onboarding）</td><td><span class="priority-tag p1">P1</span></td></tr>
+      <tr><td>V3-007</td><td>チームコミュニケーション（Team Communication）</td><td><span class="priority-tag p1">P1</span></td></tr>
+    </tbody>
+  </table>
+
+  <span class="page-num">03</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- 3.1 -->
+<section class="page">
+  <div class="label">3.1 <span class="priority-tag p0">P0</span></div>
+  <div class="title">習慣化エンジン＋AIコーチ設計方針</div>
+  <div class="section-divider"></div>
+
+  <p><strong>問題：</strong>振り返りナッジは通知だけ。やらなくても何も起きない。また、AIコーチの問いかけに段階がなく、初日から深い内省を求めて負担感を生む。</p>
+
+  <h4>振り返りの構造：固定セッション＋常駐AIコーチ</h4>
+  <div class="two-col">
+    <div class="highlight-box box-blue">
+      <div class="box-label" style="color:var(--blue);">固定セッション（18:45）</div>
+      <p style="font-size:12px;margin:0;">毎日決まった時間にAIコーチとの15分間。これが習慣化の軸。通知→セッション開始。</p>
+    </div>
+    <div class="highlight-box box-purple">
+      <div class="box-label" style="color:var(--purple);">常駐AIコーチ（随時）</div>
+      <p style="font-size:12px;margin:0;">UIの右側に常にいる。商談後、会議後、いつでも話せる。「メモ・壁打ち」の位置づけ。</p>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--mid);">常駐での対話内容は18:45のセッションに引き継がれる。「さっき商談後に話してくれた件、深掘りしましょうか」</p>
+
+  <h4>AIコーチの設計方針</h4>
+  <ul>
+    <li>ゲーミフィケーション的なレベルはユーザーに見せない</li>
+    <li>AIがユーザーの状態を見て、<strong>問いの深さを自然に変える</strong></li>
+    <li>慣れてきたら深い問いを投げる（葛藤に踏み込む、パターンを指摘する）</li>
+    <li><strong>気づいたら深い振り返りができるようになっている</strong>状態を作る</li>
+  </ul>
+
+  <h4>習慣化の仕組み</h4>
+  <div class="two-col">
+    <div class="highlight-box box-blue">
+      <div class="box-label" style="color:var(--blue);">① ストリーク</div>
+      <p style="font-size:13px;margin:0;">ダッシュボード最上部に「◯日連続」を表示。途切れると0に戻る。7日・30日・100日でセレブレーション。</p>
+    </div>
+    <div class="highlight-box box-purple">
+      <div class="box-label" style="color:var(--purple);">② 即時報酬</div>
+      <p style="font-size:13px;margin:0;">振り返り完了直後にフィードバック。「今週の気づきから2つの行動変容が生まれました」。</p>
+    </div>
+    <div class="highlight-box box-green">
+      <div class="box-label" style="color:var(--emerald);">③ 離脱回復</div>
+      <p style="font-size:13px;margin:0;">未実施日があればAIが簡単に振り返りをサポート。出てこなければ本日分をしっかりやる。ストリークは表示し次の記録を目指す。</p>
+    </div>
+    <div class="highlight-box box-amber">
+      <div class="box-label" style="color:var(--amber);">④ 実施率の公開</div>
+      <p style="font-size:13px;margin:0;">チーム内の実施率をダッシュボードに公開。個別エスカレーションではなく、可視化で自律的な意識を植える。</p>
+    </div>
+  </div>
+
+  <span class="page-num">04</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- 3.2 -->
+<section class="page">
+  <div class="label">3.2 <span class="priority-tag p0">P0</span></div>
+  <div class="title">全階層ダッシュボードとモード切替</div>
+  <div class="section-divider"></div>
+
+  <p><strong>問題：</strong>上司とメンバーの体験が未分化。上司は負荷が二重に感じられ、導入の最大の抵抗勢力になる。</p>
+
+  <h4>全員共通：朝のダッシュボード</h4>
+  <p>メンバーも上司も、朝アプリを開くと<strong>本日のタスクが明確になっている</strong>。</p>
+  <div class="flow-row">
+    <div class="flow-step">振り返りでの気づき</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">行動案作成</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">AIが目標と紐づけ</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">翌朝のタスクに変換</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">日中AI進捗支援</div>
+  </div>
+
+  <div class="highlight-box box-coral">
+    <div class="box-label" style="color:var(--coral);">心理的安全性の原則（厳守）</div>
+    <ul style="font-size:13px;margin:0;">
+      <li>振り返りの<strong>中身は絶対に上司に見せない</strong></li>
+      <li>上司に届く情報は「3日間未実施」等の事実のみ</li>
+      <li>1日の未実施ではエスカレーションしない（閾値：連続3日以上）</li>
+    </ul>
+  </div>
+
+  <h4>上司追加：マネジメントダッシュボード（朝5分）</h4>
+  <table>
+    <thead><tr><th>表示</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--coral);font-weight:700;">支援が必要（赤）</td><td>停滞検知・未実施。状況サマリー＋処方箋＋支援の選択肢</td></tr>
+      <tr><td style="color:var(--amber);font-weight:700;">承認が必要（黄）</td><td>目標案・月次レポート。ワンタップ承認</td></tr>
+      <tr><td style="color:var(--emerald);font-weight:700;">称賛すべき（緑）</td><td>ストリーク達成・行動変容。声かけ・共有ヒント付き</td></tr>
+    </tbody>
+  </table>
+  <p>それ以外は表示しない。<strong>沈黙＝順調。</strong></p>
+
+  <h4>全階層への適用</h4>
+  <table>
+    <thead><tr><th>役職</th><th>自分用画面</th><th>チーム画面</th></tr></thead>
+    <tbody>
+      <tr><td>メンバー</td><td>目標設定・振り返り・行動生成・AI進捗管理・成果/成長の可視化</td><td>なし</td></tr>
+      <tr><td>課長</td><td>上記と同じ</td><td>部下の状況把握・振り返りレポート・処方箋対応</td></tr>
+      <tr><td>部長</td><td>上記と同じ</td><td>課長たちの状況把握・レポート・処方箋対応</td></tr>
+      <tr><td>事業部長</td><td>上記と同じ</td><td>部長たちの状況把握・レポート閲覧</td></tr>
+    </tbody>
+  </table>
+  <p>上司は振り返りコーチングの<strong>AIが自動生成したレポート</strong>をチーム画面で確認できる。</p>
+
+  <h4>UI設計の原則</h4>
+  <div class="highlight-box box-blue">
+    <p style="font-size:13px;margin:0;"><strong>自分用画面とチーム画面は明確に分ける。</strong>1画面に統合しない。タブ切替またはナビゲーションで、自分がどちらにいるか常に明確にする。2つの画面を行き来することで「メンバーとしての自分」と「上司としての自分」の切替が自然に起きる。</p>
+  </div>
+  <ul>
+    <li>自分用画面はメンバーと全く同じUI</li>
+    <li>チーム画面は上司専用のUI</li>
+    <li>具体的なUI設計はPRD/画面要件に委ねる</li>
+  </ul>
+
+  <span class="page-num">06</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- 3.3 -->
+<section class="page">
+  <div class="label">3.3 <span class="priority-tag p1">P1</span></div>
+  <div class="title">自己発見型アクション生成</div>
+  <div class="section-divider"></div>
+
+  <p><strong>問題：</strong>AIが行動案を自動生成。本人が考えず、実行されず、成長しない。</p>
+
+  <div class="two-col">
+    <div class="highlight-box box-coral">
+      <div class="box-label" style="color:var(--coral);">V2（現状）</div>
+      <p style="font-size:13px;margin:0;">振り返り → AIが自動生成 → 確認するだけ</p>
+    </div>
+    <div class="highlight-box box-green">
+      <div class="box-label" style="color:var(--emerald);">V3</div>
+      <p style="font-size:13px;margin:0;">振り返り → AIが「何をすべき？」と問う → 本人が考える → AIが補強</p>
+    </div>
+  </div>
+
+  <h4>コーチングレベルとの連動</h4>
+  <table>
+    <thead><tr><th>レベル</th><th>アクション生成方式</th></tr></thead>
+    <tbody>
+      <tr><td>Lv1</td><td><strong>適用しない。</strong>AIが自動生成（V2と同じ。負荷を下げる）</td></tr>
+      <tr><td>Lv2</td><td>AIが問い、ユーザーが考える。AIが補強・具体化</td></tr>
+      <tr><td>Lv3</td><td>ユーザーが自分で行動案を出す。AIは壁打ち相手</td></tr>
+      <tr><td>Lv4</td><td>ユーザーが行動案＋成果指標まで自分で設計。AIは確認のみ</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box box-purple">
+    <p style="margin:0;"><strong>現世と来世の融合：</strong>自分で決めた行動は実行率が高い（現世）。判断力が育つ（来世）。</p>
+  </div>
+
+  <span class="page-num">07</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- 3.4 -->
+<section class="page">
+  <div class="label">3.4 <span class="priority-tag p1">P1</span></div>
+  <div class="title">成果と成長の可視化</div>
+  <div class="section-divider"></div>
+
+  <p><strong>問題：</strong>目標達成率しか見えない。成果の中身も、「人として育った」も見えない。</p>
+
+  <h4>成果指標（現世ご利益）</h4>
+  <table>
+    <thead><tr><th>指標</th><th>内容</th><th>計測方法</th></tr></thead>
+    <tbody>
+      <tr><td>成果目標達成率</td><td>設定した成果目標に対する達成度</td><td>自己申告＋上司承認</td></tr>
+      <tr><td>行動目標達成率</td><td>設定した行動目標の実行度</td><td>タスク完了率から自動算出</td></tr>
+      <tr><td>行動案実行率</td><td>振り返りから生まれた行動を実行した割合</td><td>タスク完了データ</td></tr>
+      <tr><td>目標貢献アクション数</td><td>目標に紐づく行動の実行回数</td><td>AIが紐付け判定</td></tr>
+      <tr><td>上司の管理時間変化</td><td>導入前後の管理工数の差</td><td>定期アンケート</td></tr>
+    </tbody>
+  </table>
+
+  <h4>成長指標（来世ご利益）</h4>
+  <table>
+    <thead><tr><th>指標</th><th>内容</th><th>計測方法</th></tr></thead>
+    <tbody>
+      <tr><td>振り返りの質スコア</td><td>内省の深さ</td><td>AI判定</td></tr>
+      <tr><td>自己解決率</td><td>自分で行動を決めた割合</td><td>自己発見型アクション比率</td></tr>
+      <tr><td>行動変容数</td><td>前と違う行動をした回数</td><td>自己申告＋AI判定</td></tr>
+      <tr><td>振り返り継続率</td><td>推奨頻度に対する実施率</td><td>実施日数データ</td></tr>
+      <tr><td>成長目標の進捗</td><td>設定した成長目標への自己評価</td><td>月末の自己申告</td></tr>
+    </tbody>
+  </table>
+
+  <h4>月次レポートイメージ</h4>
+  <div class="two-col">
+    <div class="highlight-box box-blue" style="font-size:12px;">
+      <div class="box-label" style="color:var(--blue);">成果</div>
+      成果目標達成率: 85%<br>行動目標達成率: 92%<br>行動案実行率: 78%<br>目標貢献アクション: 14件
+    </div>
+    <div class="highlight-box box-purple" style="font-size:12px;">
+      <div class="box-label" style="color:var(--purple);">成長</div>
+      振り返りの質: 2.8 → 3.4 ↑<br>自己解決率: 40% → 65% ↑<br>行動変容: 7件<br>振り返り継続: 18/20日
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--mid);">経営者には成果指標を、本人には成長指標を見せる。同じデータ、見る角度が違うだけ。</p>
+
+  <span class="page-num">08</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- 3.5 -->
+<section class="page">
+  <div class="label">3.5 <span class="priority-tag p1">P1</span></div>
+  <div class="title">上司のAI支援強化</div>
+  <div class="section-divider"></div>
+
+  <p><strong>問題：</strong>処方箋は状況サマリーのみ。上司がどう動けばいいかの具体的支援が薄い。</p>
+  <p>AIが上司の行動を<strong>3パターンに分類</strong>し、それぞれ具体的に支援する。</p>
+
+  <div class="highlight-box box-green">
+    <div class="box-label" style="color:var(--emerald);">① うまくいっている部下</div>
+    <p style="font-size:13px;margin:4px 0 0;">承認（ワンタップ）/ 称賛（具体的な声かけ提案）/ チームへの成功パターン共有（ワンタップ）</p>
+  </div>
+
+  <div class="highlight-box box-coral">
+    <div class="box-label" style="color:var(--coral);">② うまくいっていない部下</div>
+    <p style="font-size:13px;margin:4px 0 0;"><strong>状況サマリー</strong>（振り返り要約・停滞原因・感情状態）＋<strong>支援の選択肢</strong>（声かけ / 1on1設定 / 同席支援 / リソース共有）をAIが提示、上司が選ぶ</p>
+  </div>
+
+  <div class="highlight-box box-amber">
+    <div class="box-label" style="color:var(--amber);">③ 振り返り未実施の部下</div>
+    <p style="font-size:13px;margin:4px 0 0;">軽い声かけ提案 / 業務過多の可能性の提示 / タスク量見直しの提案</p>
+  </div>
+
+  <h4>チャット機能との連携（3.7）</h4>
+  <ul>
+    <li>処方箋の「声かけ」「称賛」をOS上のチャットで直接実行</li>
+    <li>AIが提案した声かけ文をそのまま送信、または編集して送信</li>
+    <li>処方箋→チャット→対応完了までOS内で完結。対応ログも残る</li>
+  </ul>
+
+  <p><strong>ポイント：</strong>上司は「何をすべきか考える」必要がない。AIが出し、上司は選ぶ。その繰り返しの中で、上司のマネジメント力も自然に育つ。</p>
+
+  <span class="page-num">09</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- 3.6 -->
+<section class="page">
+  <div class="label">3.6 <span class="priority-tag p1">P1</span></div>
+  <div class="title">ファーストイン設計</div>
+  <div class="section-divider"></div>
+
+  <p><strong>問題：</strong>現在の流れ（2週間無償→6ヶ月有償→本格導入）は本格導入までに時間がかかりすぎる。短期で本格導入に持っていくための設計が必要。</p>
+
+  <div class="highlight-box box-coral">
+    <p style="font-size:12px;margin:0;">初回訪問 → 提案＆体験 → 意思決定 → 体験セッション → 3ヶ月PoC → 意思決定 → 本格導入</p>
+  </div>
+
+  <table>
+    <thead><tr><th>Step</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:700;">1. 初回訪問</td><td>プロダクト説明＋先方の課題・組織体制をヒアリング</td></tr>
+      <tr><td style="font-weight:700;">2. 提案＆体験</td><td>カスタマイズ提案。参加者がその場でAIコーチを体験</td></tr>
+      <tr><td style="font-weight:700;">3. 意思決定</td><td>PoC実施の決定。対象チーム・成功基準を合意</td></tr>
+      <tr><td style="font-weight:700;">4. 体験セッション</td><td>参加メンバー全員への使い方説明＋初回AI対話＋目標セットアップ</td></tr>
+      <tr><td style="font-weight:700;">5. 3ヶ月PoC</td><td>1ヶ月目：習慣化 / 2ヶ月目：行動変容 / 3ヶ月目：成果の変化</td></tr>
+      <tr><td style="font-weight:700;">6. 意思決定</td><td>合意した判断基準に基づき本格導入を決定。曖昧に延長しない</td></tr>
+    </tbody>
+  </table>
+
+  <span class="page-num">10</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- 3.7 -->
+<section class="page">
+  <div class="label">3.7 <span class="priority-tag p1">P1</span></div>
+  <div class="title">チームコミュニケーション</div>
+  <div class="section-divider"></div>
+
+  <p><strong>問題：</strong>OS上でメンバー同士が直接コミュニケーションする手段がない。承認・称賛・支援がすべて上司経由またはOS外で行われている。</p>
+
+  <h4>チャット機能</h4>
+  <ul>
+    <li>メンバー同士の1対1チャット</li>
+    <li>チャットグループ機能（チーム単位、プロジェクト単位等）</li>
+  </ul>
+
+  <h4>イベント連動コミュニケーション</h4>
+  <p>OS上のイベントに対して、メンバー同士が承認・称賛・支援・フィードバックを送れる。</p>
+  <div class="two-col">
+    <div class="highlight-box box-green">
+      <p style="font-size:12px;margin:0;">「山本さんが15日連続達成」<br>→ チームメンバーがスタンプや一言コメントを送れる</p>
+    </div>
+    <div class="highlight-box box-blue">
+      <p style="font-size:12px;margin:0;">「田中さんが新しい行動案を実行した」<br>→ 同僚が「応援しています」を送れる</p>
+    </div>
+  </div>
+
+  <div class="highlight-box box-purple" style="margin-top:16px;">
+    <p style="font-size:13px;margin:0;"><strong>これにより：</strong>上司→部下の縦だけでなく<strong>横のつながり</strong>が生まれる。称賛がチーム全体の文化になる。OS上で完結するためコミュニケーションログもナレッジ蓄積の対象になる。</p>
+  </div>
+
+  <span class="page-num">11</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- SECTION 4&5 -->
+<section class="page">
+  <div class="label">Section 4 & 5</div>
+  <div class="title">BRD作成計画 & V2影響マトリクス</div>
+  <div class="section-divider"></div>
+
+  <h3>作成順序</h3>
+  <div class="highlight-box box-coral">
+    <div class="box-label" style="color:var(--coral);">Phase 1（今すぐ）: V3-001, V3-002</div>
+    <p style="font-size:13px;margin:4px 0 0;">メンバーの「続く仕組み」＋上司の「楽になる仕組み」。この両輪がないと導入されない。</p>
+  </div>
+  <div class="highlight-box box-blue">
+    <div class="box-label" style="color:var(--blue);">Phase 2（P0確定後）: V3-003, V3-004, V3-005, V3-006, V3-007</div>
+    <p style="font-size:13px;margin:4px 0 0;">体験の質の向上＋上司のAI支援強化＋売り方＋チームコミュニケーション。</p>
+  </div>
+
+  <h3>V2 BRDへの影響</h3>
+  <table>
+    <thead><tr><th>V2 BRD</th><th>影響</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td>V2-001 Context Injection</td><td>軽微</td><td>変更なし</td></tr>
+      <tr><td>V2-002 AI-Driven Alignment</td><td>軽微</td><td>レベルシステム連動追記</td></tr>
+      <tr><td>V2-003 Daily Coaching</td><td style="color:var(--coral);font-weight:700;">大</td><td>V3-001（AIコーチ設計方針）, V3-003（自己発見型）で大幅変更</td></tr>
+      <tr><td>V2-004 Critical Action</td><td>中</td><td>V3-002（モード切替）でUI構成変更</td></tr>
+      <tr><td>V2-005 Empathetic Bypass</td><td>中</td><td>V3-002（モード切替）, V3-005（AI支援強化）追加</td></tr>
+      <tr><td>V2-006 Proactive Communication</td><td style="color:var(--coral);font-weight:700;">大</td><td>V3-001（習慣化エンジン）で大幅拡張</td></tr>
+      <tr><td>V2-007 Monthly Realization</td><td>中</td><td>V3-004で成長指標追加</td></tr>
+      <tr><td>V2-008 Annual Success Loop</td><td>軽微</td><td>成長指標の年間集計</td></tr>
+      <tr><td>V2-009 Knowledge Spiral</td><td>軽微</td><td>変更なし</td></tr>
+    </tbody>
+  </table>
+
+  <span class="page-num">12</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- SECTION 7 -->
+<section class="page">
+  <div class="label">Section 7</div>
+  <div class="title">成功の定義</div>
+  <div class="section-divider"></div>
+
+  <h3>6.1 我々のKGI / KPI</h3>
+  <table>
+    <thead><tr><th>区分</th><th>指標</th><th>意味</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:700;color:var(--coral);">KGI</td><td>契約社数</td><td>事業の成長</td></tr>
+      <tr><td style="font-weight:700;color:var(--coral);">KGI</td><td>利用ユーザーID数</td><td>事業の規模</td></tr>
+      <tr><td>KPI</td><td>固定セッション（18:45）完了率 70%</td><td>習慣化の軸が機能しているか</td></tr>
+      <tr><td>KPI</td><td>振り返りの深化率（3ヶ月）50%</td><td>AIコーチの段階的深化が機能しているか</td></tr>
+      <tr><td>KPI</td><td>上司のDB利用率 85%</td><td>上司の体験設計</td></tr>
+      <tr><td>KPI</td><td>NPS（3ヶ月後）+30</td><td>推奨意向</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 クライアントのKPI — 3つの目標に対応</h3>
+
+  <h4>① 成果目標（現世ご利益）</h4>
+  <table>
+    <thead><tr><th>指標</th><th>目標</th></tr></thead>
+    <tbody>
+      <tr><td>ユーザーの目標達成率</td><td>導入前比+20%</td></tr>
+      <tr><td>上司の管理時間削減</td><td>50%削減</td></tr>
+      <tr><td>行動案実行率</td><td>75%</td></tr>
+      <tr><td>振り返り継続率（30日後）</td><td>70%</td></tr>
+    </tbody>
+  </table>
+
+  <h4>② 行動目標（中期）</h4>
+  <table>
+    <thead><tr><th>指標</th><th>目標</th></tr></thead>
+    <tbody>
+      <tr><td>行動変容数 / 人月</td><td>3件以上</td></tr>
+      <tr><td>振り返り起点の新規行動率</td><td>60%</td></tr>
+      <tr><td>タスク停滞からの自己回復率</td><td>70%</td></tr>
+    </tbody>
+  </table>
+
+  <h4>③ 成長目標（長期）</h4>
+  <table>
+    <thead><tr><th>指標</th><th>目標</th></tr></thead>
+    <tbody>
+      <tr><td>コーチングレベル進行</td><td>Lv1→Lv3（3ヶ月）</td></tr>
+      <tr><td>自己解決率</td><td>初月30%→3ヶ月後65%</td></tr>
+      <tr><td>振り返りの質スコア</td><td>初月2.0→3ヶ月後3.5/5.0</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.3 North Star Metric</h3>
+  <div class="two-col">
+    <div class="highlight-box box-blue" style="text-align:center;">
+      <div class="box-label" style="color:var(--blue);">我々</div>
+      <div style="font-size:18px;font-weight:700;color:var(--ink);">利用ID数 × 利用率</div>
+    </div>
+    <div class="highlight-box box-purple" style="text-align:center;">
+      <div class="box-label" style="color:var(--purple);">クライアント</div>
+      <div style="font-size:18px;font-weight:700;color:var(--ink);">フェーズで変える</div>
+    </div>
+  </div>
+  <table>
+    <thead><tr><th>フェーズ</th><th>見せる数字</th><th>経営者への一言</th></tr></thead>
+    <tbody>
+      <tr><td>PoC 1ヶ月目</td><td>継続率＋行動変容数</td><td>「続いています。行動が変わり始めています」</td></tr>
+      <tr><td>PoC 3ヶ月目</td><td>目標達成率＋管理時間削減</td><td>「成果が上がりました。上司も楽になりました」</td></tr>
+      <tr><td>本契約後（年次）</td><td>成長指標＋ナレッジ蓄積数</td><td>「人が育っています。知恵が残っています」</td></tr>
+    </tbody>
+  </table>
+
+  <span class="page-num">14</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- SECTION 8-9 -->
+<section class="page">
+  <div class="label">Section 7</div>
+  <div class="title">決定事項・Issues・Next Steps</div>
+  <div class="section-divider"></div>
+
+  <h3>決定事項（仮）</h3>
+  <table>
+    <thead><tr><th>#</th><th>論点</th><th>決定内容</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>振り返り未実施への対応</td><td><strong>実施率をチーム内に公開</strong>して自律を促す</td></tr>
+      <tr><td>2</td><td>目標設定</td><td>全員が設定。<strong>成果・行動・成長の3層</strong></td></tr>
+      <tr><td>3</td><td>セールスプロセス</td><td>初回訪問→提案＆体験→意思決定→体験セッション→3ヶ月PoC→本格導入</td></tr>
+      <tr><td>4</td><td>振り返りの構造</td><td><strong>固定セッション（18:45）＋常駐AIコーチ</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Issues（チームで議論したい）</h3>
+  <table>
+    <thead><tr><th>#</th><th>論点</th><th>提起者</th><th>背景・論点</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>振り返り頻度</td><td>中島</td><td>推奨毎日・最低週2回としたが最適か？頻度と負担のバランスを議論したい</td></tr>
+      <tr><td>2</td><td></td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td></td><td></td><td></td></tr>
+      <tr><td>5</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--light);">※チームメンバーは自由にIssueを追加してください。質問・提案・懸念、何でも。</p>
+
+  <h3>Next Steps</h3>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div class="highlight-box box-coral" style="padding:12px 20px;">
+      <span style="font-weight:700;color:var(--coral);">1.</span> 本内容をチームで議論し、合意
+    </div>
+    <div class="highlight-box box-blue" style="padding:12px 20px;">
+      <span style="font-weight:700;color:var(--blue);">2.</span> PRD作成
+    </div>
+    <div class="highlight-box box-green" style="padding:12px 20px;">
+      <span style="font-weight:700;color:var(--emerald);">3.</span> 開発
+    </div>
+  </div>
+
+  <div style="margin-top:28px;font-size:12px;color:var(--light);text-align:center;">
+    本ドキュメントは2026-04-14の戦略壁打ちに基づく。V2 BRDを否定するものではなく、V2の土台の上に「続く・育つ・売れる」の仕組みを追加するアップグレード方針書。
+  </div>
+
+  <span class="page-num">13</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- ROADMAP (FINAL) -->
+<section class="page">
+  <div class="label">Section 8</div>
+  <div class="title">プロダクトロードマップ（V3以降）</div>
+  <div class="section-divider"></div>
+
+  <p>V3は第一段階。このOSが全社員の日常ポータルになることを目指す。その先に、企業の中核インフラへの進化がある。</p>
+
+  <table>
+    <thead><tr><th>Phase</th><th>テーマ</th><th>内容</th><th>Moat</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:700;color:var(--blue);">V3</td><td>日常のポータル化</td><td>振り返り＋DB＋目標管理＋チャット</td><td>習慣＋文化</td></tr>
+      <tr><td style="font-weight:700;color:var(--purple);">V4</td><td>AIエージェント＋外部連携</td><td>全文脈を持つAIが外部ツールと連携。API設計をオープンに</td><td>ワークフロー組み込み</td></tr>
+      <tr><td style="font-weight:700;color:var(--emerald);">V5</td><td>評価・タレントマネジメント</td><td>3層目標＝評価指標。ハイパフォーマー分析等</td><td>評価制度と一体化</td></tr>
+      <tr><td style="font-weight:700;color:var(--coral);">V6</td><td>企業の頭脳＋業界集合知</td><td>全部門ナレッジ活用＋100社の匿名成功パターン集約</td><td>企業の記憶＋業界の知恵</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box box-purple" style="margin-top:16px;">
+    <div class="box-label" style="color:var(--purple);">V4 AIエージェント</div>
+    <p style="font-size:12px;margin:4px 0 0;">単体のAIエージェントは誰でも作れる。我々は単体を作らない。<strong>企業DNA＋個人目標＋振り返り履歴＋チーム文脈</strong>を理解したAIエージェントがKUDEN OS上で動く。文脈のないAIエージェントは便利ツール。文脈のあるAIエージェントは相棒。</p>
+  </div>
+
+  <div class="highlight-box box-green" style="margin-top:12px;">
+    <div class="box-label" style="color:var(--emerald);">V6 業界横断の集合知</div>
+    <p style="font-size:12px;margin:4px 0 0;">KUDEN OS導入100社の匿名化された成功パターンを集約。個社データは渡せても、100社分の集合知は渡せない。これが究極のMoat。</p>
+  </div>
+
+  <span class="page-num">14</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+<!-- VISION V7-V9 -->
+<section class="page">
+  <div class="label">Vision</div>
+  <div class="title">将来構想（V7以降）</div>
+  <div class="section-divider"></div>
+
+  <table>
+    <thead><tr><th>Phase</th><th>テーマ</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:700;color:var(--blue);">V7</td><td>業界OS化</td><td>企業の壁を超えたナレッジ循環。取引先グループ全体で導入し、企業間の成功パターンを共有。業界インフラへ</td></tr>
+      <tr><td style="font-weight:700;color:var(--purple);">V8</td><td>グローバル展開</td><td>プロダクトは同じ、問いの設計を文化圏別に。日本→アジア→欧米。「振り返りから人が育つ」は普遍的真理</td></tr>
+      <tr><td style="font-weight:700;color:var(--emerald);">V9</td><td>教育市場</td><td>企業→学校へ。生徒が振り返り、AIが問い、先生は支援が必要な子だけ見る。「人の成長を止めない」を社会全体へ</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box box-purple" style="margin-top:20px;text-align:center;">
+    <p style="font-size:13px;margin:0;">V3: 習慣 → V4: ワークフロー → V5: 評価制度 → V6: 企業の記憶<br>→ <strong>V7: 業界インフラ → V8: グローバル → V9: 社会の成長インフラ</strong></p>
+  </div>
+
+  <p style="margin-top:16px;font-size:13px;color:var(--mid);text-align:center;">V7-V9は計画ではなくビジョン。しかし今日作っている「振り返りの仕組み」は、<br>将来、業界を超え、国を超え、教育を変える基盤になり得る。</p>
+
+  <div style="margin-top:28px;font-size:12px;color:var(--light);text-align:center;">
+    本ドキュメントは2026-04-14の戦略壁打ちに基づく。
+  </div>
+
+  <span class="page-num">15</span><span class="page-logo">KUDEN WORLD</span>
+</section>
+
+</body>
+</html>

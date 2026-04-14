@@ -235,16 +235,16 @@
       <p style="font-size:13px;margin:0;">ダッシュボード最上部に「◯日連続」を表示。途切れると0に戻る。7日・30日・100日でセレブレーション。</p>
     </div>
     <div class="highlight-box box-purple">
-      <div class="box-label" style="color:var(--purple);">② 即時報酬</div>
-      <p style="font-size:13px;margin:0;">振り返り完了直後にフィードバック。「今週の気づきから2つの行動変容が生まれました」。</p>
+      <div class="box-label" style="color:var(--purple);">② レポート自動生成＋上司FB</div>
+      <p style="font-size:13px;margin:0;">振り返り後にAIがレポート自動生成→上司に送信。上司が承認・称賛・コメントで返す。人からのFBが習慣を支える。</p>
     </div>
     <div class="highlight-box box-green">
       <div class="box-label" style="color:var(--emerald);">③ 離脱回復</div>
       <p style="font-size:13px;margin:0;">未実施日があればAIが簡単に振り返りをサポート。出てこなければ本日分をしっかりやる。ストリークは表示し次の記録を目指す。</p>
     </div>
     <div class="highlight-box box-amber">
-      <div class="box-label" style="color:var(--amber);">④ 実施率の公開</div>
-      <p style="font-size:13px;margin:0;">チーム内の実施率をダッシュボードに公開。個別エスカレーションではなく、可視化で自律的な意識を植える。</p>
+      <div class="box-label" style="color:var(--amber);">④ 実施率の公開＋チーム間競争</div>
+      <p style="font-size:13px;margin:0;">個人実施率をチーム内に公開＋チーム単位の実施率をグラフ化してチーム間で競わせる。「自分だけ」＋「うちのチームだけ」の二重動機。</p>
     </div>
   </div>
 
@@ -273,12 +273,24 @@
     <div class="flow-step">日中AI進捗支援</div>
   </div>
 
+  <h4>上司へのレポート自動送信</h4>
+  <table>
+    <thead><tr><th>頻度</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td>デイリー</td><td>その日の振り返りレポート（AI自動生成）</td></tr>
+      <tr><td>週報</td><td>1週間の振り返り・行動・成果サマリー</td></tr>
+      <tr><td>月報</td><td>月次の成果・行動・成長目標の進捗</td></tr>
+      <tr><td>四半期報</td><td>四半期の総括レポート</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--mid);">すべてAIが自動生成。メンバーが別途報告書を書く必要はない。</p>
+
   <div class="highlight-box box-coral">
     <div class="box-label" style="color:var(--coral);">心理的安全性の原則（厳守）</div>
     <ul style="font-size:13px;margin:0;">
-      <li>振り返りの<strong>中身は絶対に上司に見せない</strong></li>
-      <li>上司に届く情報は「3日間未実施」等の事実のみ</li>
-      <li>1日の未実施ではエスカレーションしない（閾値：連続3日以上）</li>
+      <li>上司に届くのは<strong>AIが生成したレポート</strong>であり、振り返りの生の対話内容ではない</li>
+      <li>本音や葛藤がそのまま上司に見えることはない。AIが報告として適切な形に編集</li>
+      <li>この原則が崩れると振り返りが形骸化し、プロダクトの本質的価値が失われる</li>
     </ul>
   </div>
 

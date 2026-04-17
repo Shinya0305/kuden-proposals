@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIRANUMA エンゲージメント調査 深掘り分析 — 営業MK部・CS部</title>
+<style>
+  :root {
+    --primary: #1a2a4a;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --danger: #dc2626;
+    --danger-light: #fef2f2;
+    --warning: #d97706;
+    --warning-light: #fffbeb;
+    --success: #16a34a;
+    --success-light: #f0fdf4;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--gray-800);
+    background: var(--gray-100);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .report-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #2d4a7a 100%);
+    color: #fff;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::after {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .report-header .label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .report-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .report-header .subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .report-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  .report-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── Body ── */
+  .report-body { padding: 48px; }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: var(--success-light);
+    border-left: 4px solid var(--success);
+    border-radius: 0 8px 8px 0;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .exec-summary .es-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--success);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .exec-summary p {
+    font-size: 15px;
+    color: var(--gray-700);
+    line-height: 1.8;
+  }
+  .exec-summary strong { color: var(--success); }
+
+  /* ── Score Card Row ── */
+  .score-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .score-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+  .score-card .sc-label {
+    font-size: 11px;
+    color: var(--gray-500);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .score-card .sc-value {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .score-card .sc-sub {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+  .sc-value.success { color: var(--success); }
+  .sc-value.accent { color: var(--accent); }
+  .sc-value.muted { color: var(--gray-500); }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 48px;
+    page-break-inside: avoid;
+  }
+  .section-num {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 24px; height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 6px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .section-subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin: 24px 0 12px;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0 24px;
+  }
+  thead th {
+    background: var(--gray-50);
+    color: var(--gray-600);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--gray-200);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+  }
+  tbody tr:hover { background: var(--gray-50); }
+  .highlight-row { background: var(--success-light) !important; font-weight: 600; }
+  .highlight-row-warn { background: var(--warning-light) !important; }
+  .val-neg { color: var(--danger); font-weight: 700; }
+  .val-pos { color: var(--success); font-weight: 700; }
+  .val-neutral { color: var(--gray-500); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ── Insight Boxes ── */
+  .insight-box {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 16px 0 24px;
+  }
+  .insight-box p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+  .insight-box strong { color: var(--gray-800); }
+
+  .insight-box.positive {
+    background: var(--success-light);
+    border-color: #bbf7d0;
+  }
+  .insight-box.positive strong { color: var(--success); }
+
+  /* ── Voice Quotes ── */
+  .voice {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 13px;
+    color: var(--gray-600);
+    font-style: italic;
+    position: relative;
+    padding-left: 30px;
+  }
+  .voice::before {
+    content: "\201C";
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    font-size: 24px;
+    color: var(--gray-300);
+    font-style: normal;
+    line-height: 1;
+  }
+  .voice.positive { border-color: #bbf7d0; background: var(--success-light); }
+  .voice.positive::before { color: #86efac; }
+
+  /* ── Comparison Grid ── */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  .comparison-col {
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .comparison-col.before {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+  }
+  .comparison-col.after {
+    background: var(--success-light);
+    border: 1px solid #bbf7d0;
+  }
+  .comparison-col .col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .comparison-col.before .col-label { color: var(--gray-500); }
+  .comparison-col.after .col-label { color: var(--success); }
+
+  /* ── Qualitative Groups ── */
+  .qual-group {
+    margin-bottom: 28px;
+  }
+  .qual-group h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+
+  /* ── Factor Cards ── */
+  .factor-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 16px 0;
+    border-left: 4px solid var(--success);
+  }
+  .factor-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .factor-card p {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+  .factor-card .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .badge-structural { background: var(--accent-light); color: var(--accent); }
+  .badge-initiative { background: var(--success-light); color: var(--success); }
+
+  /* ── Issue Cards ── */
+  .issue-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 16px 0;
+    border-left: 4px solid var(--warning);
+  }
+  .issue-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .issue-card p {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+
+  /* ── Spiral / Flow Diagram ── */
+  .flow-diagram {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 38px;
+    width: 2px;
+    height: 20px;
+    background: var(--gray-300);
+  }
+  .flow-num {
+    min-width: 36px; height: 36px;
+    background: var(--success);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .flow-num.structural { background: var(--accent); }
+  .flow-text {
+    font-size: 14px;
+    color: var(--gray-700);
+    padding-top: 7px;
+    line-height: 1.6;
+  }
+  .flow-arrow {
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 18px;
+    margin: 0 0 4px 8px;
+  }
+
+  /* ── Implication Box ── */
+  .implication-box {
+    background: var(--accent-light);
+    border: 1px solid #93c5fd;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .implication-box .ib-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .implication-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .implication-box li {
+    font-size: 14px;
+    color: var(--gray-700);
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.7;
+  }
+  .implication-box li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* ── Footer ── */
+  .report-footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 28px 48px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-400);
+  }
+
+  /* ── Dual Department Headers ── */
+  .dept-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+  }
+  .dept-tab {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+  }
+  .dept-tab:first-child { border-radius: 8px 0 0 8px; }
+  .dept-tab:last-child { border-radius: 0 8px 8px 0; }
+  .dept-tab.mk { background: #eff6ff; color: var(--accent); border-color: #bfdbfe; }
+  .dept-tab.cs { background: #f0fdf4; color: var(--success); border-color: #bbf7d0; }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; }
+    .report { box-shadow: none; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="report">
+
+  <!-- ──────── HEADER ──────── -->
+  <header class="report-header">
+    <div class="label">Engagement Assessment</div>
+    <h1>エンゲージメント調査 深掘り分析</h1>
+    <div class="subtitle">営業マーケティング部・カスタマーサポート部 — 好スコア要因分析</div>
+    <div class="report-meta">
+      <span>対象期間: 2025年1月 → 2026年4月</span>
+      <span>対象部門: 営業MK部 / CS部</span>
+      <span>Confidential</span>
+    </div>
+  </header>
+
+  <div class="report-body">
+
+    <!-- ──────── EXECUTIVE SUMMARY ──────── -->
+    <div class="exec-summary">
+      <div class="es-title">Executive Summary</div>
+      <p>
+        営業マーケティング部とカスタマーサポート部は、今回調査（2026年4月）で全社1位・2位のスコアを記録。
+        他部門が横ばい〜微減の中、営業MK部は<strong>+0.59</strong>、CS部は<strong>+0.38</strong>と突出した伸びを見せた。
+        両部門に共通する好スコアの構造的要因を特定し、全社へ展開可能な示唆を導出する。
+      </p>
+    </div>
+
+    <!-- ──────── SCORE CARDS ──────── -->
+    <div class="score-cards">
+      <div class="score-card">
+        <div class="sc-label">営業MK部</div>
+        <div class="sc-value success">3.49</div>
+        <div class="sc-sub">全社1位 / 前回比 +0.59</div>
+      </div>
+      <div class="score-card">
+        <div class="sc-label">CS部</div>
+        <div class="sc-value success">3.48</div>
+        <div class="sc-sub">全社2位 / 前回比 +0.38</div>
+      </div>
+      <div class="score-card">
+        <div class="sc-label">他部門平均変化</div>
+        <div class="sc-value muted">-0.04</div>
+        <div class="sc-sub">横ばい〜微減</div>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 1 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">1</span>部門別満足度ランキングの変動</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>部門</th>
+            <th class="num">前回（2025/1）</th>
+            <th class="num">今回（2026/4）</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>営業マーケティング部</td>
+            <td class="num">2.91（6位）</td>
+            <td class="num">3.49（1位）</td>
+            <td class="num val-pos">+0.59</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>カスタマーサポート部</td>
+            <td class="num">3.10（2位）</td>
+            <td class="num">3.48（2位）</td>
+            <td class="num val-pos">+0.38</td>
+          </tr>
+          <tr>
+            <td>総務部+業務部業務課</td>
+            <td class="num">3.26（1位）</td>
+            <td class="num">3.16（3位）</td>
+            <td class="num val-neutral">-0.10</td>
+          </tr>
+          <tr>
+            <td>業務部 部品調達課</td>
+            <td class="num">3.09（3位）</td>
+            <td class="num">3.00（4位）</td>
+            <td class="num val-neutral">-0.09</td>
+          </tr>
+          <tr>
+            <td>設計部</td>
+            <td class="num">2.96（5位）</td>
+            <td class="num">2.94（5位）</td>
+            <td class="num val-neutral">-0.02</td>
+          </tr>
+          <tr>
+            <td>品質保証部</td>
+            <td class="num">2.63（7位）</td>
+            <td class="num">2.83（6位）</td>
+            <td class="num val-pos">+0.20</td>
+          </tr>
+          <tr>
+            <td>業務部 組立課</td>
+            <td class="num">3.04（4位）</td>
+            <td class="num">2.62（7位）</td>
+            <td class="num val-neg">-0.42</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box positive">
+        <p>営業MK部は<strong>6位→1位へ躍進</strong>（全部門中最大の上昇幅）。CS部は2位を維持しつつ+0.38の改善。4点以上の回答割合は営業MK部<strong>51.1%</strong>、CS部<strong>42.3%</strong>と全社平均（28.0%）を大きく上回る。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 2 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">2</span>因子別の前回→今回比較</h2>
+
+      <div class="dept-tabs">
+        <div class="dept-tab mk">営業マーケティング部</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+            <th class="num">他部門今回</th>
+            <th class="num">他部門との差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>希望・未来</td><td class="num">2.36</td><td class="num">3.33</td><td class="num val-pos">+0.96</td><td class="num">2.69</td><td class="num val-pos">+0.64</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">2.49</td><td class="num">3.29</td><td class="num val-pos">+0.80</td><td class="num">2.71</td><td class="num val-pos">+0.58</td></tr>
+          <tr><td>組織</td><td class="num">2.76</td><td class="num">3.56</td><td class="num val-pos">+0.80</td><td class="num">2.83</td><td class="num val-pos">+0.73</td></tr>
+          <tr><td>成長</td><td class="num">3.04</td><td class="num">3.73</td><td class="num val-pos">+0.69</td><td class="num">3.00</td><td class="num val-pos">+0.73</td></tr>
+          <tr><td>環境</td><td class="num">3.27</td><td class="num">3.96</td><td class="num val-pos">+0.69</td><td class="num">3.08</td><td class="num val-pos">+0.88</td></tr>
+          <tr><td>制度・待遇</td><td class="num">2.56</td><td class="num">3.22</td><td class="num val-pos">+0.65</td><td class="num">2.81</td><td class="num val-pos">+0.41</td></tr>
+          <tr><td>安全性</td><td class="num">3.05</td><td class="num">3.60</td><td class="num val-pos">+0.55</td><td class="num">3.01</td><td class="num val-pos">+0.59</td></tr>
+          <tr><td>承認</td><td class="num">2.91</td><td class="num">3.45</td><td class="num val-pos">+0.55</td><td class="num">3.00</td><td class="num val-pos">+0.45</td></tr>
+          <tr><td>関係性</td><td class="num">3.13</td><td class="num">3.55</td><td class="num val-pos">+0.42</td><td class="num">3.11</td><td class="num val-pos">+0.44</td></tr>
+          <tr><td>目的</td><td class="num">3.20</td><td class="num">3.42</td><td class="num val-pos">+0.22</td><td class="num">3.19</td><td class="num val-pos">+0.23</td></tr>
+          <tr><td>主体性</td><td class="num">3.20</td><td class="num">3.33</td><td class="num val-pos">+0.13</td><td class="num">3.05</td><td class="num val-pos">+0.28</td></tr>
+          <tr style="font-weight:700; border-top:2px solid var(--gray-300);">
+            <td>全体</td><td class="num">2.91</td><td class="num">3.49</td><td class="num val-pos">+0.59</td><td class="num">2.95</td><td class="num val-pos">+0.54</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box positive">
+        <p><strong>全11因子すべてで上昇。</strong>特に「希望・未来」+0.96は驚異的な改善幅。</p>
+      </div>
+
+      <div class="dept-tabs" style="margin-top:32px;">
+        <div class="dept-tab cs">カスタマーサポート部</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+            <th class="num">他部門今回</th>
+            <th class="num">他部門との差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>制度・待遇</td><td class="num">2.64</td><td class="num">3.40</td><td class="num val-pos">+0.76</td><td class="num">2.78</td><td class="num val-pos">+0.62</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">2.52</td><td class="num">3.17</td><td class="num val-pos">+0.65</td><td class="num">2.71</td><td class="num val-pos">+0.46</td></tr>
+          <tr><td>環境</td><td class="num">3.28</td><td class="num">3.75</td><td class="num val-pos">+0.47</td><td class="num">3.09</td><td class="num val-pos">+0.66</td></tr>
+          <tr><td>組織</td><td class="num">2.86</td><td class="num">3.32</td><td class="num val-pos">+0.46</td><td class="num">2.84</td><td class="num val-pos">+0.48</td></tr>
+          <tr><td>希望・未来</td><td class="num">2.88</td><td class="num">3.31</td><td class="num val-pos">+0.43</td><td class="num">2.67</td><td class="num val-pos">+0.64</td></tr>
+          <tr><td>目的</td><td class="num">3.38</td><td class="num">3.68</td><td class="num val-pos">+0.30</td><td class="num">3.15</td><td class="num val-pos">+0.53</td></tr>
+          <tr><td>安全性</td><td class="num">3.30</td><td class="num">3.58</td><td class="num val-pos">+0.28</td><td class="num">3.00</td><td class="num val-pos">+0.58</td></tr>
+          <tr><td>承認</td><td class="num">3.02</td><td class="num">3.29</td><td class="num val-pos">+0.27</td><td class="num">3.02</td><td class="num val-pos">+0.27</td></tr>
+          <tr><td>関係性</td><td class="num">3.30</td><td class="num">3.49</td><td class="num val-pos">+0.19</td><td class="num">3.10</td><td class="num val-pos">+0.39</td></tr>
+          <tr><td>成長</td><td class="num">3.64</td><td class="num">3.82</td><td class="num val-pos">+0.18</td><td class="num">2.97</td><td class="num val-pos">+0.85</td></tr>
+          <tr><td>主体性</td><td class="num">3.28</td><td class="num">3.43</td><td class="num val-pos">+0.15</td><td class="num">3.03</td><td class="num val-pos">+0.40</td></tr>
+          <tr style="font-weight:700; border-top:2px solid var(--gray-300);">
+            <td>全体</td><td class="num">3.10</td><td class="num">3.48</td><td class="num val-pos">+0.38</td><td class="num">2.94</td><td class="num val-pos">+0.54</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box positive">
+        <p>こちらも<strong>全11因子で上昇。</strong>前回から高かった「成長」はさらに伸び<strong>3.82</strong>（全社全因子中トップクラス）。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 3 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">3</span>設問レベルで上昇が大きい項目</h2>
+
+      <div class="dept-tabs">
+        <div class="dept-tab mk">営業マーケティング部 TOP10</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>設問</th>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>1</td><td>会社のロードマップがはっきりしている</td><td>希望・未来</td><td class="num">2.36</td><td class="num">3.64</td><td class="num val-pos">+1.27</td></tr>
+          <tr class="highlight-row"><td>2</td><td>適切な人がリーダーシップを発揮できる</td><td>組織</td><td class="num">2.73</td><td class="num">3.91</td><td class="num val-pos">+1.18</td></tr>
+          <tr class="highlight-row"><td>3</td><td>人材育成に関する制度の充実</td><td>制度・待遇</td><td class="num">2.27</td><td class="num">3.45</td><td class="num val-pos">+1.18</td></tr>
+          <tr><td>4</td><td>勤務時間・場所の柔軟性</td><td>環境</td><td class="num">3.18</td><td class="num">4.27</td><td class="num val-pos">+1.09</td></tr>
+          <tr><td>5</td><td>事業の新規性を感じる</td><td>希望・未来</td><td class="num">1.91</td><td class="num">3.00</td><td class="num val-pos">+1.09</td></tr>
+          <tr><td>6</td><td>挑戦の機会を得られる</td><td>成長</td><td class="num">3.18</td><td class="num">4.18</td><td class="num val-pos">+1.00</td></tr>
+          <tr><td>7</td><td>部門の人的リソースが十分</td><td>企業オリジナル</td><td class="num">1.91</td><td class="num">2.91</td><td class="num val-pos">+1.00</td></tr>
+          <tr><td>8</td><td>相談に乗ってくれる仲間・上司がいる</td><td>関係性</td><td class="num">3.18</td><td class="num">4.09</td><td class="num val-pos">+0.91</td></tr>
+          <tr><td>9</td><td>適性に基づいた人材配置</td><td>組織</td><td class="num">2.64</td><td class="num">3.55</td><td class="num val-pos">+0.91</td></tr>
+          <tr><td>10</td><td>メンバーに笑顔がある</td><td>承認</td><td class="num">3.00</td><td class="num">3.91</td><td class="num val-pos">+0.91</td></tr>
+        </tbody>
+      </table>
+
+      <div class="dept-tabs" style="margin-top:32px;">
+        <div class="dept-tab cs">カスタマーサポート部 TOP10</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>設問</th>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>1</td><td>人材育成に関する制度の充実</td><td>制度・待遇</td><td class="num">2.40</td><td class="num">3.54</td><td class="num val-pos">+1.14</td></tr>
+          <tr><td>2</td><td>適性に基づいた人材配置</td><td>組織</td><td class="num">2.40</td><td class="num">3.31</td><td class="num val-pos">+0.91</td></tr>
+          <tr><td>3</td><td>昇給制度の公平感</td><td>制度・待遇</td><td class="num">2.40</td><td class="num">3.23</td><td class="num val-pos">+0.83</td></tr>
+          <tr><td>4</td><td>昇給・昇格に紐づく挑戦機会の平等</td><td>制度・待遇</td><td class="num">2.60</td><td class="num">3.38</td><td class="num val-pos">+0.78</td></tr>
+          <tr><td>5</td><td>ワークライフ・バランスへの配慮</td><td>環境</td><td class="num">2.60</td><td class="num">3.38</td><td class="num val-pos">+0.78</td></tr>
+          <tr><td>6</td><td>会社の未来へのワクワク感</td><td>希望・未来</td><td class="num">2.30</td><td class="num">3.08</td><td class="num val-pos">+0.78</td></tr>
+          <tr><td>7</td><td>企業理念への共感</td><td>目的</td><td class="num">3.10</td><td class="num">3.85</td><td class="num val-pos">+0.75</td></tr>
+          <tr><td>8</td><td>オフィス・ロケーションの利便性</td><td>環境</td><td class="num">3.10</td><td class="num">3.85</td><td class="num val-pos">+0.75</td></tr>
+          <tr><td>9</td><td>直属上司の適切な組織運営</td><td>企業オリジナル</td><td class="num">2.80</td><td class="num">3.54</td><td class="num val-pos">+0.74</td></tr>
+          <tr><td>10</td><td>部門の人的リソースが十分</td><td>企業オリジナル</td><td class="num">2.30</td><td class="num">3.00</td><td class="num val-pos">+0.70</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ──────── SECTION 4 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">4</span>2部門共通の強み構造</h2>
+
+      <h3 class="section-subtitle">他部門との差が大きい因子（2部門平均 vs 残り5部門）</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">2部門平均</th>
+            <th class="num">他5部門平均</th>
+            <th class="num">差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>成長</td><td class="num">3.77</td><td class="num">2.87</td><td class="num val-pos">+0.90</td></tr>
+          <tr><td>環境</td><td class="num">3.86</td><td class="num">2.97</td><td class="num val-pos">+0.89</td></tr>
+          <tr><td>希望・未来</td><td class="num">3.32</td><td class="num">2.59</td><td class="num val-pos">+0.73</td></tr>
+          <tr><td>組織</td><td class="num">3.44</td><td class="num">2.75</td><td class="num val-pos">+0.70</td></tr>
+          <tr><td>安全性</td><td class="num">3.59</td><td class="num">2.92</td><td class="num val-pos">+0.67</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">3.23</td><td class="num">2.63</td><td class="num val-pos">+0.60</td></tr>
+          <tr><td>制度・待遇</td><td class="num">3.31</td><td class="num">2.72</td><td class="num val-pos">+0.59</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="section-subtitle">設問レベルで2部門がともに高い項目</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>設問</th>
+            <th class="num">営業MK</th>
+            <th class="num">CS</th>
+            <th class="num">全社</th>
+            <th class="num">組立課</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>顧客・同僚への貢献実感</td><td class="num val-pos">4.00</td><td class="num val-pos">4.15</td><td class="num">3.26</td><td class="num val-neg">2.61</td></tr>
+          <tr><td>勤務時間・場所の柔軟性</td><td class="num val-pos">4.27</td><td class="num val-pos">3.92</td><td class="num">3.39</td><td class="num val-neg">2.78</td></tr>
+          <tr><td>挑戦の機会を得られる</td><td class="num val-pos">4.18</td><td class="num val-pos">3.77</td><td class="num">3.18</td><td class="num val-neg">2.65</td></tr>
+          <tr><td>相談に乗ってくれる仲間・上司</td><td class="num val-pos">4.09</td><td class="num val-pos">3.77</td><td class="num">3.53</td><td class="num">3.39</td></tr>
+          <tr><td>オフィス環境の充実</td><td class="num val-pos">3.91</td><td class="num val-pos">3.92</td><td class="num">2.88</td><td class="num val-neg">2.35</td></tr>
+          <tr><td>適切な裁量権</td><td class="num val-pos">4.18</td><td class="num val-pos">3.54</td><td class="num">3.38</td><td class="num">2.96</td></tr>
+          <tr><td>前向きな失敗を許容する社風</td><td class="num val-pos">4.00</td><td class="num val-pos">3.69</td><td class="num">3.10</td><td class="num">2.78</td></tr>
+          <tr><td>スキルの習得ができる</td><td class="num val-pos">3.64</td><td class="num val-pos">3.92</td><td class="num">3.17</td><td class="num">2.78</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ──────── SECTION 5 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">5</span>自由記述から読み取れる好スコアの要因</h2>
+
+      <!-- 5-1 -->
+      <div class="qual-group">
+        <h4>5-1. 顧客接点がもたらす「成長」と「貢献実感」</h4>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px;">
+          両部門の「成長」因子は3.73 / 3.82と全社で突出して高い。顧客と直接向き合う仕事は、成果が即座にフィードバックされる。
+        </p>
+        <div class="comparison-grid">
+          <div class="comparison-col after">
+            <div class="col-label">営業MK部</div>
+            「年間予算を達成した時」「海外で代理店やユーザーと会話できた時」「顧客のトラブルを解決し、直接感謝されたとき」
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">CS部</div>
+            「修理を行ったことが無い場所を修理し装置が直ったとき」「誰にも頼らず自分の知識で解決した時」「一人で点検できるようになったこと」
+          </div>
+        </div>
+        <div class="insight-box positive">
+          <p><strong>共通点：</strong>「できなかったことができた」「感謝された」という体験が成長実感に直結し、「顧客への貢献実感」（4.00 / 4.15）の高さにもつながっている。製造現場では成果が見えにくいのと対照的。</p>
+        </div>
+      </div>
+
+      <!-- 5-2 -->
+      <div class="qual-group">
+        <h4>5-2. 自律性の高い働き方と環境面の優位性</h4>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px;">
+          営業MK部の「環境」因子は3.96と全部門全因子中最高水準。「勤務時間・場所の柔軟性」は<strong>4.27</strong>。
+        </p>
+        <div class="voice positive">テレワーク・フレックス制度への言及が複数。「自由裁量で業務を行えること」</div>
+        <div class="voice positive">CS部も「ワークライフ・バランスへの配慮」が2.60→3.38（+0.78）と大幅改善。フィールドワーク中心の働き方が柔軟性に。</div>
+        <div class="insight-box positive">
+          <p><strong>共通点：</strong>両部門とも社外で活動することが多く、勤務場所・時間の裁量が構造的に大きい。この自律性が「主体性」「安全性」の高さにも寄与。</p>
+        </div>
+      </div>
+
+      <!-- 5-3 -->
+      <div class="qual-group">
+        <h4>5-3. 組織運営・リーダーシップの改善</h4>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px;">
+          営業MK部で最も劇的に改善した設問は「適切な人がリーダーシップを発揮できる」（2.73→3.91、<strong>+1.18</strong>）。
+        </p>
+        <div class="comparison-grid">
+          <div class="comparison-col before">
+            <div class="col-label">前回（2025/1）</div>
+            「新しいものをいち早く取り入れるなど設計にチャレンジしている体制が全く見えない。ワクワクがない」<br>
+            「かなり保守的」「減点評価の風潮が強い」
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">今回（2026/4）</div>
+            「色々な活動やチャレンジする機会を与えているところ」<br>
+            「海外マーケティンググループでは新たな販路での輸出にチャレンジ」<br>
+            「若い世代が会社を良くしようと積極的に動いている」
+          </div>
+        </div>
+        <div class="insight-box positive">
+          <p>前回「ワクワクがない」と嘆いていた部門が、<strong>「希望・未来」+0.96で全社最大の伸び。</strong>海外展開・新製品開発など具体的な挑戦が進み、「言葉だけでなく実際に動いている」実感が得られた。</p>
+        </div>
+      </div>
+
+      <!-- 5-4 -->
+      <div class="qual-group">
+        <h4>5-4. 制度・待遇への認識の好転</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col before">
+            <div class="col-label">前回の声</div>
+            営業MK：「茨城給料ベースでなく東京は東京でベースを考えるべき」「生活が苦しい」<br>
+            CS：「管理職手当が低すぎて一般社員の残業代と変わらない」「目指す人が現れません」
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">今回の変化</div>
+            制度・待遇が営業MK部<strong>+0.65</strong>、CS部<strong>+0.76</strong>と大幅改善。「人材育成に関する制度の充実」が両部門とも+1.0以上の伸び。前回のような切実さ・怒りのトーンは大幅に後退。
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-5 -->
+      <div class="qual-group">
+        <h4>5-5. 心理的安全性と相互支援の文化</h4>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px;">
+          営業MK部の「安全性」は3.05→3.60（+0.55）。「前向きな失敗を許容する社風」は<strong>4.00</strong>。
+        </p>
+        <div class="voice positive">失敗を否定しない。前向きな失敗であれば咎められない社風</div>
+        <div class="voice positive">入社して間もない者にとって、質問や相談がしやすい雰囲気はとても重要。周囲が自然にフォローしてくれる</div>
+        <div class="voice positive">困った時に自然と助け合える。チームの一員として受け入れてもらえている</div>
+        <div class="insight-box">
+          <p><strong>前回との対比：</strong>前回のCS部では「仕事量に余裕がない」「押し付けあう人が多い」「あと30年働かないといけないのに吐き気がする」といった深刻な声があったが、今回はこのような声が見られない。組織体制の安定化が進んだことが窺える。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 6 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">6</span>残存する課題</h2>
+
+      <div class="dept-tabs">
+        <div class="dept-tab mk">営業マーケティング部</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>課題項目</th>
+            <th class="num">今回スコア</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row-warn"><td>自ら目標を設定し実行する</td><td class="num val-neg">2.73</td><td>唯一下落した設問（前回3.18→2.73、-0.45）</td></tr>
+          <tr><td>部門の人的リソース</td><td class="num">2.91</td><td>大幅改善（+1.00）だがまだ3.0未満。「人材補充」の声複数</td></tr>
+          <tr><td>報酬と成果の連動</td><td class="num">3.00</td><td>「マイナス査定が基本」「兼任手当がない」</td></tr>
+          <tr><td>ハラスメント対策</td><td class="num">—</td><td>「キャラクターだからハラスメントが許容される馴れ合いの気持ちを捨ててほしい」</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p><strong>重視度−満足度ギャップ</strong>が大きいのは「制度・待遇」（-0.76）、「主体性」（-0.75）、「企業オリジナル」（-0.73）。好スコアの中でも期待と現実の乖離は残っており、<strong>改善が止まると失望に転じるリスク</strong>がある。</p>
+      </div>
+
+      <div class="dept-tabs" style="margin-top:32px;">
+        <div class="dept-tab cs">カスタマーサポート部</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>課題項目</th>
+            <th class="num">今回スコア</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>薦めたいほど素晴らしい職場</td><td class="num">2.92</td><td>他因子と比べて唯一3.0を切る</td></tr>
+          <tr><td>将来に人生の希望を見出せる</td><td class="num">3.00</td><td>ギリギリ3.0</td></tr>
+          <tr><td>社内での承認体験</td><td class="num">—</td><td>「社内では特に思い当たりません」「無し」「特にない」が多数</td></tr>
+          <tr><td>回答者間のばらつき</td><td class="num">—</td><td>最低2.09〜最高5.00と分散が大きい。低スコア層への対応が必要</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p><strong>重視度−満足度ギャップ</strong>が大きいのは「企業オリジナル」（-0.82）、「関係性」（-0.63）、「組織」（-0.60）、「承認」（-0.60）。特に<strong>承認</strong>は両部門共通の課題で、「社内ではなく顧客から」という声が目立つ。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 7 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">7</span>総合所見 — なぜこの2部門は伸びたのか</h2>
+
+      <h3 class="section-subtitle">構造的要因（部門特性に起因）</h3>
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-num structural">1</div>
+          <div class="flow-text"><strong>顧客接点の多さ</strong> → 成果の即時フィードバック → 成長実感・貢献実感が得やすい</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num structural">2</div>
+          <div class="flow-text"><strong>社外活動中心の働き方</strong> → 勤務の柔軟性・自律性が構造的に高い → 環境・主体性の満足度が高い</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num structural">3</div>
+          <div class="flow-text"><strong>外部評価との接触</strong> → 市場や顧客から会社の価値を実感する機会が多い → 希望・未来の評価が上がりやすい</div>
+        </div>
+      </div>
+
+      <h3 class="section-subtitle">この1年で変わったこと（施策・運営に起因する改善）</h3>
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-text"><strong>経営ビジョンの具体化</strong> — 海外展開、新製品開発など「実際に動いている」実感。前回「ワクワクがない」→今回「希望を感じる」</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-text"><strong>組織運営・リーダーシップの改善</strong> — 「適切な人がリーダーシップを発揮」が+1.18。管理職の意識や行動が変化</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num">6</div>
+          <div class="flow-text"><strong>制度・育成面の手当て</strong> — 「人材育成制度の充実」が両部門+1.0超。何らかの育成施策が効果を発揮</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num">7</div>
+          <div class="flow-text"><strong>心理的安全性の醸成</strong> — 「失敗を許容する」「相談しやすい」風土が定着。新入社員からも高い評価</div>
+        </div>
+      </div>
+
+      <div class="implication-box">
+        <div class="ib-title">全社への示唆</div>
+        <p style="font-size:14px;color:var(--gray-700);margin-bottom:12px;">
+          構造的要因（1-3）は他部門にそのまま展開できないが、<strong>施策的要因（4-7）は全社展開が可能</strong>：
+        </p>
+        <ul>
+          <li>経営ビジョンを現場の日常業務に翻訳して伝える仕組み</li>
+          <li>管理職のマネジメント力向上（チャレンジの奨励、失敗の許容、適切な承認）</li>
+          <li>人材育成制度の拡充</li>
+          <li>部門を超えた承認の仕組み（社内で「認め合う」文化の醸成）</li>
+        </ul>
+        <p style="font-size:13px;color:var(--gray-600);margin-top:16px;">
+          特に<strong>承認</strong>については、両部門とも「嬉しかった承認は社外（顧客）から」と答える人が多く、社内での承認が不足している。好スコア部門ですらこの状態であり、全社的に「社内で認め合う」文化の構築が課題。
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /report-body -->
+
+  <footer class="report-footer">
+    Engagement Assessment Report &mdash; Confidential &mdash; HIRANUMA 営業MK部・CS部 好スコア要因分析
+  </footer>
+
+</div><!-- /report -->
+
+</body>
+</html>

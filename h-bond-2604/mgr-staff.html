@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIRANUMA エンゲージメント調査 深掘り分析 — 管理職・一般職比較</title>
+<style>
+  :root {
+    --primary: #1a2a4a;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --danger: #dc2626;
+    --danger-light: #fef2f2;
+    --warning: #d97706;
+    --warning-light: #fffbeb;
+    --success: #16a34a;
+    --success-light: #f0fdf4;
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--gray-800);
+    background: var(--gray-100);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .report-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #2d4a7a 100%);
+    color: #fff;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::after {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .report-header .label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .report-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .report-header .subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .report-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  .report-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── Body ── */
+  .report-body { padding: 48px; }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: var(--purple-light);
+    border-left: 4px solid var(--purple);
+    border-radius: 0 8px 8px 0;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .exec-summary .es-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--purple);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .exec-summary p {
+    font-size: 15px;
+    color: var(--gray-700);
+    line-height: 1.8;
+  }
+  .exec-summary strong { color: var(--purple); }
+
+  /* ── Score Card Row ── */
+  .score-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .score-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+  .score-card .sc-label {
+    font-size: 11px;
+    color: var(--gray-500);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .score-card .sc-value {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .score-card .sc-sub {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+  .sc-value.success { color: var(--success); }
+  .sc-value.danger { color: var(--danger); }
+  .sc-value.warning { color: var(--warning); }
+  .sc-value.purple { color: var(--purple); }
+  .sc-value.muted { color: var(--gray-500); }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 48px;
+    page-break-inside: avoid;
+  }
+  .section-num {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 24px; height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 6px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .section-subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin: 24px 0 12px;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0 24px;
+  }
+  thead th {
+    background: var(--gray-50);
+    color: var(--gray-600);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--gray-200);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+  }
+  tbody tr:hover { background: var(--gray-50); }
+  .highlight-row { background: var(--purple-light) !important; font-weight: 600; }
+  .highlight-row-pos { background: var(--success-light) !important; }
+  .highlight-row-neg { background: var(--danger-light) !important; }
+  .val-neg { color: var(--danger); font-weight: 700; }
+  .val-pos { color: var(--success); font-weight: 700; }
+  .val-neutral { color: var(--gray-500); }
+  .val-purple { color: var(--purple); font-weight: 700; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ── Insight Boxes ── */
+  .insight-box {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 16px 0 24px;
+  }
+  .insight-box p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+  .insight-box strong { color: var(--gray-800); }
+  .insight-box.purple {
+    background: var(--purple-light);
+    border-color: #ddd6fe;
+  }
+  .insight-box.purple strong { color: var(--purple); }
+
+  /* ── Dual Role Tabs ── */
+  .role-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+  }
+  .role-tab {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+  }
+  .role-tab:first-child { border-radius: 8px 0 0 8px; }
+  .role-tab:last-child { border-radius: 0 8px 8px 0; }
+  .role-tab.mgr { background: #eff6ff; color: var(--accent); border-color: #bfdbfe; }
+  .role-tab.staff { background: #fef3c7; color: var(--warning); border-color: #fde68a; }
+
+  /* ── Comparison Grid ── */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  .comparison-col {
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .comparison-col.mgr-col {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+  }
+  .comparison-col.staff-col {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+  }
+  .comparison-col .col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .comparison-col.mgr-col .col-label { color: var(--accent); }
+  .comparison-col.staff-col .col-label { color: var(--warning); }
+
+  /* ── Issue / Factor Cards ── */
+  .factor-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 16px 0;
+    border-left: 4px solid var(--purple);
+  }
+  .factor-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .factor-card p {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+  .factor-card .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .badge-gap { background: var(--purple-light); color: var(--purple); }
+  .badge-reach { background: var(--accent-light); color: var(--accent); }
+  .badge-decline { background: #fee2e2; color: var(--danger); }
+
+  /* ── Flow Diagram ── */
+  .flow-diagram {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 38px;
+    width: 2px;
+    height: 20px;
+    background: var(--gray-300);
+  }
+  .flow-num {
+    min-width: 36px; height: 36px;
+    background: var(--purple);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .flow-text {
+    font-size: 14px;
+    color: var(--gray-700);
+    padding-top: 7px;
+    line-height: 1.6;
+  }
+  .flow-arrow {
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 18px;
+    margin: 0 0 4px 8px;
+  }
+
+  /* ── Variance Table ── */
+  .variance-bar {
+    display: inline-block;
+    height: 8px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+
+  /* ── Action Table ── */
+  .action-table td:first-child {
+    white-space: nowrap;
+    font-weight: 700;
+    width: 80px;
+  }
+  .priority-top {
+    background: #fee2e2;
+    color: var(--danger);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .priority-high {
+    background: #fff7ed;
+    color: var(--warning);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .priority-mid {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* ── Footer ── */
+  .report-footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 28px 48px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-400);
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; }
+    .report { box-shadow: none; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="report">
+
+  <!-- ──────── HEADER ──────── -->
+  <header class="report-header">
+    <div class="label">Engagement Assessment</div>
+    <h1>エンゲージメント調査 深掘り分析</h1>
+    <div class="subtitle">管理職・一般職の比較と前回からの変化</div>
+    <div class="report-meta">
+      <span>対象期間: 2025年1月 → 2026年4月</span>
+      <span>対象: 管理職23名 / 一般職82名</span>
+      <span>Confidential</span>
+    </div>
+  </header>
+
+  <div class="report-body">
+
+    <!-- ──────── EXECUTIVE SUMMARY ──────── -->
+    <div class="exec-summary">
+      <div class="es-title">Executive Summary</div>
+      <p>
+        管理職と一般職の間で、前回→今回の変化が<strong>正反対の方向</strong>に動いている。
+        管理職は3.08→3.32（+0.24）と大幅改善した一方、一般職は2.97→2.92（-0.05）とわずかに悪化。
+        前回は0.11ptだった管理職−一般職のスコア差が、今回は<strong>0.40pt</strong>にまで拡大した。
+        経営方針や制度改善の恩恵が管理職には届いているが、一般職には十分に浸透していない<strong>「二層構造」</strong>が浮かび上がる。
+      </p>
+    </div>
+
+    <!-- ──────── SCORE CARDS ──────── -->
+    <div class="score-cards">
+      <div class="score-card">
+        <div class="sc-label">管理職（23名）</div>
+        <div class="sc-value success">3.32</div>
+        <div class="sc-sub">前回比 +0.24</div>
+      </div>
+      <div class="score-card">
+        <div class="sc-label">一般職（82名）</div>
+        <div class="sc-value danger">2.92</div>
+        <div class="sc-sub">前回比 -0.05</div>
+      </div>
+      <div class="score-card">
+        <div class="sc-label">スコア差（拡大）</div>
+        <div class="sc-value purple">0.40</div>
+        <div class="sc-sub">前回 0.11 → 今回 0.40</div>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 1 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">1</span>全体像</h2>
+
+      <h3 class="section-subtitle">役職別満足度の変化</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>役職</th>
+            <th class="num">前回（2025/1）</th>
+            <th class="num">今回（2026/4）</th>
+            <th class="num">変化</th>
+            <th class="num">人数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row-pos">
+            <td>管理職</td>
+            <td class="num">3.08</td>
+            <td class="num">3.32</td>
+            <td class="num val-pos">+0.24</td>
+            <td class="num">23名→23名</td>
+          </tr>
+          <tr class="highlight-row-neg">
+            <td>一般職</td>
+            <td class="num">2.97</td>
+            <td class="num">2.92</td>
+            <td class="num val-neg">-0.05</td>
+            <td class="num">80名→82名</td>
+          </tr>
+          <tr style="font-weight:700;">
+            <td>差</td>
+            <td class="num">0.11</td>
+            <td class="num val-purple">0.40</td>
+            <td class="num" colspan="2"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="section-subtitle">スコア分布の変化</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>指標</th>
+            <th class="num">管理職 前回</th>
+            <th class="num">管理職 今回</th>
+            <th class="num">一般職 前回</th>
+            <th class="num">一般職 今回</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4点以上の割合</td>
+            <td class="num">31.0%</td>
+            <td class="num val-pos">39.6%</td>
+            <td class="num">26.4%</td>
+            <td class="num val-neg">24.8%</td>
+          </tr>
+          <tr>
+            <td>1-2点の割合</td>
+            <td class="num">26.6%</td>
+            <td class="num val-pos">16.0%</td>
+            <td class="num">27.7%</td>
+            <td class="num val-neg">30.7%</td>
+          </tr>
+          <tr style="font-weight:700;">
+            <td>平均</td>
+            <td class="num">3.08</td>
+            <td class="num">3.32</td>
+            <td class="num">2.97</td>
+            <td class="num">2.92</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box purple">
+        <p>管理職は低スコア（1-2点）が<strong>10.6pt減少</strong>し、高スコア（4-5点）が8.6pt増加。一方、一般職は低スコアがむしろ3.0pt増加し、高スコアが1.6pt減少。改善の実感が<strong>管理職に偏っている</strong>ことが分布からも確認できる。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 2 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">2</span>因子別の前回→今回推移</h2>
+
+      <div class="role-tabs">
+        <div class="role-tab mgr">管理職 — 全因子で改善もしくは横ばい</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>環境</td><td class="num">3.10</td><td class="num">3.61</td><td class="num val-pos">+0.50</td></tr>
+          <tr><td>希望・未来</td><td class="num">2.73</td><td class="num">3.20</td><td class="num val-pos">+0.47</td></tr>
+          <tr><td>制度・待遇</td><td class="num">2.84</td><td class="num">3.18</td><td class="num val-pos">+0.34</td></tr>
+          <tr><td>組織</td><td class="num">2.75</td><td class="num">3.07</td><td class="num val-pos">+0.32</td></tr>
+          <tr><td>目的</td><td class="num">3.33</td><td class="num">3.63</td><td class="num val-pos">+0.30</td></tr>
+          <tr><td>関係性</td><td class="num">3.26</td><td class="num">3.47</td><td class="num val-pos">+0.21</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">2.84</td><td class="num">3.03</td><td class="num val-pos">+0.18</td></tr>
+          <tr><td>承認</td><td class="num">3.06</td><td class="num">3.24</td><td class="num val-pos">+0.18</td></tr>
+          <tr><td>安全性</td><td class="num">3.23</td><td class="num">3.36</td><td class="num val-pos">+0.13</td></tr>
+          <tr><td>成長</td><td class="num">3.32</td><td class="num">3.32</td><td class="num val-neutral">±0.00</td></tr>
+          <tr><td>主体性</td><td class="num">3.42</td><td class="num">3.38</td><td class="num val-neutral">-0.03</td></tr>
+          <tr style="font-weight:700; border-top:2px solid var(--gray-300);">
+            <td>全体</td><td class="num">3.08</td><td class="num">3.32</td><td class="num val-pos">+0.24</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>管理職は「環境」「希望・未来」「制度・待遇」で+0.3〜0.5の大幅改善。特に<strong>「会社のロードマップがはっきりしている」は2.91→3.74（+0.83）</strong>と劇的に上昇。</p>
+      </div>
+
+      <div class="role-tabs" style="margin-top:32px;">
+        <div class="role-tab staff">一般職 — 大半の因子で微減</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>承認</td><td class="num">2.85</td><td class="num">3.00</td><td class="num val-pos">+0.15</td></tr>
+          <tr><td>制度・待遇</td><td class="num">2.71</td><td class="num">2.76</td><td class="num val-neutral">+0.05</td></tr>
+          <tr><td>安全性</td><td class="num">3.01</td><td class="num">2.99</td><td class="num val-neutral">-0.01</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">2.70</td><td class="num">2.70</td><td class="num val-neutral">-0.01</td></tr>
+          <tr><td>環境</td><td class="num">3.08</td><td class="num">3.05</td><td class="num val-neutral">-0.03</td></tr>
+          <tr><td>組織</td><td class="num">2.92</td><td class="num">2.86</td><td class="num val-neutral">-0.06</td></tr>
+          <tr><td>成長</td><td class="num">3.08</td><td class="num">3.01</td><td class="num val-neutral">-0.08</td></tr>
+          <tr><td>主体性</td><td class="num">3.12</td><td class="num">3.00</td><td class="num val-neg">-0.12</td></tr>
+          <tr><td>希望・未来</td><td class="num">2.75</td><td class="num">2.63</td><td class="num val-neg">-0.12</td></tr>
+          <tr><td>関係性</td><td class="num">3.19</td><td class="num">3.06</td><td class="num val-neg">-0.12</td></tr>
+          <tr><td>目的</td><td class="num">3.24</td><td class="num">3.10</td><td class="num val-neg">-0.15</td></tr>
+          <tr style="font-weight:700; border-top:2px solid var(--gray-300);">
+            <td>全体</td><td class="num">2.97</td><td class="num">2.92</td><td class="num val-neg">-0.05</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>一般職で唯一明確に改善したのは<strong>「承認」（+0.15）のみ</strong>。一方、「目的」「関係性」「主体性」「希望・未来」は下落。一般職は前回より<strong>"やらされ感"と"距離感"が増している</strong>。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 3 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">3</span>管理職−一般職の差が特に大きい設問</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>設問</th>
+            <th>因子</th>
+            <th class="num">管理職</th>
+            <th class="num">一般職</th>
+            <th class="num">差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>1</td><td>福利厚生に関する制度の充実</td><td>制度・待遇</td><td class="num">3.78</td><td class="num">2.96</td><td class="num val-purple">+0.82</td></tr>
+          <tr class="highlight-row"><td>2</td><td>企業理念が「明文化」されている</td><td>目的</td><td class="num">4.09</td><td class="num">3.27</td><td class="num val-purple">+0.82</td></tr>
+          <tr class="highlight-row"><td>3</td><td>会社のロードマップがはっきりしている</td><td>希望・未来</td><td class="num">3.74</td><td class="num">2.94</td><td class="num val-purple">+0.80</td></tr>
+          <tr><td>4</td><td>勤務時間・場所の柔軟性</td><td>環境</td><td class="num">4.00</td><td class="num">3.22</td><td class="num val-purple">+0.78</td></tr>
+          <tr><td>5</td><td>適切な裁量権が与えられている</td><td>主体性</td><td class="num">3.96</td><td class="num">3.22</td><td class="num val-purple">+0.74</td></tr>
+          <tr><td>6</td><td>オフィス・ロケーションの利便性</td><td>環境</td><td class="num">3.87</td><td class="num">3.13</td><td class="num val-purple">+0.74</td></tr>
+          <tr><td>7</td><td>企業理念が働く目的・動機・意欲につながる</td><td>目的</td><td class="num">3.52</td><td class="num">2.83</td><td class="num val-purple">+0.69</td></tr>
+          <tr><td>8</td><td>企業理念が「社会への貢献」を目指している</td><td>目的</td><td class="num">4.00</td><td class="num">3.33</td><td class="num val-purple">+0.67</td></tr>
+          <tr><td>9</td><td>直属上司の適切な組織運営</td><td>企業オリジナル</td><td class="num">3.61</td><td class="num">2.94</td><td class="num val-purple">+0.67</td></tr>
+          <tr><td>10</td><td>上司から承認が日常的にある</td><td>企業オリジナル</td><td class="num">3.48</td><td class="num">2.83</td><td class="num val-purple">+0.65</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>逆に<strong>一般職が管理職を上回る</strong>設問は「部門の人的リソースが十分」（一般2.65 vs 管理2.26、差-0.39）のみ。管理職はリソース不足をより深刻に感じている。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 4 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">4</span>部門別に見る管理職−一般職の差の変動</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>部門</th>
+            <th class="num">前回の差</th>
+            <th class="num">今回の差</th>
+            <th class="num">変動</th>
+            <th>特徴</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row-neg"><td>カスタマーサポート部</td><td class="num">-0.22</td><td class="num val-purple">+0.74</td><td class="num">+0.96</td><td style="font-size:12px;">前回は一般職が上。今回管理職が急上昇</td></tr>
+          <tr><td>品質保証部</td><td class="num">+0.26</td><td class="num val-purple">+0.75</td><td class="num">+0.49</td><td style="font-size:12px;">管理職改善、一般職停滞</td></tr>
+          <tr><td>業務部 部品調達課</td><td class="num">-0.29</td><td class="num val-purple">+0.30</td><td class="num">+0.59</td><td style="font-size:12px;">前回一般職優位→逆転</td></tr>
+          <tr class="highlight-row-pos"><td>営業マーケティング部</td><td class="num">+0.21</td><td class="num">+0.26</td><td class="num">+0.05</td><td style="font-size:12px;">差はほぼ変わらず（両方改善）</td></tr>
+          <tr><td>設計部</td><td class="num">+0.30</td><td class="num">+0.05</td><td class="num">-0.25</td><td style="font-size:12px;">差が縮小（管理職下落気味）</td></tr>
+          <tr><td>総務部+業務部業務課</td><td class="num">+0.49</td><td class="num val-neg">-0.15</td><td class="num">-0.64</td><td style="font-size:12px;">逆転：一般職が管理職を上回る</td></tr>
+          <tr><td>業務部 組立課</td><td class="num">+0.19</td><td class="num val-neg">-0.12</td><td class="num">-0.31</td><td style="font-size:12px;">逆転：管理職が一般職より低い</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box purple">
+        <p>
+          <strong>CS部・品質保証部・部品調達課</strong>では管理職が大幅に改善し差が拡大。管理職への支援が強化された可能性。<br>
+          <strong>組立課・総務部+業務課</strong>では逆転して一般職の方が高い。管理職が孤立・疲弊している兆候。<br>
+          <strong>営業MK部</strong>は唯一、管理職・一般職がともに改善し差が変わらなかった<strong>「全員に好循環が回った」部門</strong>。
+        </p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 5 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">5</span>重視度−満足度ギャップの変化</h2>
+
+      <div class="role-tabs">
+        <div class="role-tab mgr">管理職 — 多くの因子でギャップ縮小</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回ギャップ</th>
+            <th class="num">今回ギャップ</th>
+            <th class="num">改善幅</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>組織</td><td class="num val-neg">-1.42</td><td class="num">-1.11</td><td class="num val-pos">+0.31</td></tr>
+          <tr><td>希望・未来</td><td class="num val-neg">-1.40</td><td class="num">-0.70</td><td class="num val-pos">+0.70</td></tr>
+          <tr><td>制度・待遇</td><td class="num val-neg">-1.25</td><td class="num">-0.86</td><td class="num val-pos">+0.39</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">-1.10</td><td class="num">-0.96</td><td class="num val-pos">+0.14</td></tr>
+          <tr><td>関係性</td><td class="num">-1.01</td><td class="num">-0.85</td><td class="num val-pos">+0.16</td></tr>
+          <tr><td>環境</td><td class="num">-0.90</td><td class="num val-pos">-0.27</td><td class="num val-pos">+0.63</td></tr>
+          <tr><td>安全性</td><td class="num">-0.88</td><td class="num">-0.82</td><td class="num val-pos">+0.06</td></tr>
+          <tr><td>成長</td><td class="num">-0.86</td><td class="num">-0.61</td><td class="num val-pos">+0.25</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>前回、管理職の「組織」「希望・未来」「制度・待遇」のギャップは-1.2〜1.4と極めて深刻だった。今回はいずれも改善。ただし、<strong>「組織」のギャップは-1.11と依然として全因子中最大</strong>。自分自身が「組織をうまく回せていない」と感じている管理者が一定数いる。</p>
+      </div>
+
+      <div class="role-tabs" style="margin-top:32px;">
+        <div class="role-tab staff">一般職 — ギャップが拡大した因子あり</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回ギャップ</th>
+            <th class="num">今回ギャップ</th>
+            <th class="num">変動</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>企業オリジナル</td><td class="num">-0.78</td><td class="num val-neg">-0.83</td><td class="num val-neg">-0.05</td></tr>
+          <tr><td>希望・未来</td><td class="num">-0.75</td><td class="num val-neg">-0.79</td><td class="num val-neg">-0.04</td></tr>
+          <tr><td>主体性</td><td class="num">-0.54</td><td class="num val-neg">-0.66</td><td class="num val-neg">-0.12</td></tr>
+          <tr><td>組織</td><td class="num">-0.56</td><td class="num val-neg">-0.69</td><td class="num val-neg">-0.13</td></tr>
+          <tr><td>関係性</td><td class="num">-0.52</td><td class="num val-neg">-0.59</td><td class="num val-neg">-0.07</td></tr>
+          <tr><td>環境</td><td class="num">-0.55</td><td class="num val-neg">-0.59</td><td class="num val-neg">-0.04</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>一般職では「主体性」「組織」「関係性」のギャップが拡大。<strong>期待が変わっていないのに実態が後退</strong>している。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 6 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">6</span>「二層構造」の要因分析</h2>
+
+      <h3 class="section-subtitle">管理職に届いているもの（一般職に届いていないもの）</h3>
+
+      <div class="factor-card">
+        <span class="badge badge-gap">ギャップ大</span>
+        <h4>経営ビジョン・ロードマップ</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col mgr-col">
+            <div class="col-label">管理職</div>
+            「会社のロードマップがはっきりしている」<br>3.74（<strong>+0.83</strong>）
+          </div>
+          <div class="comparison-col staff-col">
+            <div class="col-label">一般職</div>
+            同設問<br>2.94（+0.10）
+          </div>
+        </div>
+        <p>経営層からの情報共有は管理職止まりで、一般職まで翻訳・浸透させるプロセスが機能していない。</p>
+      </div>
+
+      <div class="factor-card">
+        <span class="badge badge-gap">ギャップ大</span>
+        <h4>勤務の柔軟性・裁量権</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col mgr-col">
+            <div class="col-label">管理職</div>
+            「勤務時間・場所の柔軟性」4.00（+0.65）<br>
+            「適切な裁量権」3.96（-0.09）
+          </div>
+          <div class="comparison-col staff-col">
+            <div class="col-label">一般職</div>
+            同設問 3.22（+0.11）<br>
+            同設問 3.22（-0.17）
+          </div>
+        </div>
+        <p>管理職は制度変更で柔軟性が増したが、現場の一般職（特に製造部門）には制度が適用されにくい構造。</p>
+      </div>
+
+      <div class="factor-card">
+        <span class="badge badge-gap">ギャップ大</span>
+        <h4>制度・待遇の改善実感</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col mgr-col">
+            <div class="col-label">管理職</div>
+            「福利厚生の充実」3.78<br>
+            「人材育成制度」3.22（+0.52）
+          </div>
+          <div class="comparison-col staff-col">
+            <div class="col-label">一般職</div>
+            同設問 2.96<br>
+            同設問 2.74（+0.14）
+          </div>
+        </div>
+        <p>制度改定の恩恵が管理職には実感されているが、一般職にはまだ十分に見えていない。</p>
+      </div>
+
+      <div class="factor-card">
+        <span class="badge badge-gap">ギャップ大</span>
+        <h4>企業理念への共感</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col mgr-col">
+            <div class="col-label">管理職</div>
+            「企業理念が明文化されている」4.09<br>
+            「理念が働く目的・意欲につながる」3.52
+          </div>
+          <div class="comparison-col staff-col">
+            <div class="col-label">一般職</div>
+            同設問 3.27<br>
+            同設問 2.83
+          </div>
+        </div>
+        <p>理念の理解度に層間で大きな差。管理職は経営層との接点で理解が深まるが、一般職は日常業務との接続が見えない。</p>
+      </div>
+
+      <h3 class="section-subtitle">一般職が下落している要因</h3>
+
+      <div class="factor-card" style="border-left-color: var(--danger);">
+        <span class="badge badge-decline">下落</span>
+        <h4>チームの団結・信頼関係の後退</h4>
+        <p>「目標に向けて団結している」一般職 3.05→2.84（-0.21）。「相互に信頼しあう関係」一般職 3.36→3.16（-0.20）。管理職のスコアは上昇・横ばいなのに一般職だけ後退。マネジメントの改善が現場の人間関係に還元されていない。</p>
+      </div>
+
+      <div class="factor-card" style="border-left-color: var(--danger);">
+        <span class="badge badge-decline">管理職も下落</span>
+        <h4>主体性の低下</h4>
+        <p>「自ら目標を設定し実行する」管理職 3.13→2.83（-0.30）、一般職も横ばい。管理職すら「社員の主体性」には不満。目標設定・自律行動の文化が全社的に弱い。</p>
+      </div>
+
+      <div class="factor-card" style="border-left-color: var(--danger);">
+        <span class="badge badge-decline">下落</span>
+        <h4>企業理念と業務のつながりの断絶</h4>
+        <p>「企業理念が働く目的・意欲につながる」一般職 3.09→2.83（-0.26）。理念を掲げること自体は認知されているが、「だから自分はこう働く」への落とし込みが不十分。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 7 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">7</span>管理職内部のばらつき</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>層</th>
+            <th class="num">スコア範囲</th>
+            <th class="num">人数</th>
+            <th>所属部門</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row-pos">
+            <td>高スコア層</td>
+            <td class="num">3.65〜5.00</td>
+            <td class="num">8名</td>
+            <td style="font-size:12px;">営業MK(3名)、CS(3名)、品質保証(1名)、総務(1名)</td>
+          </tr>
+          <tr>
+            <td>中間層</td>
+            <td class="num">2.95〜3.42</td>
+            <td class="num">10名</td>
+            <td style="font-size:12px;">設計(5名)、品質保証(2名)、CS(1名)、部品調達(1名)、総務(1名)</td>
+          </tr>
+          <tr class="highlight-row-neg">
+            <td>低スコア層</td>
+            <td class="num">2.45〜2.73</td>
+            <td class="num">5名</td>
+            <td style="font-size:12px;">設計(2名)、営業MK(1名)、組立課(1名)、総務(1名)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>
+          営業MK部・CS部の管理職は概ね高スコア → 部門の好スコアを管理職が牽引。
+          組立課の管理職は<strong>2.51で全管理職中ワースト2位</strong> → 管理者自身が苦しんでいる。
+          管理職の中にも<strong>「恩恵が届いていない層」</strong>がおり、一枚岩ではない。
+        </p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 8 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">8</span>総合所見</h2>
+
+      <h3 class="section-subtitle">この1年で起きたこと</h3>
+
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-text">全社的な施策（経営ビジョンの明確化、制度改善、働き方の柔軟化など）は一定の効果を上げた</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-text"><strong>管理職は「経営に近い」ため</strong>、ビジョンの共有・制度変更・裁量拡大の恩恵を直接受けた</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-text"><strong>一般職は「現場に近い」ため</strong>、制度の変化が実感しにくく、むしろチームの団結や理念と業務のつながりが後退</div>
+        </div>
+        <div class="flow-arrow">&#8595;</div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-text">「施策が間違っていた」のではなく、<strong>「管理職から一般職への翻訳・浸透のパイプラインが弱い」</strong>という中間層の機能不全の問題</div>
+        </div>
+      </div>
+
+      <div class="insight-box purple">
+        <p><strong>「主体性」の問題は管理職・一般職共通。</strong>「自ら目標を設定し実行する」は管理職でも下落（-0.30）しており、全社的な課題。目標設定のプロセスや自律的な行動を促す仕組みが弱い。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 9 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">9</span>推奨アクション</h2>
+
+      <table class="action-table">
+        <thead>
+          <tr>
+            <th>優先度</th>
+            <th>アクション</th>
+            <th>狙い</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="priority-top">最優先</span></td>
+            <td>経営ビジョン・方針の「現場翻訳」の仕組み化（管理職→一般職への落とし込みの場・方法を標準化）</td>
+            <td style="font-size:12px;color:var(--gray-600);">管理職に届いた改善実感を一般職にも波及させる</td>
+          </tr>
+          <tr>
+            <td><span class="priority-top">最優先</span></td>
+            <td>管理職のマネジメント力強化（ビジョンの伝達、チームの団結、部下の承認・裁量付与のスキル）</td>
+            <td style="font-size:12px;color:var(--gray-600);">管理職が「情報のボトルネック」から「伝達のハブ」に変わる</td>
+          </tr>
+          <tr>
+            <td><span class="priority-high">高</span></td>
+            <td>一般職の裁量権・自律性の拡大（判断できる範囲の明確化と段階的拡大）</td>
+            <td style="font-size:12px;color:var(--gray-600);">主体性と「やらされ感」の解消</td>
+          </tr>
+          <tr>
+            <td><span class="priority-high">高</span></td>
+            <td>制度改善の「見える化」（変更点・改善の意図を一般職にも分かる形で周知）</td>
+            <td style="font-size:12px;color:var(--gray-600);">「制度は変わったが自分には関係ない」の解消</td>
+          </tr>
+          <tr>
+            <td><span class="priority-mid">中</span></td>
+            <td>一般職同士の団結回復施策（チーム目標の共有、協働の仕組み）</td>
+            <td style="font-size:12px;color:var(--gray-600);">関係性・目的因子の下落に対応</td>
+          </tr>
+          <tr>
+            <td><span class="priority-mid">中</span></td>
+            <td>管理職の孤立防止（特に組立課・総務部の管理職への支援、管理職同士の横のつながり）</td>
+            <td style="font-size:12px;color:var(--gray-600);">管理職内部の低スコア層のケア</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /report-body -->
+
+  <footer class="report-footer">
+    Engagement Assessment Report &mdash; Confidential &mdash; HIRANUMA 管理職・一般職 比較分析
+  </footer>
+
+</div><!-- /report -->
+
+</body>
+</html>

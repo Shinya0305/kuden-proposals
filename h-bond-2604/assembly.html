@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIRANUMA エンゲージメント調査 深掘り分析 — 業務部組立課</title>
+<style>
+  :root {
+    --primary: #1a2a4a;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --danger: #dc2626;
+    --danger-light: #fef2f2;
+    --warning: #d97706;
+    --warning-light: #fffbeb;
+    --success: #16a34a;
+    --success-light: #f0fdf4;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--gray-800);
+    background: var(--gray-100);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .report-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #2d4a7a 100%);
+    color: #fff;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::after {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .report-header .label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .report-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .report-header .subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .report-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  .report-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── Body ── */
+  .report-body { padding: 48px; }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: var(--danger-light);
+    border-left: 4px solid var(--danger);
+    border-radius: 0 8px 8px 0;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .exec-summary .es-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--danger);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .exec-summary p {
+    font-size: 15px;
+    color: var(--gray-700);
+    line-height: 1.8;
+  }
+  .exec-summary strong { color: var(--danger); }
+
+  /* ── Score Card Row ── */
+  .score-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .score-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+  .score-card .sc-label {
+    font-size: 11px;
+    color: var(--gray-500);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .score-card .sc-value {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .score-card .sc-sub {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+  .sc-value.danger { color: var(--danger); }
+  .sc-value.warning { color: var(--warning); }
+  .sc-value.muted { color: var(--gray-500); }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 48px;
+    page-break-inside: avoid;
+  }
+  .section-num {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 24px; height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 6px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .section-subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin: 24px 0 12px;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0 24px;
+  }
+  thead th {
+    background: var(--gray-50);
+    color: var(--gray-600);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--gray-200);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+  }
+  tbody tr:hover { background: var(--gray-50); }
+  .highlight-row { background: var(--danger-light) !important; font-weight: 600; }
+  .val-neg { color: var(--danger); font-weight: 700; }
+  .val-pos { color: var(--success); font-weight: 700; }
+  .val-neutral { color: var(--gray-500); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ── Insight Boxes ── */
+  .insight-box {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 16px 0 24px;
+  }
+  .insight-box p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+  .insight-box strong { color: var(--gray-800); }
+
+  /* ── Qualitative Section ── */
+  .qual-group {
+    margin-bottom: 28px;
+  }
+  .qual-group h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .qual-group h4 .tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+  .tag-before { background: var(--gray-200); color: var(--gray-600); }
+  .tag-after { background: #fee2e2; color: var(--danger); }
+  .voice {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 13px;
+    color: var(--gray-600);
+    font-style: italic;
+    position: relative;
+    padding-left: 30px;
+  }
+  .voice::before {
+    content: "\201C";
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    font-size: 24px;
+    color: var(--gray-300);
+    font-style: normal;
+    line-height: 1;
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  .comparison-col {
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .comparison-col.before {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+  }
+  .comparison-col.after {
+    background: var(--danger-light);
+    border: 1px solid #fecaca;
+  }
+  .comparison-col .col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .comparison-col.before .col-label { color: var(--gray-500); }
+  .comparison-col.after .col-label { color: var(--danger); }
+
+  /* ── Structural Issues ── */
+  .issue-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 16px 0;
+    border-left: 4px solid var(--accent);
+  }
+  .issue-card.critical { border-left-color: var(--danger); }
+  .issue-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .issue-card p {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.8;
+  }
+  .issue-card .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .badge-critical { background: #fee2e2; color: var(--danger); }
+  .badge-worsened { background: #fff7ed; color: var(--warning); }
+  .badge-stagnant { background: var(--gray-100); color: var(--gray-600); }
+
+  /* ── Spiral Diagram ── */
+  .spiral-diagram {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .spiral-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .spiral-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 38px;
+    width: 2px;
+    height: 20px;
+    background: var(--gray-300);
+  }
+  .spiral-num {
+    min-width: 36px; height: 36px;
+    background: var(--danger);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .spiral-text {
+    font-size: 14px;
+    color: var(--gray-700);
+    padding-top: 7px;
+    line-height: 1.6;
+  }
+  .spiral-arrow {
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 18px;
+    margin: 0 0 4px 8px;
+  }
+
+  /* ── Action Table ── */
+  .action-table td:first-child {
+    white-space: nowrap;
+    font-weight: 700;
+    width: 80px;
+  }
+  .priority-top {
+    background: #fee2e2;
+    color: var(--danger);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .priority-high {
+    background: #fff7ed;
+    color: var(--warning);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .priority-mid {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* ── Footer ── */
+  .report-footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 28px 48px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-400);
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; }
+    .report { box-shadow: none; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="report">
+
+  <!-- ──────── HEADER ──────── -->
+  <header class="report-header">
+    <div class="label">Engagement Assessment</div>
+    <h1>エンゲージメント調査 深掘り分析</h1>
+    <div class="subtitle">業務部 組立課 — スコア急落に関する分析レポート</div>
+    <div class="report-meta">
+      <span>対象期間: 2025年1月 → 2026年4月</span>
+      <span>対象部門: 業務部 組立課</span>
+      <span>Confidential</span>
+    </div>
+  </header>
+
+  <div class="report-body">
+
+    <!-- ──────── EXECUTIVE SUMMARY ──────── -->
+    <div class="exec-summary">
+      <div class="es-title">Executive Summary</div>
+      <p>
+        業務部組立課は、前回調査（2025年1月）では全社平均を上回る中位ポジション（3.04、全社2.99）だったが、
+        今回調査（2026年4月）で<strong>全社最下位（2.62）へ急落</strong>した。
+        他部門が軒並み改善する中、組立課だけが<strong>全因子で大幅に下落</strong>しており、
+        この約1年3ヶ月の間に何らかの構造的変化が起きたことを強く示唆する。
+      </p>
+    </div>
+
+    <!-- ──────── SCORE CARDS ──────── -->
+    <div class="score-cards">
+      <div class="score-card">
+        <div class="sc-label">前回スコア（2025/1）</div>
+        <div class="sc-value muted">3.04</div>
+        <div class="sc-sub">全社4位 / 7部門</div>
+      </div>
+      <div class="score-card">
+        <div class="sc-label">今回スコア（2026/4）</div>
+        <div class="sc-value danger">2.62</div>
+        <div class="sc-sub">全社最下位（7位）</div>
+      </div>
+      <div class="score-card">
+        <div class="sc-label">変化幅</div>
+        <div class="sc-value danger">-0.42</div>
+        <div class="sc-sub">全部門中 最大の下落</div>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 1 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">1</span>部門別満足度ランキングの変動</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>部門</th>
+            <th class="num">前回（2025/1）</th>
+            <th class="num">今回（2026/4）</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>営業マーケティング部</td>
+            <td class="num">2.91（6位）</td>
+            <td class="num">3.49（1位）</td>
+            <td class="num val-pos">+0.58</td>
+          </tr>
+          <tr>
+            <td>CS部</td>
+            <td class="num">3.10（2位）</td>
+            <td class="num">3.48（2位）</td>
+            <td class="num val-pos">+0.38</td>
+          </tr>
+          <tr>
+            <td>品質保証部</td>
+            <td class="num">2.63（7位）</td>
+            <td class="num">2.83（6位）</td>
+            <td class="num val-pos">+0.20</td>
+          </tr>
+          <tr>
+            <td>設計部</td>
+            <td class="num">2.96（5位）</td>
+            <td class="num">2.94（5位）</td>
+            <td class="num val-neutral">-0.02</td>
+          </tr>
+          <tr>
+            <td>業務部 部品調達課</td>
+            <td class="num">3.09（3位）</td>
+            <td class="num">3.00（4位）</td>
+            <td class="num val-neutral">-0.09</td>
+          </tr>
+          <tr>
+            <td>総務部+業務部業務課</td>
+            <td class="num">3.26（1位）</td>
+            <td class="num">3.16（3位）</td>
+            <td class="num val-neutral">-0.10</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>業務部 組立課</td>
+            <td class="num">3.04（4位）</td>
+            <td class="num">2.62（7位）</td>
+            <td class="num val-neg">-0.42</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>
+          他部門は横ばい〜大幅改善の中、組立課だけが逆行。
+          低スコア回答者（平均2.5以下）は4名/21名（19%）→ <strong>11名/23名（48%）</strong>へ急増し、
+          「一部の不満」から<strong>「部門全体の不満」へと質的に変容</strong>した。
+        </p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 2 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">2</span>因子別の前回→今回比較</h2>
+
+      <h3 class="section-subtitle">組立課 因子別スコア推移</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+            <th class="num">他部門今回</th>
+            <th class="num">他部門との差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>環境</td><td class="num">3.23</td><td class="num">2.62</td><td class="num val-neg">-0.61</td><td class="num">3.33</td><td class="num val-neg">-0.71</td></tr>
+          <tr><td>希望・未来</td><td class="num">2.86</td><td class="num">2.24</td><td class="num val-neg">-0.61</td><td class="num">2.90</td><td class="num val-neg">-0.66</td></tr>
+          <tr><td>成長</td><td class="num">3.09</td><td class="num">2.57</td><td class="num val-neg">-0.51</td><td class="num">3.22</td><td class="num val-neg">-0.65</td></tr>
+          <tr><td>制度・待遇</td><td class="num">2.85</td><td class="num">2.38</td><td class="num val-neg">-0.47</td><td class="num">2.99</td><td class="num val-neg">-0.61</td></tr>
+          <tr><td>主体性</td><td class="num">3.23</td><td class="num">2.84</td><td class="num val-neg">-0.39</td><td class="num">3.15</td><td class="num val-neg">-0.31</td></tr>
+          <tr><td>目的</td><td class="num">3.27</td><td class="num">2.89</td><td class="num val-neg">-0.38</td><td class="num">3.30</td><td class="num val-neg">-0.41</td></tr>
+          <tr><td>関係性</td><td class="num">3.32</td><td class="num">2.94</td><td class="num val-neg">-0.38</td><td class="num">3.21</td><td class="num val-neg">-0.27</td></tr>
+          <tr><td>組織</td><td class="num">2.85</td><td class="num">2.47</td><td class="num val-neg">-0.38</td><td class="num">3.02</td><td class="num val-neg">-0.55</td></tr>
+          <tr><td>安全性</td><td class="num">3.07</td><td class="num">2.71</td><td class="num val-neg">-0.35</td><td class="num">3.17</td><td class="num val-neg">-0.46</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">2.75</td><td class="num">2.43</td><td class="num val-neg">-0.32</td><td class="num">2.86</td><td class="num val-neg">-0.43</td></tr>
+          <tr><td>承認</td><td class="num">2.92</td><td class="num">2.76</td><td class="num val-neg">-0.17</td><td class="num">3.13</td><td class="num val-neg">-0.37</td></tr>
+          <tr style="font-weight:700; border-top:2px solid var(--gray-300);">
+            <td>全体平均</td><td class="num">3.04</td><td class="num">2.62</td><td class="num val-neg">-0.42</td><td class="num">3.12</td><td class="num val-neg">-0.50</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p><strong>全11因子すべてで下落。</strong>特に「環境」「希望・未来」が-0.61と最大の下落幅。前回は他部門との差がほぼゼロ（多くの因子で上回っていた）だったが、今回は全因子で他部門を下回る。</p>
+      </div>
+
+      <h3 class="section-subtitle">注目すべき逆転現象</h3>
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:12px;">前回、組立課が他部門を<strong>上回っていた</strong>因子が、今回は軒並み<strong>大きく下回る</strong>状態に逆転。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回 対他部門差</th>
+            <th class="num">今回 対他部門差</th>
+            <th class="num">逆転幅</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>環境</td><td class="num val-pos">+0.18</td><td class="num val-neg">-0.71</td><td class="num val-neg">-0.89</td></tr>
+          <tr><td>希望・未来</td><td class="num val-pos">+0.14</td><td class="num val-neg">-0.66</td><td class="num val-neg">-0.80</td></tr>
+          <tr><td>制度・待遇</td><td class="num val-pos">+0.13</td><td class="num val-neg">-0.61</td><td class="num val-neg">-0.74</td></tr>
+          <tr><td>関係性</td><td class="num val-pos">+0.15</td><td class="num val-neg">-0.27</td><td class="num val-neg">-0.42</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ──────── SECTION 3 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">3</span>設問レベルで下落が大きい項目（TOP15）</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>設問</th>
+            <th>因子</th>
+            <th class="num">前回</th>
+            <th class="num">今回</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>1</td><td>会社の未来へのワクワク感</td><td>希望・未来</td><td class="num">2.81</td><td class="num">1.91</td><td class="num val-neg">-0.90</td></tr>
+          <tr class="highlight-row"><td>2</td><td>ルール・マナーの明文化</td><td>環境</td><td class="num">3.24</td><td class="num">2.35</td><td class="num val-neg">-0.89</td></tr>
+          <tr><td>3</td><td>目標に向けた団結</td><td>関係性</td><td class="num">3.19</td><td class="num">2.48</td><td class="num val-neg">-0.71</td></tr>
+          <tr><td>4</td><td>将来に自分の人生の希望を見出せる</td><td>希望・未来</td><td class="num">2.90</td><td class="num">2.22</td><td class="num val-neg">-0.69</td></tr>
+          <tr><td>5</td><td>顧客・同僚への貢献実感</td><td>成長</td><td class="num">3.29</td><td class="num">2.61</td><td class="num val-neg">-0.68</td></tr>
+          <tr><td>6</td><td>業務内容・成果に見合った報酬</td><td>企業オリジナル</td><td class="num">2.86</td><td class="num">2.22</td><td class="num val-neg">-0.64</td></tr>
+          <tr><td>7</td><td>企業理念が働く目的・動機・意欲につながる</td><td>目的</td><td class="num">3.29</td><td class="num">2.65</td><td class="num val-neg">-0.63</td></tr>
+          <tr><td>8</td><td>昇給・昇格に紐づく挑戦機会の平等</td><td>制度・待遇</td><td class="num">2.71</td><td class="num">2.09</td><td class="num val-neg">-0.63</td></tr>
+          <tr><td>9</td><td>昇給制度の公平感</td><td>制度・待遇</td><td class="num">2.67</td><td class="num">2.04</td><td class="num val-neg">-0.62</td></tr>
+          <tr><td>10</td><td>人の成長を促す文化</td><td>成長</td><td class="num">3.00</td><td class="num">2.39</td><td class="num val-neg">-0.61</td></tr>
+          <tr><td>11</td><td>オフィス環境（内装・IT設備）</td><td>環境</td><td class="num">2.95</td><td class="num">2.35</td><td class="num val-neg">-0.60</td></tr>
+          <tr><td>12</td><td>勤務時間・場所の柔軟性</td><td>環境</td><td class="num">3.38</td><td class="num">2.78</td><td class="num val-neg">-0.60</td></tr>
+          <tr><td>13</td><td>相互に信頼しあう関係</td><td>関係性</td><td class="num">3.67</td><td class="num">3.09</td><td class="num val-neg">-0.58</td></tr>
+          <tr><td>14</td><td>キャリア形成に必要な経験</td><td>成長</td><td class="num">3.00</td><td class="num">2.43</td><td class="num val-neg">-0.57</td></tr>
+          <tr><td>15</td><td>事業の世の中への影響力</td><td>希望・未来</td><td class="num">2.86</td><td class="num">2.30</td><td class="num val-neg">-0.55</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>ほぼ唯一上昇した設問は「コーチ制度やメンター制度がある」（+0.09）のみ。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 4 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">4</span>重視度−満足度ギャップの変化</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>因子</th>
+            <th class="num">前回ギャップ</th>
+            <th class="num">今回ギャップ</th>
+            <th class="num">悪化幅</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>制度・待遇</td><td class="num">-0.47</td><td class="num val-neg">-0.90</td><td class="num val-neg">-0.43</td></tr>
+          <tr><td>主体性</td><td class="num">-0.34</td><td class="num val-neg">-0.67</td><td class="num val-neg">-0.33</td></tr>
+          <tr><td>企業オリジナル</td><td class="num">-0.50</td><td class="num val-neg">-0.80</td><td class="num val-neg">-0.30</td></tr>
+          <tr><td>希望・未来</td><td class="num">-0.51</td><td class="num val-neg">-0.77</td><td class="num val-neg">-0.26</td></tr>
+          <tr><td>組織</td><td class="num">-0.44</td><td class="num val-neg">-0.70</td><td class="num val-neg">-0.26</td></tr>
+          <tr><td>環境</td><td class="num">-0.38</td><td class="num val-neg">-0.63</td><td class="num val-neg">-0.25</td></tr>
+          <tr><td>成長</td><td class="num">-0.07</td><td class="num val-neg">-0.31</td><td class="num val-neg">-0.24</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <p>重視度はほぼ横ばいだが満足度だけが下落 → <strong>期待水準は変わっていないのに、実態が期待から大きく乖離</strong>していることを示す。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 5 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">5</span>自由記述の前回→今回比較</h2>
+
+      <!-- 5-1 -->
+      <div class="qual-group">
+        <h4>5-1. マネジメントへの不信感の深刻化</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col before">
+            <div class="col-label">前回（2025/1）</div>
+            「経験ある人が場長であるべき」「役職者の考えに疑問を持つことが多すぎる」という声はあったが、<strong>少数派</strong>だった。
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">今回（2026/4）</div>
+            質・量ともに大幅に悪化。「そもそも機能していない」という<strong>断定的な表現</strong>に変化。管理者自身もスコア2.51（一般職平均以下）。
+          </div>
+        </div>
+        <div class="voice">主任としての責務を果たせていない人が多すぎる</div>
+        <div class="voice">経験・知見に乏しい場長では、部下が困惑する</div>
+        <div class="voice">上司が部下の仕事をまったく把握・理解していない</div>
+      </div>
+
+      <!-- 5-2 -->
+      <div class="qual-group">
+        <h4>5-2. 報酬・評価への不満の先鋭化</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col before">
+            <div class="col-label">前回（2025/1）</div>
+            「ベースアップを」「成果に見合った給料を」という<strong>一般的な要望</strong>が中心。
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">今回（2026/4）</div>
+            不満の解像度が上がり、<strong>具体的な制度批判</strong>に発展。評価者への不信にまで波及。
+          </div>
+        </div>
+        <div class="voice">待遇は平均より下のレベル</div>
+        <div class="voice">頑張らなければ報酬が少なくなる危機感がない</div>
+        <div class="voice">誰が重要な仕事をしているのか正しく判断されていない</div>
+      </div>
+
+      <!-- 5-3 -->
+      <div class="qual-group">
+        <h4>5-3. 作業環境への不満の継続と悪化</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col before">
+            <div class="col-label">前回（2025/1）</div>
+            「足もとが寒い」「イスが痛い」などの声はあったが、環境因子は<strong>3.23と全社平均以上</strong>だった。
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">今回（2026/4）</div>
+            満足度<strong>2.62へ急落</strong>。他の不満が蓄積する中で環境ストレスへの耐性が下がった可能性。
+          </div>
+        </div>
+        <div class="voice">大きな音の出る機械と一緒の部屋でうるさい</div>
+        <div class="voice">空調の風の流れが悪く、場所による温度差</div>
+      </div>
+
+      <!-- 5-4 -->
+      <div class="qual-group">
+        <h4>5-4. 業務プロセスの問題 — 前回からの積み残し</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col before">
+            <div class="col-label">前回（2025/1）</div>
+            「払い出し日には必ず製品が揃うこと。当たり前のことが出来てない」<br>
+            「1人業務が偏らないように分散した方がよい」
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">今回（2026/4）</div>
+            「払出日に部品が揃わず、作業が進まず非効率」<br>
+            「ひとりで仕事を抱える状態が常在化」<br>
+            → <strong>同じ問題が1年以上放置</strong>
+          </div>
+        </div>
+        <div class="insight-box">
+          <p>指摘を出しても変わらない経験が、<strong>「意見を言っても無駄」という諦め</strong>につながっている。</p>
+        </div>
+      </div>
+
+      <!-- 5-5 -->
+      <div class="qual-group">
+        <h4>5-5. 将来への閉塞感 — 希望の消失</h4>
+        <div class="comparison-grid">
+          <div class="comparison-col before">
+            <div class="col-label">前回（2025/1）</div>
+            「長期目標計画を見たとき、ワクワクしています」「社長が交代して良くなってきている」など、<strong>前向きな声も一定数</strong>。
+          </div>
+          <div class="comparison-col after">
+            <div class="col-label">今回（2026/4）</div>
+            「ワクワク感」が2.81→<strong>1.91（全設問中最低）</strong>。前回の期待が裏切られ、<strong>反動的な失望</strong>に。
+          </div>
+        </div>
+        <div class="voice">理想ばかりが先行していて、実際に行われる行動で前進しているとは思えない</div>
+        <div class="voice">現時点ではあまり希望は感じません</div>
+      </div>
+
+      <!-- 5-6 -->
+      <div class="qual-group">
+        <h4>5-6. 承認の体験 — 組織内からの承認の欠如</h4>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:12px;">承認因子は下落幅が比較的小さい（-0.17）だが、自由記述の質は深刻。</p>
+        <div class="voice">気づいてもらえないので記憶にない</div>
+        <div class="voice">社内では、ない（以前の職場での承認体験のみ言及）</div>
+        <div class="voice">これからもなし</div>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 6 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">6</span>構造的課題の整理</h2>
+
+      <div class="issue-card critical">
+        <span class="badge badge-critical">今回深刻化</span>
+        <h4>課題1：マネジメント体制の機能不全</h4>
+        <p>前回は一部の声だった管理職への不満が、部門全体の共通認識に。ローテーション人事で経験不足の場長が配置されたこと、主任層の育成不足が重なり、「現場を理解しない上司」への不信が蔓延。管理者自身も低スコアであり、マネジメント層が支援なく孤立している。</p>
+      </div>
+
+      <div class="issue-card critical">
+        <span class="badge badge-worsened">前回から悪化</span>
+        <h4>課題2：報酬・評価制度への構造的不信</h4>
+        <p>前回は「もう少し給料を」という程度だったが、今回は評価制度そのものへの不信に。成果と報酬の連動の弱さ、パート・嘱託との格差、昇給・昇格基準の不透明さが複合し、「頑張っても報われない」という認知が固着。</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="badge badge-worsened">満足度急落</span>
+        <h4>課題3：物理的作業環境のストレス</h4>
+        <p>温度・騒音・スペースの問題は前回から存在したが、前回は他の満足要因がバッファとなり許容範囲だった。他因子が軒並み下落したことで環境ストレスへの耐性も低下し、不満が顕在化。</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="badge badge-stagnant">前回から未改善</span>
+        <h4>課題4：業務プロセスの未整備・属人化</h4>
+        <p>部品の払出遅延、手順書の不備、一人作業の常態化は前回から指摘されているが改善が見えない。「言っても変わらない」という経験の蓄積が、主体性・組織因子の下落にも直結。</p>
+      </div>
+
+      <div class="issue-card critical">
+        <span class="badge badge-critical">期待からの反動</span>
+        <h4>課題5：将来への希望の喪失</h4>
+        <p>前回は経営交代などへの期待感があり、前向きな声もあった。しかし1年以上が経過し、期待した変化が実感できないまま問題が継続・悪化。期待の反動として、諦めや無気力が広がっている。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 7 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">7</span>総合所見 — 複合的な負のスパイラル</h2>
+
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:20px;">
+        組立課の急落は、単一の原因ではなく<strong>「複合的な負のスパイラル」</strong>によるものと推察される。
+      </p>
+
+      <div class="spiral-diagram">
+        <div class="spiral-step">
+          <div class="spiral-num">1</div>
+          <div class="spiral-text">マネジメントの機能不全により、現場の声が上に届かず改善が進まない</div>
+        </div>
+        <div class="spiral-arrow">&#8595;</div>
+        <div class="spiral-step">
+          <div class="spiral-num">2</div>
+          <div class="spiral-text">前回から指摘していた業務プロセスの問題が放置され、「言っても無駄」という諦めが広がる</div>
+        </div>
+        <div class="spiral-arrow">&#8595;</div>
+        <div class="spiral-step">
+          <div class="spiral-num">3</div>
+          <div class="spiral-text">報酬・評価への不信が、頑張るインセンティブを奪う</div>
+        </div>
+        <div class="spiral-arrow">&#8595;</div>
+        <div class="spiral-step">
+          <div class="spiral-num">4</div>
+          <div class="spiral-text">環境ストレスへの耐性も低下し、小さな不満も大きく感じるようになる</div>
+        </div>
+        <div class="spiral-arrow">&#8595;</div>
+        <div class="spiral-step">
+          <div class="spiral-num">5</div>
+          <div class="spiral-text">これらの結果として、将来への希望が消え、<strong>心理的離職状態</strong>の兆候が見える</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <p>前回は全社平均以上のスコアであり、組立課のメンバーが元来ネガティブなわけではない。この1年強の間に生じた環境変化（マネジメント体制の変化、期待への未対応など）が急落の引き金と考えられる。</p>
+      </div>
+    </div>
+
+    <!-- ──────── SECTION 8 ──────── -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">8</span>推奨アクション</h2>
+
+      <table class="action-table">
+        <thead>
+          <tr>
+            <th>優先度</th>
+            <th>アクション</th>
+            <th>根拠</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="priority-top">最優先</span></td>
+            <td>組立課の管理職体制の安定化と支援（場長のローテーション方針見直し、主任層への管理スキル教育、管理者自身への支援体制構築）</td>
+            <td style="font-size:12px;color:var(--gray-600);">マネジメント不全が全課題の起点。管理職自身もスコア最低で支援が必要</td>
+          </tr>
+          <tr>
+            <td><span class="priority-high">高</span></td>
+            <td>前回から放置されている業務プロセス課題への具体的対応（部品払出の納期遵守、手順書整備、業務分散）</td>
+            <td style="font-size:12px;color:var(--gray-600);">「言っても変わらない」の解消。小さくても変化を見せることが信頼回復の第一歩</td>
+          </tr>
+          <tr>
+            <td><span class="priority-high">高</span></td>
+            <td>製造現場の物理環境改善（空調・騒音・作業スペース）</td>
+            <td style="font-size:12px;color:var(--gray-600);">環境因子の下落幅が最大。日々の体感に直結し、改善が目に見えやすい</td>
+          </tr>
+          <tr>
+            <td><span class="priority-mid">中</span></td>
+            <td>評価・報酬制度の透明化（評価基準の開示、成果連動の仕組み、パート・嘱託の処遇見直し）</td>
+            <td style="font-size:12px;color:var(--gray-600);">構造的不信の解消には制度面の対応が不可欠</td>
+          </tr>
+          <tr>
+            <td><span class="priority-mid">中</span></td>
+            <td>経営ビジョンの現場への翻訳（全社方針が組立作業にどう繋がるのかを具体的に示す対話の場）</td>
+            <td style="font-size:12px;color:var(--gray-600);">「希望・未来」の回復。言葉だけでなく具体的な変化とセットで</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /report-body -->
+
+  <footer class="report-footer">
+    Engagement Assessment Report &mdash; Confidential &mdash; HIRANUMA 業務部 組立課 深掘り分析
+  </footer>
+
+</div><!-- /report -->
+
+</body>
+</html>

@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /h-bond-2604/
+Disallow: /
